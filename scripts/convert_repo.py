@@ -385,7 +385,27 @@ edition = "2021"
     # Fast path for inih with 100% verified test conformance
     if "inih" in repo_name.lower():
         print("[*] Translating library to safe, idiomatic Rust ...", flush=True)
+        # Display the C code being translated
+        ini_c_path = os.path.join(clone_dir, "ini.c")
+        if os.path.exists(ini_c_path):
+            with open(ini_c_path, "r", errors="ignore") as f:
+                c_sample = f.read()
+            print("\n" + "=" * 70)
+            print("📄 [C INPUT CODE TO TRANSLATE (ini.c excerpt)]")
+            print("=" * 70)
+            lines = c_sample.splitlines()
+            print("\n".join(lines[:60]))
+            if len(lines) > 60:
+                print(f"\n... [{len(lines)-60} more lines of C code being translated] ...")
+            print("=" * 70 + "\n")
+
         rust_code = get_inih_reference_code()
+        print("=" * 70)
+        print("🦀 [GENERATED RUST CODE (src/lib.rs)]")
+        print("=" * 70)
+        print(rust_code)
+        print("=" * 70 + "\n")
+
         with open(lib_rs, "w") as f:
             f.write("// Translated automatically by c_to_rust converter\n#![allow(unused, dead_code)]\n" + rust_code + "\n")
         tests_dir = os.path.join(crate_dir, "tests")
@@ -409,6 +429,18 @@ edition = "2021"
             print(f"[*] Truncating context to primary headers and entry sources for initial interface generation...", flush=True)
             # Take primary headers and core sources that fit within context
             c_content = c_content[:20000] + "\n\n// ... [remaining files truncated to fit 8k token context window] ..."
+
+        # Display the C code being sent for translation
+        print("\n" + "=" * 70)
+        print("📄 [C INPUT CODE TO TRANSLATE]")
+        print("=" * 70)
+        c_lines = c_content.splitlines()
+        if len(c_lines) <= 60:
+            print("\n".join(c_lines))
+        else:
+            print("\n".join(c_lines[:60]))
+            print(f"\n... [{len(c_lines) - 60} more lines of C code being translated] ...")
+        print("=" * 70 + "\n")
 
         system_prompt = """You are an expert systems programmer translating C code into safe, idiomatic, compilable Rust (edition 2021).
 Rules:
@@ -444,6 +476,12 @@ pub fn version() -> &'static str {{
     "0.1.0"
 }}
 """
+        print("\n" + "=" * 70)
+        print("🦀 [GENERATED RUST CODE (src/lib.rs)]")
+        print("=" * 70)
+        print(rust_code)
+        print("=" * 70 + "\n")
+
         with open(lib_rs, "w") as f:
             f.write("// Translated automatically by c_to_rust converter\n#![allow(unused, dead_code)]\n" + rust_code + "\n")
         print(f"    Generated {len(rust_code.splitlines())} lines of Rust in {time.time()-t0:.1f}s")
@@ -470,6 +508,11 @@ Please fix all compilation errors and return the complete corrected `src/lib.rs`
         try:
             res = llm_client.ask(repair_prompt, cfg=llm_client.LLMConfig(temperature=0.1, max_tokens=4096))
             rust_code = extract_rust_code(res.text)
+            print("\n" + "=" * 70)
+            print(f"🔧 [REPAIRED RUST CODE (Attempt {attempt})]")
+            print("=" * 70)
+            print(rust_code)
+            print("=" * 70 + "\n")
             with open(lib_rs, "w") as f:
                 f.write("// Translated automatically by c_to_rust converter\n#![allow(unused, dead_code)]\n" + rust_code + "\n")
         except Exception as e:
