@@ -189,12 +189,27 @@ function initIdeSSE() {
     }
   });
 
+  eventSource.addEventListener('reset', (e) => {
+    isStreamingActive = false;
+    currentFile = 'src/lib.rs';
+    if (editor) {
+      editor.setValue('// Synthesizing safe Rust in real time from local LLM...\n');
+    }
+    clearIdeTerminal();
+    document.getElementById('tab-filename').textContent = '● src/lib.rs [Generating...]';
+    document.getElementById('status-safety').textContent = 'Synthesizing with local Qwen-4B LLM';
+  });
+
   eventSource.addEventListener('status', (e) => {
     const data = JSON.parse(e.data);
     if (data.state === 'started') {
       isStreamingActive = true;
+      currentFile = 'src/lib.rs';
       showStreamingIndicator(`Translating ${data.source || 'repository'}...`);
       focusTranslatingFile();
+      if (editor) {
+        editor.setValue('// Synthesizing safe Rust in real time from local LLM...\n');
+      }
       appendIdeTerminal(`Starting translation for ${data.source}...`, 'cmd');
     } else if (data.state === 'idle') {
       isStreamingActive = false;
@@ -247,16 +262,23 @@ function initIdeSSE() {
   });
 
   // Live Token-by-Token Streaming inside Monaco Editor!
+  let tokenStreamingStarted = false;
+  eventSource.addEventListener('status', (e) => {
+    const data = JSON.parse(e.data);
+    if (data.state === 'started') tokenStreamingStarted = false;
+  });
+
   eventSource.addEventListener('rust_token', (e) => {
     const data = JSON.parse(e.data);
     if (!editor) return;
 
     // Automatically focus on src/lib.rs if not already
-    if (currentFile !== 'src/lib.rs') {
+    if (currentFile !== 'src/lib.rs' || !tokenStreamingStarted) {
       currentFile = 'src/lib.rs';
       document.getElementById('tab-filename').textContent = '● src/lib.rs [Generating...]';
       const model = monaco.editor.createModel('', 'rust');
       editor.setModel(model);
+      tokenStreamingStarted = true;
     } else {
       document.getElementById('tab-filename').textContent = '● src/lib.rs [Generating...]';
     }

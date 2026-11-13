@@ -83,7 +83,7 @@ function resetUIForNewTranslation(url) {
   currentRust = '';
 
   document.getElementById('c-code-view').textContent = '// Fetching C source files...';
-  document.getElementById('rust-code-view').textContent = '// Synthesizing Rust code...';
+  document.getElementById('rust-code-view').textContent = '// Synthesizing Rust code from local LLM...';
   document.getElementById('results-banner').style.display = 'none';
 
   updateStage(1, `Cloning ${url}...`);
@@ -110,11 +110,16 @@ function initSSE() {
       btn.disabled = true;
       btn.querySelector('span').textContent = 'Translating...';
       btnStop.style.display = 'flex';
-    }
-    if (data.has_zip) {
+      document.getElementById('results-banner').style.display = 'none';
+    } else if (data.has_zip) {
       document.getElementById('results-banner').style.display = 'flex';
       updateStage(5, 'Crate compiled & packaged');
     }
+  });
+
+  eventSource.addEventListener('reset', (e) => {
+    const data = JSON.parse(e.data);
+    resetUIForNewTranslation(data.url || '');
   });
 
   eventSource.addEventListener('status', (e) => {

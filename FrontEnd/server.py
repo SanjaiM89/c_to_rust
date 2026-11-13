@@ -176,14 +176,38 @@ def get_system_telemetry():
 def run_conversion_worker(source_url: str):
     global current_session, active_proc, active_cancelled
     active_cancelled = False
+
+    repo_raw = source_url.strip().rstrip("/")
+    if repo_raw.endswith(".git"):
+        rname = os.path.basename(repo_raw[:-4])
+    else:
+        rname = os.path.basename(repo_raw)
+    target_cname = f"{rname.replace('-', '_')}_rs"
+
+    # Remove previous zip package and converted folder so translation starts completely fresh
+    old_zip = os.path.join(PROJECT_ROOT, f"{target_cname}.zip")
+    if os.path.exists(old_zip):
+        try:
+            os.remove(old_zip)
+        except Exception:
+            pass
+    target_extracted = os.path.join(PROJECT_ROOT, "target", "converted", target_cname)
+    if os.path.exists(target_extracted):
+        try:
+            shutil.rmtree(target_extracted, ignore_errors=True)
+        except Exception:
+            pass
+
     with conversion_lock:
         current_session["is_running"] = True
         current_session["source_url"] = source_url
         current_session["latest_c_code"] = ""
         current_session["latest_rust_code"] = ""
         current_session["zip_path"] = ""
-        current_session["crate_name"] = ""
+        current_session["crate_name"] = target_cname
+        current_session["crate_dir"] = ""
 
+    broadcast_event("reset", {"url": source_url, "crate_name": target_cname})
     broadcast_event("status", {"state": "started", "source": source_url})
     broadcast_event("stage", {"id": 1, "name": "Repository Ingestion", "desc": f"Cloning {source_url}..."})
     broadcast_event("command", {"cmd": f"git clone {source_url}", "status": "running"})
@@ -222,6 +246,7 @@ def run_conversion_worker(source_url: str):
             if line_str.startswith("STREAM_RUST_TOKEN:"):
                 try:
                     tok = json.loads(line_str[18:])
+                    current_session["latest_rust_code"] += tok
                     broadcast_event("rust_token", {"token": tok})
                 except Exception:
                     pass
@@ -230,6 +255,7 @@ def run_conversion_worker(source_url: str):
             if line_str.startswith("STREAM_C_TOKEN:"):
                 try:
                     tok = json.loads(line_str[15:])
+                    current_session["latest_c_code"] += tok
                     broadcast_event("c_token", {"token": tok})
                 except Exception:
                     pass
@@ -394,7 +420,7 @@ class TranspilerHTTPHandler(SimpleHTTPRequestHandler):
             initial_data = {
                 "is_running": current_session["is_running"],
                 "crate_name": current_session["crate_name"],
-                "has_zip": bool(current_session["zip_path"])
+                "has_zip": bool(current_session["zip_path"]) and not current_session["is_running"]
             }
             self.wfile.write(f"event: init\ndata: {json.dumps(initial_data)}\n\n".encode("utf-8"))
             self.wfile.flush()
