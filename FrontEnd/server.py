@@ -294,7 +294,15 @@ def run_conversion_worker(source_url: str):
                 current_session["zip_path"] = zip_path
                 crate_name = os.path.basename(zip_path).replace(".zip", "")
                 current_session["crate_name"] = crate_name
-                current_session["crate_dir"] = os.path.join(PROJECT_ROOT, "target", "converted", crate_name)
+                target_extracted = os.path.join(PROJECT_ROOT, "target", "converted", crate_name)
+                os.makedirs(target_extracted, exist_ok=True)
+                try:
+                    import zipfile
+                    with zipfile.ZipFile(zip_path, "r") as zf:
+                        zf.extractall(target_extracted)
+                    current_session["crate_dir"] = target_extracted
+                except Exception:
+                    current_session["crate_dir"] = target_extracted
 
         proc.wait()
 
@@ -325,6 +333,32 @@ def get_active_crate_dir():
     # If a conversion happened, return that crate dir
     if current_session.get("crate_dir") and os.path.isdir(current_session["crate_dir"]):
         return current_session["crate_dir"]
+    
+    # Check target/converted for latest converted crate
+    conv_dir = os.path.join(PROJECT_ROOT, "target", "converted")
+    if os.path.isdir(conv_dir):
+        crates = [os.path.join(conv_dir, d) for d in os.listdir(conv_dir) if os.path.isdir(os.path.join(conv_dir, d))]
+        if crates:
+            crates.sort(key=os.path.getmtime, reverse=True)
+            return crates[0]
+
+    # Check for latest zip file in PROJECT_ROOT (e.g. curl_rs.zip, inih_rs.zip)
+    zips = [os.path.join(PROJECT_ROOT, f) for f in os.listdir(PROJECT_ROOT) if f.endswith(".zip")]
+    if zips:
+        zips.sort(key=os.path.getmtime, reverse=True)
+        latest_zip = zips[0]
+        cname = os.path.basename(latest_zip).replace(".zip", "")
+        dest = os.path.join(conv_dir, cname)
+        os.makedirs(dest, exist_ok=True)
+        try:
+            import zipfile
+            with zipfile.ZipFile(latest_zip, "r") as zf:
+                zf.extractall(dest)
+            current_session["crate_dir"] = dest
+            return dest
+        except Exception:
+            pass
+
     # Check inih-rs
     inih_dir = os.path.join(os.path.dirname(PROJECT_ROOT), "inih_to_rust", "inih-rs")
     if os.path.isdir(inih_dir):
