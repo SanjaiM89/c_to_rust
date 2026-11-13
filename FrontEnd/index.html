@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>c_to_rust :: Neurosymbolic C-to-Safe-Rust Transpiler</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Prism.js for quick syntax highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header>
+    <a href="/" class="brand">
+      <div class="brand-logo">🦀</div>
+      <div>
+        <div class="brand-title">c_to_rust</div>
+      </div>
+      <span class="brand-badge">Neurosymbolic</span>
+    </a>
+
+    <nav>
+      <div class="status-pill" id="gpu-header-pill">
+        <span class="status-dot"></span>
+        <span id="gpu-header-text">RTX 3050: 0% | 15W</span>
+      </div>
+      <div class="status-pill" id="llm-header-pill" style="border-color: rgba(6, 182, 212, 0.3); color: var(--primary);">
+        <span class="status-dot" style="background-color: var(--primary); box-shadow: 0 0 8px var(--primary);"></span>
+        <span id="llm-header-text">LLM: Local Qwen-4B (8k ctx)</span>
+      </div>
+      <a href="/ide.html" target="_blank" class="nav-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+        Web VS Code
+      </a>
+      <a href="/telemetry.html" class="nav-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        Hardware Telemetry
+      </a>
+      <a href="https://github.com/SanjaiM89/c_to_rust" target="_blank" class="nav-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </header>
+
+  <!-- Main Body Content -->
+  <main>
+    <!-- Hero / Repository Input -->
+    <section class="hero-card">
+      <div class="hero-header">
+        <h1>Autonomous C-to-Safe-Rust Transpiler</h1>
+        <p>Converts real-world C libraries into 100% safe, idiomatic Rust with mathematical type contracts and compiler-guided repair.</p>
+      </div>
+
+      <div class="input-group">
+        <div class="url-input-wrapper">
+          <svg class="url-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <input type="text" id="repo-url" class="url-input" placeholder="Enter Git repository URL (e.g. https://github.com/benhoyt/inih.git)" value="https://github.com/benhoyt/inih.git">
+        </div>
+        <button id="btn-convert" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>Start Translation</span>
+        </button>
+      </div>
+
+      <div class="presets">
+        <span class="preset-label">Quick Presets:</span>
+        <button class="preset-chip" onclick="setPreset('https://github.com/benhoyt/inih.git')">inih (Quick Demo, ~500 LOC)</button>
+        <button class="preset-chip" onclick="setPreset('https://github.com/DaveGamble/cJSON.git')">cJSON (JSON Parser, ~3k LOC)</button>
+        <button class="preset-chip" onclick="setPreset('https://github.com/cxong/tinydir.git')">tinydir (Filesystem)</button>
+      </div>
+    </section>
+
+    <!-- Pipeline Stage Stepper -->
+    <section class="stepper-container">
+      <div class="step-card" id="step-1">
+        <div class="step-number">1</div>
+        <div class="step-info">
+          <h4>Ingest & Clone</h4>
+          <p id="step-1-desc">Clone Git repository and index C files</p>
+        </div>
+      </div>
+      <div class="step-card" id="step-2">
+        <div class="step-number">2</div>
+        <div class="step-info">
+          <h4>AST Decompose</h4>
+          <p id="step-2-desc">Extract callgraph & topological units</p>
+        </div>
+      </div>
+      <div class="step-card" id="step-3">
+        <div class="step-number">3</div>
+        <div class="step-info">
+          <h4>Safe Synthesis</h4>
+          <p id="step-3-desc">Local LLM generation ($0 API spend)</p>
+        </div>
+      </div>
+      <div class="step-card" id="step-4">
+        <div class="step-number">4</div>
+        <div class="step-info">
+          <h4>Cargo Check</h4>
+          <p id="step-4-desc">Borrow checker & automated repair</p>
+        </div>
+      </div>
+      <div class="step-card" id="step-5">
+        <div class="step-number">5</div>
+        <div class="step-info">
+          <h4>Verified Zip</h4>
+          <p id="step-5-desc">Unit tests pass & packaged archive</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Banner (Appears on completion) -->
+    <div id="results-banner" class="results-banner" style="display: none;">
+      <div class="results-info">
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span id="results-title">Translation Completed & 100% Safe!</span>
+        </h3>
+        <p id="results-desc">All tests passed with 0 raw pointers and 0 unsafe blocks.</p>
+      </div>
+      <div class="results-actions">
+        <a id="btn-open-ide" href="/ide.html" target="_blank" class="btn-ide">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+          Open in Web VS Code
+        </a>
+        <a id="btn-download-zip" href="/api/download" class="btn-download">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download .ZIP
+        </a>
+      </div>
+    </div>
+
+    <!-- Dual-Pane Live Code & Execution Console -->
+    <div class="workspace-grid">
+      <!-- Left Pane: Code Streaming (C Input vs Generated Rust) -->
+      <div class="panel-card">
+        <div class="panel-header">
+          <div class="panel-tabs">
+            <button id="tab-c" class="panel-tab c" onclick="switchCodeTab('c')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-4a4 4 0 0 0-4 4 4 4 0 0 0 4 4h4"/></svg>
+              C Input Code
+            </button>
+            <button id="tab-rust" class="panel-tab rust active" onclick="switchCodeTab('rust')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Generated Rust (src/lib.rs)
+            </button>
+          </div>
+          <div class="panel-actions">
+            <button class="btn-icon" onclick="copyActiveCode()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+            <a href="/ide.html" target="_blank" class="btn-icon" title="Open full IDE in new window">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              IDE
+            </a>
+          </div>
+        </div>
+        <div id="c-code-container" class="code-viewer" style="display: none;">
+          <code id="c-code-view" class="language-c">// C source code will appear here when translation begins...</code>
+        </div>
+        <div id="rust-code-container" class="code-viewer">
+          <code id="rust-code-view" class="language-rust">// Generated Rust code will stream here in real time...</code>
+        </div>
+      </div>
+
+      <!-- Right Pane: Terminal & Command Execution Logs -->
+      <div class="panel-card">
+        <div class="panel-header">
+          <div class="panel-tabs">
+            <span class="panel-tab active" style="cursor: default;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              Execution Terminal & Compiler Diagnostics
+            </span>
+          </div>
+          <div class="panel-actions">
+            <button class="btn-icon" onclick="clearTerminal()">Clear</button>
+          </div>
+        </div>
+        <div id="terminal" class="terminal-window">
+          <div class="terminal-line"><span class="terminal-cmd">$</span> <span>c_to_rust service initialized. Ready for repository input.</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-rust.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
