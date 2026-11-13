@@ -121,8 +121,12 @@ def _call_local(cfg: LLMConfig, messages: list[dict]) -> dict:
             "Authorization": "Bearer " + cfg.api_key,
         },
     )
-    with urllib.request.urlopen(req, timeout=cfg.timeout) as r:
-        raw = json.load(r)
+    try:
+        with urllib.request.urlopen(req, timeout=cfg.timeout) as r:
+            raw = json.load(r)
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode("utf-8", errors="ignore")
+        raise RuntimeError(f"LLM API request failed (HTTP {e.code}): {err_body}") from e
     text = raw["choices"][0]["message"]["content"]
     usage = raw.get("usage") or {}
     timings = raw.get("timings") or {}
