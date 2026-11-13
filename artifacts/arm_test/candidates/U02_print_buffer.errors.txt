@@ -1,0 +1,10 @@
+    Checking cjson_rs v0.1.0 (/home/sanjaim/Desktop/Projects/c_to_rust/artifacts/arm_test)
+src/uu02_print_buffer.rs:4:17: error[E0599]: no method named `is_null` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`
+src/uu02_print_buffer.rs:35:34: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field
+src/uu02_print_buffer.rs:39:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `*mut _`
+src/uu02_print_buffer.rs:45:39: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field
+src/uu02_print_buffer.rs:49:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `*mut _`
+src/uu02_print_buffer.rs:53:59: error[E0308]: mismatched types: expected `Vec<u8>`, found `*mut _`
+src/uu02_print_buffer.rs:54:24: error[E0599]: no method named `is_null` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`
+src/uu02_print_buffer.rs:70:22: error[E0599]: no method named `is_null` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`
+error: could not compile `cjson_rs` (lib) due to 8 previous errors

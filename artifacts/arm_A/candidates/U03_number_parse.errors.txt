@@ -1,0 +1,11 @@
+    Checking cjson_rs v0.1.0 (/home/sanjaim/Desktop/Projects/c_to_rust/artifacts/arm_A)
+src/uu03_number_parse.rs:1:5: warning: unused import: `crate::contract::*`
+src/uu02_print_buffer.rs:4:17: error[E0599]: no method named `is_none` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`
+src/uu02_print_buffer.rs:35:34: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field
+src/uu02_print_buffer.rs:38:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `Option<_>`
+src/uu02_print_buffer.rs:45:39: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field
+src/uu02_print_buffer.rs:48:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `Option<_>`
+src/uu02_print_buffer.rs:52:35: error[E0599]: no method named `take` found for struct `Vec<u8>` in the current scope: `Vec<u8>` is not an iterator
+src/uu02_print_buffer.rs:66:17: error[E0599]: no method named `is_none` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`
+warning: `cjson_rs` (lib) generated 1 warning
+error: could not compile `cjson_rs` (lib) due to 7 previous errors; 1 warning emitted

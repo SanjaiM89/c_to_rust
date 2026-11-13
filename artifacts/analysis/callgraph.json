@@ -1,0 +1,3102 @@
+{
+  "functions": {
+    "cJSON_GetErrorPtr": {
+      "name": "cJSON_GetErrorPtr",
+      "line": 94,
+      "return_type": "const char *(void)",
+      "params": [],
+      "id": "0x557d99be9868"
+    },
+    "cJSON_GetStringValue": {
+      "name": "cJSON_GetStringValue",
+      "line": 99,
+      "return_type": "char *(const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99be9bb8"
+    },
+    "cJSON_GetNumberValue": {
+      "name": "cJSON_GetNumberValue",
+      "line": 109,
+      "return_type": "double (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99bea050"
+    },
+    "cJSON_Version": {
+      "name": "cJSON_Version",
+      "line": 124,
+      "return_type": "const char *(void)",
+      "params": [],
+      "id": "0x557d99bea678"
+    },
+    "case_insensitive_strcmp": {
+      "name": "case_insensitive_strcmp",
+      "line": 133,
+      "return_type": "int (const unsigned char *, const unsigned char *)",
+      "params": [
+        {
+          "name": "string1",
+          "type": "const unsigned char *"
+        },
+        {
+          "name": "string2",
+          "type": "const unsigned char *"
+        }
+      ],
+      "id": "0x557d99bec298"
+    },
+    "cJSON_strdup": {
+      "name": "cJSON_strdup",
+      "line": 188,
+      "return_type": "unsigned char *(const unsigned char *, const internal_hooks *const)",
+      "params": [
+        {
+          "name": "string",
+          "type": "const unsigned char *"
+        },
+        {
+          "name": "hooks",
+          "type": "const internal_hooks *const"
+        }
+      ],
+      "id": "0x557d99bed798"
+    },
+    "cJSON_InitHooks": {
+      "name": "cJSON_InitHooks",
+      "line": 209,
+      "return_type": "void (cJSON_Hooks *)",
+      "params": [
+        {
+          "name": "hooks",
+          "type": "cJSON_Hooks *"
+        }
+      ],
+      "id": "0x557d99befa78"
+    },
+    "cJSON_New_Item": {
+      "name": "cJSON_New_Item",
+      "line": 241,
+      "return_type": "cJSON *(const internal_hooks *const)",
+      "params": [
+        {
+          "name": "hooks",
+          "type": "const internal_hooks *const"
+        }
+      ],
+      "id": "0x557d99bf0a28"
+    },
+    "cJSON_Delete": {
+      "name": "cJSON_Delete",
+      "line": 253,
+      "return_type": "void (cJSON *)",
+      "params": [
+        {
+          "name": "item",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99bf0f60"
+    },
+    "get_decimal_point": {
+      "name": "get_decimal_point",
+      "line": 279,
+      "return_type": "unsigned char (void)",
+      "params": [],
+      "id": "0x557d99bf2398"
+    },
+    "parse_number": {
+      "name": "parse_number",
+      "line": 307,
+      "return_type": "cJSON_bool (cJSON *const, parse_buffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "input_buffer",
+          "type": "parse_buffer *const"
+        }
+      ],
+      "id": "0x557d99bf2a70"
+    },
+    "cJSON_SetNumberHelper": {
+      "name": "cJSON_SetNumberHelper",
+      "line": 411,
+      "return_type": "double (cJSON *, double)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "number",
+          "type": "double"
+        }
+      ],
+      "id": "0x557d99bf7f00"
+    },
+    "cJSON_SetValuestring": {
+      "name": "cJSON_SetValuestring",
+      "line": 430,
+      "return_type": "char *(cJSON *, const char *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "valuestring",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99bf8730"
+    },
+    "ensure": {
+      "name": "ensure",
+      "line": 485,
+      "return_type": "unsigned char *(printbuffer *const, size_t)",
+      "params": [
+        {
+          "name": "p",
+          "type": "printbuffer *const"
+        },
+        {
+          "name": "needed",
+          "type": "size_t"
+        }
+      ],
+      "id": "0x557d99bfa9a8"
+    },
+    "update_offset": {
+      "name": "update_offset",
+      "line": 571,
+      "return_type": "void (printbuffer *const)",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "printbuffer *const"
+        }
+      ],
+      "id": "0x557d99bfdec0"
+    },
+    "compare_double": {
+      "name": "compare_double",
+      "line": 584,
+      "return_type": "cJSON_bool (double, double)",
+      "params": [
+        {
+          "name": "a",
+          "type": "double"
+        },
+        {
+          "name": "b",
+          "type": "double"
+        }
+      ],
+      "id": "0x557d99bfe820"
+    },
+    "print_number": {
+      "name": "print_number",
+      "line": 591,
+      "return_type": "cJSON_bool (const cJSON *const, printbuffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "output_buffer",
+          "type": "printbuffer *const"
+        }
+      ],
+      "id": "0x557d99bfefe0"
+    },
+    "parse_hex4": {
+      "name": "parse_hex4",
+      "line": 661,
+      "return_type": "unsigned int (const unsigned char *const)",
+      "params": [
+        {
+          "name": "input",
+          "type": "const unsigned char *const"
+        }
+      ],
+      "id": "0x557d99c01d68"
+    },
+    "utf16_literal_to_utf8": {
+      "name": "utf16_literal_to_utf8",
+      "line": 698,
+      "return_type": "unsigned char (const unsigned char *const, const unsigned char *const, unsigned char **)",
+      "params": [
+        {
+          "name": "input_pointer",
+          "type": "const unsigned char *const"
+        },
+        {
+          "name": "input_end",
+          "type": "const unsigned char *const"
+        },
+        {
+          "name": "output_pointer",
+          "type": "unsigned char **"
+        }
+      ],
+      "id": "0x557d99c033f8"
+    },
+    "parse_string": {
+      "name": "parse_string",
+      "line": 819,
+      "return_type": "cJSON_bool (cJSON *const, parse_buffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "input_buffer",
+          "type": "parse_buffer *const"
+        }
+      ],
+      "id": "0x557d99c06848"
+    },
+    "print_string_ptr": {
+      "name": "print_string_ptr",
+      "line": 949,
+      "return_type": "cJSON_bool (const unsigned char *const, printbuffer *const)",
+      "params": [
+        {
+          "name": "input",
+          "type": "const unsigned char *const"
+        },
+        {
+          "name": "output_buffer",
+          "type": "printbuffer *const"
+        }
+      ],
+      "id": "0x557d99c0a640"
+    },
+    "print_string": {
+      "name": "print_string",
+      "line": 1071,
+      "return_type": "cJSON_bool (const cJSON *const, printbuffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "p",
+          "type": "printbuffer *const"
+        }
+      ],
+      "id": "0x557d99c0ee30"
+    },
+    "buffer_skip_whitespace": {
+      "name": "buffer_skip_whitespace",
+      "line": 1085,
+      "return_type": "parse_buffer *(parse_buffer *const)",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "parse_buffer *const"
+        }
+      ],
+      "id": "0x557d99c0fdc8"
+    },
+    "skip_utf8_bom": {
+      "name": "skip_utf8_bom",
+      "line": 1111,
+      "return_type": "parse_buffer *(parse_buffer *const)",
+      "params": [
+        {
+          "name": "buffer",
+          "type": "parse_buffer *const"
+        }
+      ],
+      "id": "0x557d99c10f58"
+    },
+    "cJSON_ParseWithOpts": {
+      "name": "cJSON_ParseWithOpts",
+      "line": 1126,
+      "return_type": "cJSON *(const char *, const char **, cJSON_bool)",
+      "params": [
+        {
+          "name": "value",
+          "type": "const char *"
+        },
+        {
+          "name": "return_parse_end",
+          "type": "const char **"
+        },
+        {
+          "name": "require_null_terminated",
+          "type": "cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c12048"
+    },
+    "cJSON_ParseWithLengthOpts": {
+      "name": "cJSON_ParseWithLengthOpts",
+      "line": 1142,
+      "return_type": "cJSON *(const char *, size_t, const char **, cJSON_bool)",
+      "params": [
+        {
+          "name": "value",
+          "type": "const char *"
+        },
+        {
+          "name": "buffer_length",
+          "type": "size_t"
+        },
+        {
+          "name": "return_parse_end",
+          "type": "const char **"
+        },
+        {
+          "name": "require_null_terminated",
+          "type": "cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c12900"
+    },
+    "cJSON_Parse": {
+      "name": "cJSON_Parse",
+      "line": 1222,
+      "return_type": "cJSON *(const char *)",
+      "params": [
+        {
+          "name": "value",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99c15208"
+    },
+    "cJSON_ParseWithLength": {
+      "name": "cJSON_ParseWithLength",
+      "line": 1227,
+      "return_type": "cJSON *(const char *, size_t)",
+      "params": [
+        {
+          "name": "value",
+          "type": "const char *"
+        },
+        {
+          "name": "buffer_length",
+          "type": "size_t"
+        }
+      ],
+      "id": "0x557d99c15578"
+    },
+    "print": {
+      "name": "print",
+      "line": 1234,
+      "return_type": "unsigned char *(const cJSON *const, cJSON_bool, const internal_hooks *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "format",
+          "type": "cJSON_bool"
+        },
+        {
+          "name": "hooks",
+          "type": "const internal_hooks *const"
+        }
+      ],
+      "id": "0x557d99c16e28"
+    },
+    "cJSON_Print": {
+      "name": "cJSON_Print",
+      "line": 1302,
+      "return_type": "char *(const cJSON *)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *"
+        }
+      ],
+      "id": "0x557d99c19870"
+    },
+    "cJSON_PrintUnformatted": {
+      "name": "cJSON_PrintUnformatted",
+      "line": 1307,
+      "return_type": "char *(const cJSON *)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *"
+        }
+      ],
+      "id": "0x557d99c19c08"
+    },
+    "cJSON_PrintBuffered": {
+      "name": "cJSON_PrintBuffered",
+      "line": 1312,
+      "return_type": "char *(const cJSON *, int, cJSON_bool)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *"
+        },
+        {
+          "name": "prebuffer",
+          "type": "int"
+        },
+        {
+          "name": "fmt",
+          "type": "cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c1a048"
+    },
+    "cJSON_PrintPreallocated": {
+      "name": "cJSON_PrintPreallocated",
+      "line": 1343,
+      "return_type": "cJSON_bool (cJSON *, char *, const int, const cJSON_bool)",
+      "params": [
+        {
+          "name": "item",
+          "type": "cJSON *"
+        },
+        {
+          "name": "buffer",
+          "type": "char *"
+        },
+        {
+          "name": "length",
+          "type": "const int"
+        },
+        {
+          "name": "format",
+          "type": "const cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c1b4c0"
+    },
+    "parse_value": {
+      "name": "parse_value",
+      "line": 1363,
+      "return_type": "cJSON_bool (cJSON *const, parse_buffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "input_buffer",
+          "type": "parse_buffer *const"
+        }
+      ],
+      "id": "0x557d99c1c368"
+    },
+    "print_value": {
+      "name": "print_value",
+      "line": 1418,
+      "return_type": "cJSON_bool (const cJSON *const, printbuffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "output_buffer",
+          "type": "printbuffer *const"
+        }
+      ],
+      "id": "0x557d99c206b8"
+    },
+    "parse_array": {
+      "name": "parse_array",
+      "line": 1492,
+      "return_type": "cJSON_bool (cJSON *const, parse_buffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "input_buffer",
+          "type": "parse_buffer *const"
+        }
+      ],
+      "id": "0x557d99c230d8"
+    },
+    "print_array": {
+      "name": "print_array",
+      "line": 1590,
+      "return_type": "cJSON_bool (const cJSON *const, printbuffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "output_buffer",
+          "type": "printbuffer *const"
+        }
+      ],
+      "id": "0x557d99c264f0"
+    },
+    "parse_object": {
+      "name": "parse_object",
+      "line": 1652,
+      "return_type": "cJSON_bool (cJSON *const, parse_buffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "input_buffer",
+          "type": "parse_buffer *const"
+        }
+      ],
+      "id": "0x557d99c29348"
+    },
+    "print_object": {
+      "name": "print_object",
+      "line": 1770,
+      "return_type": "cJSON_bool (const cJSON *const, printbuffer *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "output_buffer",
+          "type": "printbuffer *const"
+        }
+      ],
+      "id": "0x557d99c2dad8"
+    },
+    "cJSON_GetArraySize": {
+      "name": "cJSON_GetArraySize",
+      "line": 1884,
+      "return_type": "int (const cJSON *)",
+      "params": [
+        {
+          "name": "array",
+          "type": "const cJSON *"
+        }
+      ],
+      "id": "0x557d99c31630"
+    },
+    "get_array_item": {
+      "name": "get_array_item",
+      "line": 1907,
+      "return_type": "cJSON *(const cJSON *, size_t)",
+      "params": [
+        {
+          "name": "array",
+          "type": "const cJSON *"
+        },
+        {
+          "name": "index",
+          "type": "size_t"
+        }
+      ],
+      "id": "0x557d99c31fc8"
+    },
+    "cJSON_GetArrayItem": {
+      "name": "cJSON_GetArrayItem",
+      "line": 1926,
+      "return_type": "cJSON *(const cJSON *, int)",
+      "params": [
+        {
+          "name": "array",
+          "type": "const cJSON *"
+        },
+        {
+          "name": "index",
+          "type": "int"
+        }
+      ],
+      "id": "0x557d99c32910"
+    },
+    "get_object_item": {
+      "name": "get_object_item",
+      "line": 1936,
+      "return_type": "cJSON *(const cJSON *const, const char *const, const cJSON_bool)",
+      "params": [
+        {
+          "name": "object",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        },
+        {
+          "name": "case_sensitive",
+          "type": "const cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c32f18"
+    },
+    "cJSON_GetObjectItem": {
+      "name": "cJSON_GetObjectItem",
+      "line": 1968,
+      "return_type": "cJSON *(const cJSON *const, const char *const)",
+      "params": [
+        {
+          "name": "object",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "string",
+          "type": "const char *const"
+        }
+      ],
+      "id": "0x557d99c34508"
+    },
+    "cJSON_GetObjectItemCaseSensitive": {
+      "name": "cJSON_GetObjectItemCaseSensitive",
+      "line": 1973,
+      "return_type": "cJSON *(const cJSON *const, const char *const)",
+      "params": [
+        {
+          "name": "object",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "string",
+          "type": "const char *const"
+        }
+      ],
+      "id": "0x557d99c348e0"
+    },
+    "cJSON_HasObjectItem": {
+      "name": "cJSON_HasObjectItem",
+      "line": 1978,
+      "return_type": "cJSON_bool (const cJSON *, const char *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "const cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99c34c48"
+    },
+    "suffix_object": {
+      "name": "suffix_object",
+      "line": 1984,
+      "return_type": "void (cJSON *, cJSON *)",
+      "params": [
+        {
+          "name": "prev",
+          "type": "cJSON *"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c35080"
+    },
+    "create_reference": {
+      "name": "create_reference",
+      "line": 1991,
+      "return_type": "cJSON *(const cJSON *, const internal_hooks *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *"
+        },
+        {
+          "name": "hooks",
+          "type": "const internal_hooks *const"
+        }
+      ],
+      "id": "0x557d99c35498"
+    },
+    "add_item_to_array": {
+      "name": "add_item_to_array",
+      "line": 2012,
+      "return_type": "cJSON_bool (cJSON *, cJSON *)",
+      "params": [
+        {
+          "name": "array",
+          "type": "cJSON *"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c361c8"
+    },
+    "cJSON_AddItemToArray": {
+      "name": "cJSON_AddItemToArray",
+      "line": 2046,
+      "return_type": "cJSON_bool (cJSON *, cJSON *)",
+      "params": [
+        {
+          "name": "array",
+          "type": "cJSON *"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c37178"
+    },
+    "cast_away_const": {
+      "name": "cast_away_const",
+      "line": 2058,
+      "return_type": "void *(const void *)",
+      "params": [
+        {
+          "name": "string",
+          "type": "const void *"
+        }
+      ],
+      "id": "0x557d99c37478"
+    },
+    "add_item_to_object": {
+      "name": "add_item_to_object",
+      "line": 2067,
+      "return_type": "cJSON_bool (cJSON *const, const char *const, cJSON *const, const internal_hooks *const, const cJSON_bool)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "string",
+          "type": "const char *const"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "hooks",
+          "type": "const internal_hooks *const"
+        },
+        {
+          "name": "constant_key",
+          "type": "const cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c37940"
+    },
+    "cJSON_AddItemToObject": {
+      "name": "cJSON_AddItemToObject",
+      "line": 2104,
+      "return_type": "cJSON_bool (cJSON *, const char *, cJSON *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c3a120"
+    },
+    "cJSON_AddItemToObjectCS": {
+      "name": "cJSON_AddItemToObjectCS",
+      "line": 2110,
+      "return_type": "cJSON_bool (cJSON *, const char *, cJSON *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c3a610"
+    },
+    "cJSON_AddItemReferenceToArray": {
+      "name": "cJSON_AddItemReferenceToArray",
+      "line": 2115,
+      "return_type": "cJSON_bool (cJSON *, cJSON *)",
+      "params": [
+        {
+          "name": "array",
+          "type": "cJSON *"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c3aa18"
+    },
+    "cJSON_AddItemReferenceToObject": {
+      "name": "cJSON_AddItemReferenceToObject",
+      "line": 2125,
+      "return_type": "cJSON_bool (cJSON *, const char *, cJSON *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c3b0b0"
+    },
+    "cJSON_AddNullToObject": {
+      "name": "cJSON_AddNullToObject",
+      "line": 2135,
+      "return_type": "cJSON *(cJSON *const, const char *const)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        }
+      ],
+      "id": "0x557d99c3b898"
+    },
+    "cJSON_AddTrueToObject": {
+      "name": "cJSON_AddTrueToObject",
+      "line": 2147,
+      "return_type": "cJSON *(cJSON *const, const char *const)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        }
+      ],
+      "id": "0x557d99c3bfb8"
+    },
+    "cJSON_AddFalseToObject": {
+      "name": "cJSON_AddFalseToObject",
+      "line": 2159,
+      "return_type": "cJSON *(cJSON *const, const char *const)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        }
+      ],
+      "id": "0x557d99c3c678"
+    },
+    "cJSON_AddBoolToObject": {
+      "name": "cJSON_AddBoolToObject",
+      "line": 2171,
+      "return_type": "cJSON *(cJSON *const, const char *const, const cJSON_bool)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        },
+        {
+          "name": "boolean",
+          "type": "const cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c3cdb8"
+    },
+    "cJSON_AddNumberToObject": {
+      "name": "cJSON_AddNumberToObject",
+      "line": 2183,
+      "return_type": "cJSON *(cJSON *const, const char *const, const double)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        },
+        {
+          "name": "number",
+          "type": "const double"
+        }
+      ],
+      "id": "0x557d99c3dd10"
+    },
+    "cJSON_AddStringToObject": {
+      "name": "cJSON_AddStringToObject",
+      "line": 2195,
+      "return_type": "cJSON *(cJSON *const, const char *const, const char *const)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        },
+        {
+          "name": "string",
+          "type": "const char *const"
+        }
+      ],
+      "id": "0x557d99c3e500"
+    },
+    "cJSON_AddRawToObject": {
+      "name": "cJSON_AddRawToObject",
+      "line": 2207,
+      "return_type": "cJSON *(cJSON *const, const char *const, const char *const)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        },
+        {
+          "name": "raw",
+          "type": "const char *const"
+        }
+      ],
+      "id": "0x557d99c3ecf0"
+    },
+    "cJSON_AddObjectToObject": {
+      "name": "cJSON_AddObjectToObject",
+      "line": 2219,
+      "return_type": "cJSON *(cJSON *const, const char *const)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        }
+      ],
+      "id": "0x557d99c3f3f8"
+    },
+    "cJSON_AddArrayToObject": {
+      "name": "cJSON_AddArrayToObject",
+      "line": 2231,
+      "return_type": "cJSON *(cJSON *const, const char *const)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "name",
+          "type": "const char *const"
+        }
+      ],
+      "id": "0x557d99c409d8"
+    },
+    "cJSON_DetachItemViaPointer": {
+      "name": "cJSON_DetachItemViaPointer",
+      "line": 2243,
+      "return_type": "cJSON *(cJSON *, cJSON *const)",
+      "params": [
+        {
+          "name": "parent",
+          "type": "cJSON *"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *const"
+        }
+      ],
+      "id": "0x557d99c41098"
+    },
+    "cJSON_DetachItemFromArray": {
+      "name": "cJSON_DetachItemFromArray",
+      "line": 2279,
+      "return_type": "cJSON *(cJSON *, int)",
+      "params": [
+        {
+          "name": "array",
+          "type": "cJSON *"
+        },
+        {
+          "name": "which",
+          "type": "int"
+        }
+      ],
+      "id": "0x557d99c43f40"
+    },
+    "cJSON_DeleteItemFromArray": {
+      "name": "cJSON_DeleteItemFromArray",
+      "line": 2289,
+      "return_type": "void (cJSON *, int)",
+      "params": [
+        {
+          "name": "array",
+          "type": "cJSON *"
+        },
+        {
+          "name": "which",
+          "type": "int"
+        }
+      ],
+      "id": "0x557d99c444e0"
+    },
+    "cJSON_DetachItemFromObject": {
+      "name": "cJSON_DetachItemFromObject",
+      "line": 2294,
+      "return_type": "cJSON *(cJSON *, const char *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99c44888"
+    },
+    "cJSON_DetachItemFromObjectCaseSensitive": {
+      "name": "cJSON_DetachItemFromObjectCaseSensitive",
+      "line": 2301,
+      "return_type": "cJSON *(cJSON *, const char *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99c44d08"
+    },
+    "cJSON_DeleteItemFromObject": {
+      "name": "cJSON_DeleteItemFromObject",
+      "line": 2308,
+      "return_type": "void (cJSON *, const char *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99c45180"
+    },
+    "cJSON_DeleteItemFromObjectCaseSensitive": {
+      "name": "cJSON_DeleteItemFromObjectCaseSensitive",
+      "line": 2313,
+      "return_type": "void (cJSON *, const char *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99c45520"
+    },
+    "cJSON_InsertItemInArray": {
+      "name": "cJSON_InsertItemInArray",
+      "line": 2319,
+      "return_type": "cJSON_bool (cJSON *, int, cJSON *)",
+      "params": [
+        {
+          "name": "array",
+          "type": "cJSON *"
+        },
+        {
+          "name": "which",
+          "type": "int"
+        },
+        {
+          "name": "newitem",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c458e0"
+    },
+    "cJSON_ReplaceItemViaPointer": {
+      "name": "cJSON_ReplaceItemViaPointer",
+      "line": 2353,
+      "return_type": "cJSON_bool (cJSON *const, cJSON *const, cJSON *)",
+      "params": [
+        {
+          "name": "parent",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "item",
+          "type": "cJSON *const"
+        },
+        {
+          "name": "replacement",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c47550"
+    },
+    "cJSON_ReplaceItemInArray": {
+      "name": "cJSON_ReplaceItemInArray",
+      "line": 2402,
+      "return_type": "cJSON_bool (cJSON *, int, cJSON *)",
+      "params": [
+        {
+          "name": "array",
+          "type": "cJSON *"
+        },
+        {
+          "name": "which",
+          "type": "int"
+        },
+        {
+          "name": "newitem",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c49f70"
+    },
+    "replace_item_in_object": {
+      "name": "replace_item_in_object",
+      "line": 2412,
+      "return_type": "cJSON_bool (cJSON *, const char *, cJSON *, cJSON_bool)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        },
+        {
+          "name": "replacement",
+          "type": "cJSON *"
+        },
+        {
+          "name": "case_sensitive",
+          "type": "cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c4a6e0"
+    },
+    "cJSON_ReplaceItemInObject": {
+      "name": "cJSON_ReplaceItemInObject",
+      "line": 2435,
+      "return_type": "cJSON_bool (cJSON *, const char *, cJSON *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        },
+        {
+          "name": "newitem",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c4b720"
+    },
+    "cJSON_ReplaceItemInObjectCaseSensitive": {
+      "name": "cJSON_ReplaceItemInObjectCaseSensitive",
+      "line": 2440,
+      "return_type": "cJSON_bool (cJSON *, const char *, cJSON *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "cJSON *"
+        },
+        {
+          "name": "string",
+          "type": "const char *"
+        },
+        {
+          "name": "newitem",
+          "type": "cJSON *"
+        }
+      ],
+      "id": "0x557d99c4c320"
+    },
+    "cJSON_CreateNull": {
+      "name": "cJSON_CreateNull",
+      "line": 2446,
+      "return_type": "cJSON *(void)",
+      "params": [],
+      "id": "0x557d99c4c640"
+    },
+    "cJSON_CreateTrue": {
+      "name": "cJSON_CreateTrue",
+      "line": 2457,
+      "return_type": "cJSON *(void)",
+      "params": [],
+      "id": "0x557d99c4cab8"
+    },
+    "cJSON_CreateFalse": {
+      "name": "cJSON_CreateFalse",
+      "line": 2468,
+      "return_type": "cJSON *(void)",
+      "params": [],
+      "id": "0x557d99c4cf30"
+    },
+    "cJSON_CreateBool": {
+      "name": "cJSON_CreateBool",
+      "line": 2479,
+      "return_type": "cJSON *(cJSON_bool)",
+      "params": [
+        {
+          "name": "boolean",
+          "type": "cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c4d3b0"
+    },
+    "cJSON_CreateNumber": {
+      "name": "cJSON_CreateNumber",
+      "line": 2490,
+      "return_type": "cJSON *(double)",
+      "params": [
+        {
+          "name": "num",
+          "type": "double"
+        }
+      ],
+      "id": "0x557d99c4d928"
+    },
+    "cJSON_CreateString": {
+      "name": "cJSON_CreateString",
+      "line": 2516,
+      "return_type": "cJSON *(const char *)",
+      "params": [
+        {
+          "name": "string",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99c4f050"
+    },
+    "cJSON_CreateStringReference": {
+      "name": "cJSON_CreateStringReference",
+      "line": 2533,
+      "return_type": "cJSON *(const char *)",
+      "params": [
+        {
+          "name": "string",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99c4f900"
+    },
+    "cJSON_CreateObjectReference": {
+      "name": "cJSON_CreateObjectReference",
+      "line": 2545,
+      "return_type": "cJSON *(const cJSON *)",
+      "params": [
+        {
+          "name": "child",
+          "type": "const cJSON *"
+        }
+      ],
+      "id": "0x557d99c50008"
+    },
+    "cJSON_CreateArrayReference": {
+      "name": "cJSON_CreateArrayReference",
+      "line": 2556,
+      "return_type": "cJSON *(const cJSON *)",
+      "params": [
+        {
+          "name": "child",
+          "type": "const cJSON *"
+        }
+      ],
+      "id": "0x557d99c50710"
+    },
+    "cJSON_CreateRaw": {
+      "name": "cJSON_CreateRaw",
+      "line": 2566,
+      "return_type": "cJSON *(const char *)",
+      "params": [
+        {
+          "name": "raw",
+          "type": "const char *"
+        }
+      ],
+      "id": "0x557d99c516c0"
+    },
+    "cJSON_CreateArray": {
+      "name": "cJSON_CreateArray",
+      "line": 2583,
+      "return_type": "cJSON *(void)",
+      "params": [],
+      "id": "0x557d99c51f60"
+    },
+    "cJSON_CreateObject": {
+      "name": "cJSON_CreateObject",
+      "line": 2594,
+      "return_type": "cJSON *(void)",
+      "params": [],
+      "id": "0x557d99c523d8"
+    },
+    "cJSON_CreateIntArray": {
+      "name": "cJSON_CreateIntArray",
+      "line": 2606,
+      "return_type": "cJSON *(const int *, int)",
+      "params": [
+        {
+          "name": "numbers",
+          "type": "const int *"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ],
+      "id": "0x557d99c528e8"
+    },
+    "cJSON_CreateFloatArray": {
+      "name": "cJSON_CreateFloatArray",
+      "line": 2646,
+      "return_type": "cJSON *(const float *, int)",
+      "params": [
+        {
+          "name": "numbers",
+          "type": "const float *"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ],
+      "id": "0x557d99c54720"
+    },
+    "cJSON_CreateDoubleArray": {
+      "name": "cJSON_CreateDoubleArray",
+      "line": 2686,
+      "return_type": "cJSON *(const double *, int)",
+      "params": [
+        {
+          "name": "numbers",
+          "type": "const double *"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ],
+      "id": "0x557d99c55bd0"
+    },
+    "cJSON_CreateStringArray": {
+      "name": "cJSON_CreateStringArray",
+      "line": 2726,
+      "return_type": "cJSON *(const char *const *, int)",
+      "params": [
+        {
+          "name": "strings",
+          "type": "const char *const *"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ],
+      "id": "0x557d99c576d8"
+    },
+    "cJSON_Duplicate": {
+      "name": "cJSON_Duplicate",
+      "line": 2769,
+      "return_type": "cJSON *(const cJSON *, cJSON_bool)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *"
+        },
+        {
+          "name": "recurse",
+          "type": "cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c5aaf8"
+    },
+    "cJSON_Duplicate_rec": {
+      "name": "cJSON_Duplicate_rec",
+      "line": 2774,
+      "return_type": "cJSON *(const cJSON *, size_t, cJSON_bool)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *"
+        },
+        {
+          "name": "depth",
+          "type": "size_t"
+        },
+        {
+          "name": "recurse",
+          "type": "cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c5af00"
+    },
+    "skip_oneline_comment": {
+      "name": "skip_oneline_comment",
+      "line": 2860,
+      "return_type": "void (char **)",
+      "params": [
+        {
+          "name": "input",
+          "type": "char **"
+        }
+      ],
+      "id": "0x557d99c5d740"
+    },
+    "skip_multiline_comment": {
+      "name": "skip_multiline_comment",
+      "line": 2873,
+      "return_type": "void (char **)",
+      "params": [
+        {
+          "name": "input",
+          "type": "char **"
+        }
+      ],
+      "id": "0x557d99c5df60"
+    },
+    "minify_string": {
+      "name": "minify_string",
+      "line": 2887,
+      "return_type": "void (char **, char **)",
+      "params": [
+        {
+          "name": "input",
+          "type": "char **"
+        },
+        {
+          "name": "output",
+          "type": "char **"
+        }
+      ],
+      "id": "0x557d99c5e9d0"
+    },
+    "cJSON_Minify": {
+      "name": "cJSON_Minify",
+      "line": 2909,
+      "return_type": "void (char *)",
+      "params": [
+        {
+          "name": "json",
+          "type": "char *"
+        }
+      ],
+      "id": "0x557d99c606d0"
+    },
+    "cJSON_IsInvalid": {
+      "name": "cJSON_IsInvalid",
+      "line": 2957,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c616b0"
+    },
+    "cJSON_IsFalse": {
+      "name": "cJSON_IsFalse",
+      "line": 2967,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c61b28"
+    },
+    "cJSON_IsTrue": {
+      "name": "cJSON_IsTrue",
+      "line": 2977,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c61fe0"
+    },
+    "cJSON_IsBool": {
+      "name": "cJSON_IsBool",
+      "line": 2988,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c62498"
+    },
+    "cJSON_IsNull": {
+      "name": "cJSON_IsNull",
+      "line": 2997,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c63298"
+    },
+    "cJSON_IsNumber": {
+      "name": "cJSON_IsNumber",
+      "line": 3007,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c63750"
+    },
+    "cJSON_IsString": {
+      "name": "cJSON_IsString",
+      "line": 3017,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c63c08"
+    },
+    "cJSON_IsArray": {
+      "name": "cJSON_IsArray",
+      "line": 3027,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c640c0"
+    },
+    "cJSON_IsObject": {
+      "name": "cJSON_IsObject",
+      "line": 3037,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c64578"
+    },
+    "cJSON_IsRaw": {
+      "name": "cJSON_IsRaw",
+      "line": 3047,
+      "return_type": "cJSON_bool (const cJSON *const)",
+      "params": [
+        {
+          "name": "item",
+          "type": "const cJSON *const"
+        }
+      ],
+      "id": "0x557d99c64a30"
+    },
+    "cJSON_Compare": {
+      "name": "cJSON_Compare",
+      "line": 3057,
+      "return_type": "cJSON_bool (const cJSON *const, const cJSON *const, const cJSON_bool)",
+      "params": [
+        {
+          "name": "a",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "b",
+          "type": "const cJSON *const"
+        },
+        {
+          "name": "case_sensitive",
+          "type": "const cJSON_bool"
+        }
+      ],
+      "id": "0x557d99c65ea0"
+    },
+    "cJSON_malloc": {
+      "name": "cJSON_malloc",
+      "line": 3182,
+      "return_type": "void *(size_t)",
+      "params": [
+        {
+          "name": "size",
+          "type": "size_t"
+        }
+      ],
+      "id": "0x557d99c6c808"
+    },
+    "cJSON_free": {
+      "name": "cJSON_free",
+      "line": 3187,
+      "return_type": "void (void *)",
+      "params": [
+        {
+          "name": "object",
+          "type": "void *"
+        }
+      ],
+      "id": "0x557d99c6ca50"
+    }
+  },
+  "edges": {
+    "cJSON_GetErrorPtr": [],
+    "cJSON_GetStringValue": [
+      "cJSON_IsString"
+    ],
+    "cJSON_GetNumberValue": [
+      "cJSON_IsNumber"
+    ],
+    "cJSON_Version": [],
+    "case_insensitive_strcmp": [],
+    "cJSON_strdup": [],
+    "cJSON_InitHooks": [],
+    "cJSON_New_Item": [],
+    "cJSON_Delete": [],
+    "get_decimal_point": [],
+    "parse_number": [
+      "get_decimal_point"
+    ],
+    "cJSON_SetNumberHelper": [],
+    "cJSON_SetValuestring": [
+      "cJSON_free",
+      "cJSON_strdup"
+    ],
+    "ensure": [],
+    "update_offset": [],
+    "compare_double": [],
+    "print_number": [
+      "compare_double",
+      "ensure",
+      "get_decimal_point"
+    ],
+    "parse_hex4": [],
+    "utf16_literal_to_utf8": [
+      "parse_hex4"
+    ],
+    "parse_string": [
+      "utf16_literal_to_utf8"
+    ],
+    "print_string_ptr": [
+      "ensure"
+    ],
+    "print_string": [
+      "print_string_ptr"
+    ],
+    "buffer_skip_whitespace": [],
+    "skip_utf8_bom": [],
+    "cJSON_ParseWithOpts": [
+      "cJSON_ParseWithLengthOpts"
+    ],
+    "cJSON_ParseWithLengthOpts": [
+      "buffer_skip_whitespace",
+      "cJSON_Delete",
+      "cJSON_New_Item",
+      "parse_value",
+      "skip_utf8_bom"
+    ],
+    "cJSON_Parse": [
+      "cJSON_ParseWithOpts"
+    ],
+    "cJSON_ParseWithLength": [
+      "cJSON_ParseWithLengthOpts"
+    ],
+    "print": [
+      "print_value",
+      "update_offset"
+    ],
+    "cJSON_Print": [
+      "print"
+    ],
+    "cJSON_PrintUnformatted": [
+      "print"
+    ],
+    "cJSON_PrintBuffered": [
+      "print_value"
+    ],
+    "cJSON_PrintPreallocated": [
+      "print_value"
+    ],
+    "parse_value": [
+      "parse_array",
+      "parse_number",
+      "parse_object",
+      "parse_string"
+    ],
+    "print_value": [
+      "ensure",
+      "print_array",
+      "print_number",
+      "print_object",
+      "print_string"
+    ],
+    "parse_array": [
+      "buffer_skip_whitespace",
+      "cJSON_Delete",
+      "cJSON_New_Item",
+      "parse_value"
+    ],
+    "print_array": [
+      "ensure",
+      "print_value",
+      "update_offset"
+    ],
+    "parse_object": [
+      "buffer_skip_whitespace",
+      "cJSON_Delete",
+      "cJSON_New_Item",
+      "parse_string",
+      "parse_value"
+    ],
+    "print_object": [
+      "ensure",
+      "print_string_ptr",
+      "print_value",
+      "update_offset"
+    ],
+    "cJSON_GetArraySize": [],
+    "get_array_item": [],
+    "cJSON_GetArrayItem": [
+      "get_array_item"
+    ],
+    "get_object_item": [
+      "case_insensitive_strcmp"
+    ],
+    "cJSON_GetObjectItem": [
+      "get_object_item"
+    ],
+    "cJSON_GetObjectItemCaseSensitive": [
+      "get_object_item"
+    ],
+    "cJSON_HasObjectItem": [
+      "cJSON_GetObjectItem"
+    ],
+    "suffix_object": [],
+    "create_reference": [
+      "cJSON_New_Item"
+    ],
+    "add_item_to_array": [
+      "suffix_object"
+    ],
+    "cJSON_AddItemToArray": [
+      "add_item_to_array"
+    ],
+    "cast_away_const": [],
+    "add_item_to_object": [
+      "add_item_to_array",
+      "cJSON_strdup",
+      "cast_away_const"
+    ],
+    "cJSON_AddItemToObject": [
+      "add_item_to_object"
+    ],
+    "cJSON_AddItemToObjectCS": [
+      "add_item_to_object"
+    ],
+    "cJSON_AddItemReferenceToArray": [
+      "add_item_to_array",
+      "create_reference"
+    ],
+    "cJSON_AddItemReferenceToObject": [
+      "add_item_to_object",
+      "create_reference"
+    ],
+    "cJSON_AddNullToObject": [
+      "add_item_to_object",
+      "cJSON_CreateNull",
+      "cJSON_Delete"
+    ],
+    "cJSON_AddTrueToObject": [
+      "add_item_to_object",
+      "cJSON_CreateTrue",
+      "cJSON_Delete"
+    ],
+    "cJSON_AddFalseToObject": [
+      "add_item_to_object",
+      "cJSON_CreateFalse",
+      "cJSON_Delete"
+    ],
+    "cJSON_AddBoolToObject": [
+      "add_item_to_object",
+      "cJSON_CreateBool",
+      "cJSON_Delete"
+    ],
+    "cJSON_AddNumberToObject": [
+      "add_item_to_object",
+      "cJSON_CreateNumber",
+      "cJSON_Delete"
+    ],
+    "cJSON_AddStringToObject": [
+      "add_item_to_object",
+      "cJSON_CreateString",
+      "cJSON_Delete"
+    ],
+    "cJSON_AddRawToObject": [
+      "add_item_to_object",
+      "cJSON_CreateRaw",
+      "cJSON_Delete"
+    ],
+    "cJSON_AddObjectToObject": [
+      "add_item_to_object",
+      "cJSON_CreateObject",
+      "cJSON_Delete"
+    ],
+    "cJSON_AddArrayToObject": [
+      "add_item_to_object",
+      "cJSON_CreateArray",
+      "cJSON_Delete"
+    ],
+    "cJSON_DetachItemViaPointer": [],
+    "cJSON_DetachItemFromArray": [
+      "cJSON_DetachItemViaPointer",
+      "get_array_item"
+    ],
+    "cJSON_DeleteItemFromArray": [
+      "cJSON_Delete",
+      "cJSON_DetachItemFromArray"
+    ],
+    "cJSON_DetachItemFromObject": [
+      "cJSON_DetachItemViaPointer",
+      "cJSON_GetObjectItem"
+    ],
+    "cJSON_DetachItemFromObjectCaseSensitive": [
+      "cJSON_DetachItemViaPointer",
+      "cJSON_GetObjectItemCaseSensitive"
+    ],
+    "cJSON_DeleteItemFromObject": [
+      "cJSON_Delete",
+      "cJSON_DetachItemFromObject"
+    ],
+    "cJSON_DeleteItemFromObjectCaseSensitive": [
+      "cJSON_Delete",
+      "cJSON_DetachItemFromObjectCaseSensitive"
+    ],
+    "cJSON_InsertItemInArray": [
+      "add_item_to_array",
+      "get_array_item"
+    ],
+    "cJSON_ReplaceItemViaPointer": [
+      "cJSON_Delete"
+    ],
+    "cJSON_ReplaceItemInArray": [
+      "cJSON_ReplaceItemViaPointer",
+      "get_array_item"
+    ],
+    "replace_item_in_object": [
+      "cJSON_ReplaceItemViaPointer",
+      "cJSON_free",
+      "cJSON_strdup",
+      "get_object_item"
+    ],
+    "cJSON_ReplaceItemInObject": [
+      "replace_item_in_object"
+    ],
+    "cJSON_ReplaceItemInObjectCaseSensitive": [
+      "replace_item_in_object"
+    ],
+    "cJSON_CreateNull": [
+      "cJSON_New_Item"
+    ],
+    "cJSON_CreateTrue": [
+      "cJSON_New_Item"
+    ],
+    "cJSON_CreateFalse": [
+      "cJSON_New_Item"
+    ],
+    "cJSON_CreateBool": [
+      "cJSON_New_Item"
+    ],
+    "cJSON_CreateNumber": [
+      "cJSON_New_Item"
+    ],
+    "cJSON_CreateString": [
+      "cJSON_Delete",
+      "cJSON_New_Item",
+      "cJSON_strdup"
+    ],
+    "cJSON_CreateStringReference": [
+      "cJSON_New_Item",
+      "cast_away_const"
+    ],
+    "cJSON_CreateObjectReference": [
+      "cJSON_New_Item",
+      "cast_away_const"
+    ],
+    "cJSON_CreateArrayReference": [
+      "cJSON_New_Item",
+      "cast_away_const"
+    ],
+    "cJSON_CreateRaw": [
+      "cJSON_Delete",
+      "cJSON_New_Item",
+      "cJSON_strdup"
+    ],
+    "cJSON_CreateArray": [
+      "cJSON_New_Item"
+    ],
+    "cJSON_CreateObject": [
+      "cJSON_New_Item"
+    ],
+    "cJSON_CreateIntArray": [
+      "cJSON_CreateArray",
+      "cJSON_CreateNumber",
+      "cJSON_Delete",
+      "suffix_object"
+    ],
+    "cJSON_CreateFloatArray": [
+      "cJSON_CreateArray",
+      "cJSON_CreateNumber",
+      "cJSON_Delete",
+      "suffix_object"
+    ],
+    "cJSON_CreateDoubleArray": [
+      "cJSON_CreateArray",
+      "cJSON_CreateNumber",
+      "cJSON_Delete",
+      "suffix_object"
+    ],
+    "cJSON_CreateStringArray": [
+      "cJSON_CreateArray",
+      "cJSON_CreateString",
+      "cJSON_Delete",
+      "suffix_object"
+    ],
+    "cJSON_Duplicate": [
+      "cJSON_Duplicate_rec"
+    ],
+    "cJSON_Duplicate_rec": [
+      "cJSON_Delete",
+      "cJSON_New_Item",
+      "cJSON_strdup"
+    ],
+    "skip_oneline_comment": [],
+    "skip_multiline_comment": [],
+    "minify_string": [],
+    "cJSON_Minify": [
+      "minify_string",
+      "skip_multiline_comment",
+      "skip_oneline_comment"
+    ],
+    "cJSON_IsInvalid": [],
+    "cJSON_IsFalse": [],
+    "cJSON_IsTrue": [],
+    "cJSON_IsBool": [],
+    "cJSON_IsNull": [],
+    "cJSON_IsNumber": [],
+    "cJSON_IsString": [],
+    "cJSON_IsArray": [],
+    "cJSON_IsObject": [],
+    "cJSON_IsRaw": [],
+    "cJSON_Compare": [
+      "compare_double",
+      "get_object_item"
+    ],
+    "cJSON_malloc": [],
+    "cJSON_free": []
+  },
+  "data_dependencies": {
+    "cJSON_GetErrorPtr": {
+      "globals": [
+        "global_error"
+      ],
+      "types": []
+    },
+    "cJSON_GetStringValue": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_GetNumberValue": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_Version": {
+      "globals": [
+        "version"
+      ],
+      "types": []
+    },
+    "case_insensitive_strcmp": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_strdup": {
+      "globals": [
+        "copy",
+        "length"
+      ],
+      "types": []
+    },
+    "cJSON_InitHooks": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_New_Item": {
+      "globals": [
+        "node"
+      ],
+      "types": []
+    },
+    "cJSON_Delete": {
+      "globals": [
+        "global_hooks",
+        "next"
+      ],
+      "types": []
+    },
+    "get_decimal_point": {
+      "globals": [],
+      "types": []
+    },
+    "parse_number": {
+      "globals": [
+        "after_end",
+        "decimal_point",
+        "has_decimal_point",
+        "i",
+        "number",
+        "number_c_string",
+        "number_string_length"
+      ],
+      "types": []
+    },
+    "cJSON_SetNumberHelper": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_SetValuestring": {
+      "globals": [
+        "copy",
+        "global_hooks",
+        "v1_len",
+        "v2_len"
+      ],
+      "types": []
+    },
+    "ensure": {
+      "globals": [
+        "newbuffer",
+        "newsize"
+      ],
+      "types": []
+    },
+    "update_offset": {
+      "globals": [
+        "buffer_pointer"
+      ],
+      "types": []
+    },
+    "compare_double": {
+      "globals": [
+        "maxVal"
+      ],
+      "types": []
+    },
+    "print_number": {
+      "globals": [
+        "d",
+        "decimal_point",
+        "i",
+        "length",
+        "number_buffer",
+        "output_pointer",
+        "test"
+      ],
+      "types": []
+    },
+    "parse_hex4": {
+      "globals": [
+        "h",
+        "i"
+      ],
+      "types": []
+    },
+    "utf16_literal_to_utf8": {
+      "globals": [
+        "codepoint",
+        "first_byte_mark",
+        "first_code",
+        "first_sequence",
+        "second_code",
+        "second_sequence",
+        "sequence_length",
+        "utf8_length",
+        "utf8_position"
+      ],
+      "types": []
+    },
+    "parse_string": {
+      "globals": [
+        "allocation_length",
+        "input_end",
+        "input_pointer",
+        "output",
+        "output_pointer",
+        "sequence_length",
+        "skipped_bytes"
+      ],
+      "types": []
+    },
+    "print_string_ptr": {
+      "globals": [
+        "escape_characters",
+        "input_pointer",
+        "output",
+        "output_length",
+        "output_pointer"
+      ],
+      "types": []
+    },
+    "print_string": {
+      "globals": [],
+      "types": []
+    },
+    "buffer_skip_whitespace": {
+      "globals": [],
+      "types": []
+    },
+    "skip_utf8_bom": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_ParseWithOpts": {
+      "globals": [
+        "buffer_length"
+      ],
+      "types": []
+    },
+    "cJSON_ParseWithLengthOpts": {
+      "globals": [
+        "buffer",
+        "global_error",
+        "global_hooks",
+        "item",
+        "local_error"
+      ],
+      "types": []
+    },
+    "cJSON_Parse": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_ParseWithLength": {
+      "globals": [],
+      "types": []
+    },
+    "print": {
+      "globals": [
+        "buffer",
+        "default_buffer_size",
+        "printed"
+      ],
+      "types": []
+    },
+    "cJSON_Print": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_PrintUnformatted": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_PrintBuffered": {
+      "globals": [
+        "global_hooks",
+        "p"
+      ],
+      "types": []
+    },
+    "cJSON_PrintPreallocated": {
+      "globals": [
+        "global_hooks",
+        "p"
+      ],
+      "types": []
+    },
+    "parse_value": {
+      "globals": [],
+      "types": []
+    },
+    "print_value": {
+      "globals": [
+        "output",
+        "raw_length"
+      ],
+      "types": []
+    },
+    "parse_array": {
+      "globals": [
+        "current_item",
+        "head",
+        "new_item"
+      ],
+      "types": []
+    },
+    "print_array": {
+      "globals": [
+        "current_element",
+        "length",
+        "output_pointer"
+      ],
+      "types": []
+    },
+    "parse_object": {
+      "globals": [
+        "current_item",
+        "head",
+        "new_item"
+      ],
+      "types": []
+    },
+    "print_object": {
+      "globals": [
+        "current_item",
+        "i",
+        "length",
+        "output_pointer"
+      ],
+      "types": []
+    },
+    "cJSON_GetArraySize": {
+      "globals": [
+        "child",
+        "size"
+      ],
+      "types": []
+    },
+    "get_array_item": {
+      "globals": [
+        "current_child"
+      ],
+      "types": []
+    },
+    "cJSON_GetArrayItem": {
+      "globals": [],
+      "types": []
+    },
+    "get_object_item": {
+      "globals": [
+        "current_element"
+      ],
+      "types": []
+    },
+    "cJSON_GetObjectItem": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_GetObjectItemCaseSensitive": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_HasObjectItem": {
+      "globals": [],
+      "types": []
+    },
+    "suffix_object": {
+      "globals": [],
+      "types": []
+    },
+    "create_reference": {
+      "globals": [
+        "reference"
+      ],
+      "types": []
+    },
+    "add_item_to_array": {
+      "globals": [
+        "child"
+      ],
+      "types": []
+    },
+    "cJSON_AddItemToArray": {
+      "globals": [],
+      "types": []
+    },
+    "cast_away_const": {
+      "globals": [],
+      "types": []
+    },
+    "add_item_to_object": {
+      "globals": [
+        "new_key",
+        "new_type"
+      ],
+      "types": []
+    },
+    "cJSON_AddItemToObject": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_AddItemToObjectCS": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_AddItemReferenceToArray": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_AddItemReferenceToObject": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_AddNullToObject": {
+      "globals": [
+        "global_hooks",
+        "null"
+      ],
+      "types": []
+    },
+    "cJSON_AddTrueToObject": {
+      "globals": [
+        "global_hooks",
+        "true_item"
+      ],
+      "types": []
+    },
+    "cJSON_AddFalseToObject": {
+      "globals": [
+        "false_item",
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_AddBoolToObject": {
+      "globals": [
+        "bool_item",
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_AddNumberToObject": {
+      "globals": [
+        "global_hooks",
+        "number_item"
+      ],
+      "types": []
+    },
+    "cJSON_AddStringToObject": {
+      "globals": [
+        "global_hooks",
+        "string_item"
+      ],
+      "types": []
+    },
+    "cJSON_AddRawToObject": {
+      "globals": [
+        "global_hooks",
+        "raw_item"
+      ],
+      "types": []
+    },
+    "cJSON_AddObjectToObject": {
+      "globals": [
+        "global_hooks",
+        "object_item"
+      ],
+      "types": []
+    },
+    "cJSON_AddArrayToObject": {
+      "globals": [
+        "array",
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_DetachItemViaPointer": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_DetachItemFromArray": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_DeleteItemFromArray": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_DetachItemFromObject": {
+      "globals": [
+        "to_detach"
+      ],
+      "types": []
+    },
+    "cJSON_DetachItemFromObjectCaseSensitive": {
+      "globals": [
+        "to_detach"
+      ],
+      "types": []
+    },
+    "cJSON_DeleteItemFromObject": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_DeleteItemFromObjectCaseSensitive": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_InsertItemInArray": {
+      "globals": [
+        "after_inserted"
+      ],
+      "types": []
+    },
+    "cJSON_ReplaceItemViaPointer": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_ReplaceItemInArray": {
+      "globals": [],
+      "types": []
+    },
+    "replace_item_in_object": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_ReplaceItemInObject": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_ReplaceItemInObjectCaseSensitive": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_CreateNull": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateTrue": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateFalse": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateBool": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateNumber": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateString": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateStringReference": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateObjectReference": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateArrayReference": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateRaw": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateArray": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateObject": {
+      "globals": [
+        "global_hooks",
+        "item"
+      ],
+      "types": []
+    },
+    "cJSON_CreateIntArray": {
+      "globals": [
+        "a",
+        "i",
+        "n",
+        "p"
+      ],
+      "types": []
+    },
+    "cJSON_CreateFloatArray": {
+      "globals": [
+        "a",
+        "i",
+        "n",
+        "p"
+      ],
+      "types": []
+    },
+    "cJSON_CreateDoubleArray": {
+      "globals": [
+        "a",
+        "i",
+        "n",
+        "p"
+      ],
+      "types": []
+    },
+    "cJSON_CreateStringArray": {
+      "globals": [
+        "a",
+        "i",
+        "n",
+        "p"
+      ],
+      "types": []
+    },
+    "cJSON_Duplicate": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_Duplicate_rec": {
+      "globals": [
+        "child",
+        "global_hooks",
+        "newchild",
+        "newitem",
+        "next"
+      ],
+      "types": []
+    },
+    "skip_oneline_comment": {
+      "globals": [],
+      "types": []
+    },
+    "skip_multiline_comment": {
+      "globals": [],
+      "types": []
+    },
+    "minify_string": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_Minify": {
+      "globals": [
+        "into"
+      ],
+      "types": []
+    },
+    "cJSON_IsInvalid": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_IsFalse": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_IsTrue": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_IsBool": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_IsNull": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_IsNumber": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_IsString": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_IsArray": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_IsObject": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_IsRaw": {
+      "globals": [],
+      "types": []
+    },
+    "cJSON_Compare": {
+      "globals": [
+        "a_element",
+        "b_element"
+      ],
+      "types": []
+    },
+    "cJSON_malloc": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    },
+    "cJSON_free": {
+      "globals": [
+        "global_hooks"
+      ],
+      "types": []
+    }
+  },
+  "sccs": [
+    [
+      "suffix_object"
+    ],
+    [
+      "add_item_to_array"
+    ],
+    [
+      "cast_away_const"
+    ],
+    [
+      "cJSON_strdup"
+    ],
+    [
+      "add_item_to_object"
+    ],
+    [
+      "buffer_skip_whitespace"
+    ],
+    [
+      "cJSON_New_Item"
+    ],
+    [
+      "cJSON_CreateArray"
+    ],
+    [
+      "cJSON_Delete"
+    ],
+    [
+      "cJSON_AddArrayToObject"
+    ],
+    [
+      "cJSON_CreateBool"
+    ],
+    [
+      "cJSON_AddBoolToObject"
+    ],
+    [
+      "cJSON_CreateFalse"
+    ],
+    [
+      "cJSON_AddFalseToObject"
+    ],
+    [
+      "create_reference"
+    ],
+    [
+      "cJSON_AddItemReferenceToArray"
+    ],
+    [
+      "cJSON_AddItemReferenceToObject"
+    ],
+    [
+      "cJSON_AddItemToArray"
+    ],
+    [
+      "cJSON_AddItemToObject"
+    ],
+    [
+      "cJSON_AddItemToObjectCS"
+    ],
+    [
+      "cJSON_CreateNull"
+    ],
+    [
+      "cJSON_AddNullToObject"
+    ],
+    [
+      "cJSON_CreateNumber"
+    ],
+    [
+      "cJSON_AddNumberToObject"
+    ],
+    [
+      "cJSON_CreateObject"
+    ],
+    [
+      "cJSON_AddObjectToObject"
+    ],
+    [
+      "cJSON_CreateRaw"
+    ],
+    [
+      "cJSON_AddRawToObject"
+    ],
+    [
+      "cJSON_CreateString"
+    ],
+    [
+      "cJSON_AddStringToObject"
+    ],
+    [
+      "cJSON_CreateTrue"
+    ],
+    [
+      "cJSON_AddTrueToObject"
+    ],
+    [
+      "case_insensitive_strcmp"
+    ],
+    [
+      "get_object_item"
+    ],
+    [
+      "compare_double"
+    ],
+    [
+      "cJSON_Compare"
+    ],
+    [
+      "cJSON_CreateArrayReference"
+    ],
+    [
+      "cJSON_CreateDoubleArray"
+    ],
+    [
+      "cJSON_CreateFloatArray"
+    ],
+    [
+      "cJSON_CreateIntArray"
+    ],
+    [
+      "cJSON_CreateObjectReference"
+    ],
+    [
+      "cJSON_CreateStringArray"
+    ],
+    [
+      "cJSON_CreateStringReference"
+    ],
+    [
+      "get_array_item"
+    ],
+    [
+      "cJSON_DetachItemViaPointer"
+    ],
+    [
+      "cJSON_DetachItemFromArray"
+    ],
+    [
+      "cJSON_DeleteItemFromArray"
+    ],
+    [
+      "cJSON_GetObjectItem"
+    ],
+    [
+      "cJSON_DetachItemFromObject"
+    ],
+    [
+      "cJSON_DeleteItemFromObject"
+    ],
+    [
+      "cJSON_GetObjectItemCaseSensitive"
+    ],
+    [
+      "cJSON_DetachItemFromObjectCaseSensitive"
+    ],
+    [
+      "cJSON_DeleteItemFromObjectCaseSensitive"
+    ],
+    [
+      "cJSON_Duplicate_rec"
+    ],
+    [
+      "cJSON_Duplicate"
+    ],
+    [
+      "cJSON_GetArrayItem"
+    ],
+    [
+      "cJSON_GetArraySize"
+    ],
+    [
+      "cJSON_GetErrorPtr"
+    ],
+    [
+      "cJSON_IsNumber"
+    ],
+    [
+      "cJSON_GetNumberValue"
+    ],
+    [
+      "cJSON_IsString"
+    ],
+    [
+      "cJSON_GetStringValue"
+    ],
+    [
+      "cJSON_HasObjectItem"
+    ],
+    [
+      "cJSON_InitHooks"
+    ],
+    [
+      "cJSON_InsertItemInArray"
+    ],
+    [
+      "cJSON_IsArray"
+    ],
+    [
+      "cJSON_IsBool"
+    ],
+    [
+      "cJSON_IsFalse"
+    ],
+    [
+      "cJSON_IsInvalid"
+    ],
+    [
+      "cJSON_IsNull"
+    ],
+    [
+      "cJSON_IsObject"
+    ],
+    [
+      "cJSON_IsRaw"
+    ],
+    [
+      "cJSON_IsTrue"
+    ],
+    [
+      "minify_string"
+    ],
+    [
+      "skip_oneline_comment"
+    ],
+    [
+      "skip_multiline_comment"
+    ],
+    [
+      "cJSON_Minify"
+    ],
+    [
+      "skip_utf8_bom"
+    ],
+    [
+      "get_decimal_point"
+    ],
+    [
+      "parse_number"
+    ],
+    [
+      "parse_hex4"
+    ],
+    [
+      "utf16_literal_to_utf8"
+    ],
+    [
+      "parse_string"
+    ],
+    [
+      "parse_array",
+      "parse_object",
+      "parse_value"
+    ],
+    [
+      "cJSON_ParseWithLengthOpts"
+    ],
+    [
+      "cJSON_ParseWithOpts"
+    ],
+    [
+      "cJSON_Parse"
+    ],
+    [
+      "cJSON_ParseWithLength"
+    ],
+    [
+      "ensure"
+    ],
+    [
+      "update_offset"
+    ],
+    [
+      "print_string_ptr"
+    ],
+    [
+      "print_number"
+    ],
+    [
+      "print_string"
+    ],
+    [
+      "print_array",
+      "print_object",
+      "print_value"
+    ],
+    [
+      "print"
+    ],
+    [
+      "cJSON_Print"
+    ],
+    [
+      "cJSON_PrintBuffered"
+    ],
+    [
+      "cJSON_PrintPreallocated"
+    ],
+    [
+      "cJSON_PrintUnformatted"
+    ],
+    [
+      "cJSON_ReplaceItemViaPointer"
+    ],
+    [
+      "cJSON_ReplaceItemInArray"
+    ],
+    [
+      "cJSON_free"
+    ],
+    [
+      "replace_item_in_object"
+    ],
+    [
+      "cJSON_ReplaceItemInObject"
+    ],
+    [
+      "cJSON_ReplaceItemInObjectCaseSensitive"
+    ],
+    [
+      "cJSON_SetNumberHelper"
+    ],
+    [
+      "cJSON_SetValuestring"
+    ],
+    [
+      "cJSON_Version"
+    ],
+    [
+      "cJSON_malloc"
+    ]
+  ],
+  "cyclic_sccs": [
+    [
+      "parse_array",
+      "parse_object",
+      "parse_value"
+    ],
+    [
+      "print_array",
+      "print_object",
+      "print_value"
+    ]
+  ],
+  "self_recursive": []
+}

@@ -1,0 +1,1819 @@
+{
+  "cJSON_GetErrorPtr": {
+    "c_name": "cJSON_GetErrorPtr",
+    "rust_name": "get_error_ptr",
+    "c_signature": "const char *(void) cJSON_GetErrorPtr()",
+    "rust_signature": "fn get_error_ptr() -> Option<&'static [u8]>",
+    "params": [],
+    "return_type": "Option<&'static [u8]>"
+  },
+  "cJSON_GetStringValue": {
+    "c_name": "cJSON_GetStringValue",
+    "rust_name": "get_string_value",
+    "c_signature": "char *(const cJSON *const) cJSON_GetStringValue(const cJSON *const item)",
+    "rust_signature": "fn get_string_value(item: Option<&Node>) -> Option<&[u8]>",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "Option<&[u8]>"
+  },
+  "cJSON_GetNumberValue": {
+    "c_name": "cJSON_GetNumberValue",
+    "rust_name": "get_number_value",
+    "c_signature": "double (const cJSON *const) cJSON_GetNumberValue(const cJSON *const item)",
+    "rust_signature": "fn get_number_value(item: Option<&Node>) -> f64",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "f64"
+  },
+  "cJSON_Version": {
+    "c_name": "cJSON_Version",
+    "rust_name": "version",
+    "c_signature": "const char *(void) cJSON_Version()",
+    "rust_signature": "fn version() -> &'static str",
+    "params": [],
+    "return_type": "&'static str"
+  },
+  "case_insensitive_strcmp": {
+    "c_name": "case_insensitive_strcmp",
+    "rust_name": "case_insensitive_strcmp",
+    "c_signature": "int (const unsigned char *, const unsigned char *) case_insensitive_strcmp(const unsigned char * string1, const unsigned char * string2)",
+    "rust_signature": "fn case_insensitive_strcmp(string1: &[u8], string2: &[u8]) -> i32",
+    "params": [
+      {
+        "name": "string1",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "string2",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "i32"
+  },
+  "cJSON_strdup": {
+    "c_name": "cJSON_strdup",
+    "rust_name": "cjson_strdup",
+    "c_signature": "unsigned char *(const unsigned char *, const internal_hooks *const) cJSON_strdup(const unsigned char * string, const internal_hooks *const hooks)",
+    "rust_signature": "fn cjson_strdup(string: &[u8], hooks: &Hooks) -> Option<Vec<u8>>",
+    "params": [
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "hooks",
+        "rust_type": "&Hooks"
+      }
+    ],
+    "return_type": "Option<Vec<u8>>"
+  },
+  "cJSON_InitHooks": {
+    "c_name": "cJSON_InitHooks",
+    "rust_name": "init_hooks",
+    "c_signature": "void (cJSON_Hooks *) cJSON_InitHooks(cJSON_Hooks * hooks)",
+    "rust_signature": "fn init_hooks(hooks: Option<&Hooks>) -> ()",
+    "params": [
+      {
+        "name": "hooks",
+        "rust_type": "Option<&Hooks>"
+      }
+    ],
+    "return_type": "()"
+  },
+  "cJSON_New_Item": {
+    "c_name": "cJSON_New_Item",
+    "rust_name": "new__item",
+    "c_signature": "cJSON *(const internal_hooks *const) cJSON_New_Item(const internal_hooks *const hooks)",
+    "rust_signature": "fn new__item(hooks: &Hooks) -> Option<Node>",
+    "params": [
+      {
+        "name": "hooks",
+        "rust_type": "&Hooks"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_Delete": {
+    "c_name": "cJSON_Delete",
+    "rust_name": "delete",
+    "c_signature": "void (cJSON *) cJSON_Delete(cJSON * item)",
+    "rust_signature": "fn delete(item: Node) -> ()",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "()"
+  },
+  "get_decimal_point": {
+    "c_name": "get_decimal_point",
+    "rust_name": "get_decimal_point",
+    "c_signature": "unsigned char (void) get_decimal_point()",
+    "rust_signature": "fn get_decimal_point() -> u8",
+    "params": [],
+    "return_type": "u8"
+  },
+  "parse_number": {
+    "c_name": "parse_number",
+    "rust_name": "parse_number",
+    "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_number(cJSON *const item, parse_buffer *const input_buffer)",
+    "rust_signature": "fn parse_number(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "input_buffer",
+        "rust_type": "&mut ParseBuffer<'_>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_SetNumberHelper": {
+    "c_name": "cJSON_SetNumberHelper",
+    "rust_name": "set_number_helper",
+    "c_signature": "double (cJSON *, double) cJSON_SetNumberHelper(cJSON * object, double number)",
+    "rust_signature": "fn set_number_helper(object: &mut Node, number: f64) -> f64",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "number",
+        "rust_type": "f64"
+      }
+    ],
+    "return_type": "f64"
+  },
+  "cJSON_SetValuestring": {
+    "c_name": "cJSON_SetValuestring",
+    "rust_name": "set_valuestring",
+    "c_signature": "char *(cJSON *, const char *) cJSON_SetValuestring(cJSON * object, const char * valuestring)",
+    "rust_signature": "fn set_valuestring(object: &mut Node, valuestring: &[u8]) -> Option<Vec<u8>>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "valuestring",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Vec<u8>>"
+  },
+  "ensure": {
+    "c_name": "ensure",
+    "rust_name": "ensure",
+    "c_signature": "unsigned char *(printbuffer *const, size_t) ensure(printbuffer *const p, size_t needed)",
+    "rust_signature": "fn ensure(p: &mut PrintBuffer, needed: usize) -> Option<usize>",
+    "params": [
+      {
+        "name": "p",
+        "rust_type": "&mut PrintBuffer"
+      },
+      {
+        "name": "needed",
+        "rust_type": "usize"
+      }
+    ],
+    "return_type": "Option<usize>"
+  },
+  "update_offset": {
+    "c_name": "update_offset",
+    "rust_name": "update_offset",
+    "c_signature": "void (printbuffer *const) update_offset(printbuffer *const buffer)",
+    "rust_signature": "fn update_offset(buffer: &mut PrintBuffer) -> ()",
+    "params": [
+      {
+        "name": "buffer",
+        "rust_type": "&mut PrintBuffer"
+      }
+    ],
+    "return_type": "()"
+  },
+  "compare_double": {
+    "c_name": "compare_double",
+    "rust_name": "compare_double",
+    "c_signature": "cJSON_bool (double, double) compare_double(double a, double b)",
+    "rust_signature": "fn compare_double(a: f64, b: f64) -> bool",
+    "params": [
+      {
+        "name": "a",
+        "rust_type": "f64"
+      },
+      {
+        "name": "b",
+        "rust_type": "f64"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "print_number": {
+    "c_name": "print_number",
+    "rust_name": "print_number",
+    "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_number(const cJSON *const item, printbuffer *const output_buffer)",
+    "rust_signature": "fn print_number(item: &Node, output_buffer: &mut PrintBuffer) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "output_buffer",
+        "rust_type": "&mut PrintBuffer"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "parse_hex4": {
+    "c_name": "parse_hex4",
+    "rust_name": "parse_hex4",
+    "c_signature": "unsigned int (const unsigned char *const) parse_hex4(const unsigned char *const input)",
+    "rust_signature": "fn parse_hex4(input: &[u8]) -> u32",
+    "params": [
+      {
+        "name": "input",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "u32"
+  },
+  "utf16_literal_to_utf8": {
+    "c_name": "utf16_literal_to_utf8",
+    "rust_name": "utf16_literal_to_utf8",
+    "c_signature": "unsigned char (const unsigned char *const, const unsigned char *const, unsigned char **) utf16_literal_to_utf8(const unsigned char *const input_pointer, const unsigned char *const input_end, unsigned char ** output_pointer)",
+    "rust_signature": "fn utf16_literal_to_utf8(input_pointer: &[u8], input_end: &[u8], output_pointer: &mut Vec<u8>) -> Option<Vec<u8>>",
+    "params": [
+      {
+        "name": "input_pointer",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "input_end",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "output_pointer",
+        "rust_type": "&mut Vec<u8>"
+      }
+    ],
+    "return_type": "Option<Vec<u8>>"
+  },
+  "parse_string": {
+    "c_name": "parse_string",
+    "rust_name": "parse_string",
+    "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_string(cJSON *const item, parse_buffer *const input_buffer)",
+    "rust_signature": "fn parse_string(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "input_buffer",
+        "rust_type": "&mut ParseBuffer<'_>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "print_string_ptr": {
+    "c_name": "print_string_ptr",
+    "rust_name": "print_string_ptr",
+    "c_signature": "cJSON_bool (const unsigned char *const, printbuffer *const) print_string_ptr(const unsigned char *const input, printbuffer *const output_buffer)",
+    "rust_signature": "fn print_string_ptr(input: Option<&[u8]>, output_buffer: &mut PrintBuffer) -> bool",
+    "params": [
+      {
+        "name": "input",
+        "rust_type": "Option<&[u8]>"
+      },
+      {
+        "name": "output_buffer",
+        "rust_type": "&mut PrintBuffer"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "print_string": {
+    "c_name": "print_string",
+    "rust_name": "print_string",
+    "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_string(const cJSON *const item, printbuffer *const p)",
+    "rust_signature": "fn print_string(item: &Node, p: &mut PrintBuffer) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "p",
+        "rust_type": "&mut PrintBuffer"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "buffer_skip_whitespace": {
+    "c_name": "buffer_skip_whitespace",
+    "rust_name": "buffer_skip_whitespace",
+    "c_signature": "parse_buffer *(parse_buffer *const) buffer_skip_whitespace(parse_buffer *const buffer)",
+    "rust_signature": "fn buffer_skip_whitespace(buffer: &mut ParseBuffer<'_>) -> ()",
+    "params": [
+      {
+        "name": "buffer",
+        "rust_type": "&mut ParseBuffer<'_>"
+      }
+    ],
+    "return_type": "()"
+  },
+  "skip_utf8_bom": {
+    "c_name": "skip_utf8_bom",
+    "rust_name": "skip_utf8_bom",
+    "c_signature": "parse_buffer *(parse_buffer *const) skip_utf8_bom(parse_buffer *const buffer)",
+    "rust_signature": "fn skip_utf8_bom(buffer: &mut ParseBuffer<'_>) -> ()",
+    "params": [
+      {
+        "name": "buffer",
+        "rust_type": "&mut ParseBuffer<'_>"
+      }
+    ],
+    "return_type": "()"
+  },
+  "cJSON_ParseWithOpts": {
+    "c_name": "cJSON_ParseWithOpts",
+    "rust_name": "parse_with_opts",
+    "c_signature": "cJSON *(const char *, const char **, cJSON_bool) cJSON_ParseWithOpts(const char * value, const char ** return_parse_end, cJSON_bool require_null_terminated)",
+    "rust_signature": "fn parse_with_opts(value: &[u8], return_parse_end: Option<&mut usize>, require_null_terminated: bool) -> Option<Node>",
+    "params": [
+      {
+        "name": "value",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "return_parse_end",
+        "rust_type": "Option<&mut usize>"
+      },
+      {
+        "name": "require_null_terminated",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_ParseWithLengthOpts": {
+    "c_name": "cJSON_ParseWithLengthOpts",
+    "rust_name": "parse_with_length_opts",
+    "c_signature": "cJSON *(const char *, size_t, const char **, cJSON_bool) cJSON_ParseWithLengthOpts(const char * value, size_t buffer_length, const char ** return_parse_end, cJSON_bool require_null_terminated)",
+    "rust_signature": "fn parse_with_length_opts(value: &[u8], buffer_length: usize, return_parse_end: Option<&mut usize>, require_null_terminated: bool) -> Option<Node>",
+    "params": [
+      {
+        "name": "value",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "buffer_length",
+        "rust_type": "usize"
+      },
+      {
+        "name": "return_parse_end",
+        "rust_type": "Option<&mut usize>"
+      },
+      {
+        "name": "require_null_terminated",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_Parse": {
+    "c_name": "cJSON_Parse",
+    "rust_name": "parse",
+    "c_signature": "cJSON *(const char *) cJSON_Parse(const char * value)",
+    "rust_signature": "fn parse(value: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "value",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_ParseWithLength": {
+    "c_name": "cJSON_ParseWithLength",
+    "rust_name": "parse_with_length",
+    "c_signature": "cJSON *(const char *, size_t) cJSON_ParseWithLength(const char * value, size_t buffer_length)",
+    "rust_signature": "fn parse_with_length(value: &[u8], buffer_length: usize) -> Option<Node>",
+    "params": [
+      {
+        "name": "value",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "buffer_length",
+        "rust_type": "usize"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "print": {
+    "c_name": "print",
+    "rust_name": "print_internal",
+    "c_signature": "unsigned char *(const cJSON *const, cJSON_bool, const internal_hooks *const) print(const cJSON *const item, cJSON_bool format, const internal_hooks *const hooks)",
+    "rust_signature": "fn print_internal(item: &Node, format: bool, hooks: &Hooks) -> Option<Vec<u8>>",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "format",
+        "rust_type": "bool"
+      },
+      {
+        "name": "hooks",
+        "rust_type": "&Hooks"
+      }
+    ],
+    "return_type": "Option<Vec<u8>>"
+  },
+  "cJSON_Print": {
+    "c_name": "cJSON_Print",
+    "rust_name": "print",
+    "c_signature": "char *(const cJSON *) cJSON_Print(const cJSON * item)",
+    "rust_signature": "fn print(item: &Node) -> Option<Vec<u8>>",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      }
+    ],
+    "return_type": "Option<Vec<u8>>"
+  },
+  "cJSON_PrintUnformatted": {
+    "c_name": "cJSON_PrintUnformatted",
+    "rust_name": "print_unformatted",
+    "c_signature": "char *(const cJSON *) cJSON_PrintUnformatted(const cJSON * item)",
+    "rust_signature": "fn print_unformatted(item: &Node) -> Option<Vec<u8>>",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      }
+    ],
+    "return_type": "Option<Vec<u8>>"
+  },
+  "cJSON_PrintBuffered": {
+    "c_name": "cJSON_PrintBuffered",
+    "rust_name": "print_buffered",
+    "c_signature": "char *(const cJSON *, int, cJSON_bool) cJSON_PrintBuffered(const cJSON * item, int prebuffer, cJSON_bool fmt)",
+    "rust_signature": "fn print_buffered(item: &Node, prebuffer: usize, fmt: bool) -> Option<Vec<u8>>",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "prebuffer",
+        "rust_type": "usize"
+      },
+      {
+        "name": "fmt",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "Option<Vec<u8>>"
+  },
+  "cJSON_PrintPreallocated": {
+    "c_name": "cJSON_PrintPreallocated",
+    "rust_name": "print_preallocated",
+    "c_signature": "cJSON_bool (cJSON *, char *, const int, const cJSON_bool) cJSON_PrintPreallocated(cJSON * item, char * buffer, const int length, const cJSON_bool format)",
+    "rust_signature": "fn print_preallocated(item: &Node, buffer: &mut [u8], length: i32, format: bool) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "buffer",
+        "rust_type": "&mut [u8]"
+      },
+      {
+        "name": "length",
+        "rust_type": "i32"
+      },
+      {
+        "name": "format",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "parse_value": {
+    "c_name": "parse_value",
+    "rust_name": "parse_value",
+    "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_value(cJSON *const item, parse_buffer *const input_buffer)",
+    "rust_signature": "fn parse_value(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "input_buffer",
+        "rust_type": "&mut ParseBuffer<'_>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "print_value": {
+    "c_name": "print_value",
+    "rust_name": "print_value",
+    "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_value(const cJSON *const item, printbuffer *const output_buffer)",
+    "rust_signature": "fn print_value(item: &Node, output_buffer: &mut PrintBuffer) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "output_buffer",
+        "rust_type": "&mut PrintBuffer"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "parse_array": {
+    "c_name": "parse_array",
+    "rust_name": "parse_array",
+    "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_array(cJSON *const item, parse_buffer *const input_buffer)",
+    "rust_signature": "fn parse_array(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "input_buffer",
+        "rust_type": "&mut ParseBuffer<'_>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "print_array": {
+    "c_name": "print_array",
+    "rust_name": "print_array",
+    "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_array(const cJSON *const item, printbuffer *const output_buffer)",
+    "rust_signature": "fn print_array(item: &Node, output_buffer: &mut PrintBuffer) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "output_buffer",
+        "rust_type": "&mut PrintBuffer"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "parse_object": {
+    "c_name": "parse_object",
+    "rust_name": "parse_object",
+    "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_object(cJSON *const item, parse_buffer *const input_buffer)",
+    "rust_signature": "fn parse_object(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "input_buffer",
+        "rust_type": "&mut ParseBuffer<'_>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "print_object": {
+    "c_name": "print_object",
+    "rust_name": "print_object",
+    "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_object(const cJSON *const item, printbuffer *const output_buffer)",
+    "rust_signature": "fn print_object(item: &Node, output_buffer: &mut PrintBuffer) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "output_buffer",
+        "rust_type": "&mut PrintBuffer"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_GetArraySize": {
+    "c_name": "cJSON_GetArraySize",
+    "rust_name": "get_array_size",
+    "c_signature": "int (const cJSON *) cJSON_GetArraySize(const cJSON * array)",
+    "rust_signature": "fn get_array_size(array: Option<&Node>) -> i32",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "i32"
+  },
+  "get_array_item": {
+    "c_name": "get_array_item",
+    "rust_name": "get_array_item_internal",
+    "c_signature": "cJSON *(const cJSON *, size_t) get_array_item(const cJSON * array, size_t index)",
+    "rust_signature": "fn get_array_item_internal(array: &Node, index: usize) -> Option<&Node>",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "index",
+        "rust_type": "usize"
+      }
+    ],
+    "return_type": "Option<&Node>"
+  },
+  "cJSON_GetArrayItem": {
+    "c_name": "cJSON_GetArrayItem",
+    "rust_name": "get_array_item",
+    "c_signature": "cJSON *(const cJSON *, int) cJSON_GetArrayItem(const cJSON * array, int index)",
+    "rust_signature": "fn get_array_item(array: Option<&Node>, index: i32) -> Option<&Node>",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "Option<&Node>"
+      },
+      {
+        "name": "index",
+        "rust_type": "i32"
+      }
+    ],
+    "return_type": "Option<&Node>"
+  },
+  "get_object_item": {
+    "c_name": "get_object_item",
+    "rust_name": "get_object_item_internal",
+    "c_signature": "cJSON *(const cJSON *const, const char *const, const cJSON_bool) get_object_item(const cJSON *const object, const char *const name, const cJSON_bool case_sensitive)",
+    "rust_signature": "fn get_object_item_internal<'a>(object: &'a Node, name: &[u8], case_sensitive: bool) -> Option<&'a Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&'a Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "case_sensitive",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "Option<&'a Node>"
+  },
+  "cJSON_GetObjectItem": {
+    "c_name": "cJSON_GetObjectItem",
+    "rust_name": "get_object_item",
+    "c_signature": "cJSON *(const cJSON *const, const char *const) cJSON_GetObjectItem(const cJSON *const object, const char *const string)",
+    "rust_signature": "fn get_object_item<'a>(object: Option<&'a Node>, string: &[u8]) -> Option<&'a Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "Option<&'a Node>"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<&'a Node>"
+  },
+  "cJSON_GetObjectItemCaseSensitive": {
+    "c_name": "cJSON_GetObjectItemCaseSensitive",
+    "rust_name": "get_object_item_case_sensitive",
+    "c_signature": "cJSON *(const cJSON *const, const char *const) cJSON_GetObjectItemCaseSensitive(const cJSON *const object, const char *const string)",
+    "rust_signature": "fn get_object_item_case_sensitive<'a>(object: Option<&'a Node>, string: &[u8]) -> Option<&'a Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "Option<&'a Node>"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<&'a Node>"
+  },
+  "cJSON_HasObjectItem": {
+    "c_name": "cJSON_HasObjectItem",
+    "rust_name": "has_object_item",
+    "c_signature": "cJSON_bool (const cJSON *, const char *) cJSON_HasObjectItem(const cJSON * object, const char * string)",
+    "rust_signature": "fn has_object_item(object: Option<&Node>, string: &[u8]) -> bool",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "Option<&Node>"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "suffix_object": {
+    "c_name": "suffix_object",
+    "rust_name": "suffix_object",
+    "c_signature": "void (cJSON *, cJSON *) suffix_object(cJSON * prev, cJSON * item)",
+    "rust_signature": "fn suffix_object(prev: &mut Node, item: Node) -> ()",
+    "params": [
+      {
+        "name": "prev",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "item",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "()"
+  },
+  "create_reference": {
+    "c_name": "create_reference",
+    "rust_name": "create_reference",
+    "c_signature": "cJSON *(const cJSON *, const internal_hooks *const) create_reference(const cJSON * item, const internal_hooks *const hooks)",
+    "rust_signature": "fn create_reference(item: &Node, hooks: &Hooks) -> Option<Node>",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "hooks",
+        "rust_type": "&Hooks"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "add_item_to_array": {
+    "c_name": "add_item_to_array",
+    "rust_name": "add_item_to_array_internal",
+    "c_signature": "cJSON_bool (cJSON *, cJSON *) add_item_to_array(cJSON * array, cJSON * item)",
+    "rust_signature": "fn add_item_to_array_internal(array: &mut Node, item: Node) -> bool",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "item",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_AddItemToArray": {
+    "c_name": "cJSON_AddItemToArray",
+    "rust_name": "add_item_to_array",
+    "c_signature": "cJSON_bool (cJSON *, cJSON *) cJSON_AddItemToArray(cJSON * array, cJSON * item)",
+    "rust_signature": "fn add_item_to_array(array: &mut Node, item: Node) -> bool",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "item",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cast_away_const": {
+    "c_name": "cast_away_const",
+    "rust_name": "cast_away_const",
+    "c_signature": "void *(const void *) cast_away_const(const void * string)",
+    "rust_signature": "fn cast_away_const<'a>(string: &&'a [u8]) -> &'a [u8]",
+    "params": [
+      {
+        "name": "string",
+        "rust_type": "&&'a [u8]"
+      }
+    ],
+    "return_type": "&'a [u8]"
+  },
+  "add_item_to_object": {
+    "c_name": "add_item_to_object",
+    "rust_name": "add_item_to_object_internal",
+    "c_signature": "cJSON_bool (cJSON *const, const char *const, cJSON *const, const internal_hooks *const, const cJSON_bool) add_item_to_object(cJSON *const object, const char *const string, cJSON *const item, const internal_hooks *const hooks, const cJSON_bool constant_key)",
+    "rust_signature": "fn add_item_to_object_internal(object: &mut Node, string: &[u8], item: Node, hooks: &Hooks, constant_key: bool) -> bool",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "item",
+        "rust_type": "Node"
+      },
+      {
+        "name": "hooks",
+        "rust_type": "&Hooks"
+      },
+      {
+        "name": "constant_key",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_AddItemToObject": {
+    "c_name": "cJSON_AddItemToObject",
+    "rust_name": "add_item_to_object",
+    "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_AddItemToObject(cJSON * object, const char * string, cJSON * item)",
+    "rust_signature": "fn add_item_to_object(object: &mut Node, string: &[u8], item: Node) -> bool",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "item",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_AddItemToObjectCS": {
+    "c_name": "cJSON_AddItemToObjectCS",
+    "rust_name": "add_item_to_object_cs",
+    "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_AddItemToObjectCS(cJSON * object, const char * string, cJSON * item)",
+    "rust_signature": "fn add_item_to_object_cs(object: &mut Node, string: &[u8], item: Node) -> bool",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "item",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_AddItemReferenceToArray": {
+    "c_name": "cJSON_AddItemReferenceToArray",
+    "rust_name": "add_item_reference_to_array",
+    "c_signature": "cJSON_bool (cJSON *, cJSON *) cJSON_AddItemReferenceToArray(cJSON * array, cJSON * item)",
+    "rust_signature": "fn add_item_reference_to_array(array: &mut Node, item: Node) -> bool",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "item",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_AddItemReferenceToObject": {
+    "c_name": "cJSON_AddItemReferenceToObject",
+    "rust_name": "add_item_reference_to_object",
+    "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_AddItemReferenceToObject(cJSON * object, const char * string, cJSON * item)",
+    "rust_signature": "fn add_item_reference_to_object(object: &mut Node, string: &[u8], item: Node) -> bool",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "item",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_AddNullToObject": {
+    "c_name": "cJSON_AddNullToObject",
+    "rust_name": "add_null_to_object",
+    "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddNullToObject(cJSON *const object, const char *const name)",
+    "rust_signature": "fn add_null_to_object(object: &mut Node, name: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_AddTrueToObject": {
+    "c_name": "cJSON_AddTrueToObject",
+    "rust_name": "add_true_to_object",
+    "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddTrueToObject(cJSON *const object, const char *const name)",
+    "rust_signature": "fn add_true_to_object(object: &mut Node, name: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_AddFalseToObject": {
+    "c_name": "cJSON_AddFalseToObject",
+    "rust_name": "add_false_to_object",
+    "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddFalseToObject(cJSON *const object, const char *const name)",
+    "rust_signature": "fn add_false_to_object(object: &mut Node, name: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_AddBoolToObject": {
+    "c_name": "cJSON_AddBoolToObject",
+    "rust_name": "add_bool_to_object",
+    "c_signature": "cJSON *(cJSON *const, const char *const, const cJSON_bool) cJSON_AddBoolToObject(cJSON *const object, const char *const name, const cJSON_bool boolean)",
+    "rust_signature": "fn add_bool_to_object(object: &mut Node, name: &[u8], boolean: bool) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "boolean",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_AddNumberToObject": {
+    "c_name": "cJSON_AddNumberToObject",
+    "rust_name": "add_number_to_object",
+    "c_signature": "cJSON *(cJSON *const, const char *const, const double) cJSON_AddNumberToObject(cJSON *const object, const char *const name, const double number)",
+    "rust_signature": "fn add_number_to_object(object: &mut Node, name: &[u8], number: f64) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "number",
+        "rust_type": "f64"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_AddStringToObject": {
+    "c_name": "cJSON_AddStringToObject",
+    "rust_name": "add_string_to_object",
+    "c_signature": "cJSON *(cJSON *const, const char *const, const char *const) cJSON_AddStringToObject(cJSON *const object, const char *const name, const char *const string)",
+    "rust_signature": "fn add_string_to_object(object: &mut Node, name: &[u8], string: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_AddRawToObject": {
+    "c_name": "cJSON_AddRawToObject",
+    "rust_name": "add_raw_to_object",
+    "c_signature": "cJSON *(cJSON *const, const char *const, const char *const) cJSON_AddRawToObject(cJSON *const object, const char *const name, const char *const raw)",
+    "rust_signature": "fn add_raw_to_object(object: &mut Node, name: &[u8], raw: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "raw",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_AddObjectToObject": {
+    "c_name": "cJSON_AddObjectToObject",
+    "rust_name": "add_object_to_object",
+    "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddObjectToObject(cJSON *const object, const char *const name)",
+    "rust_signature": "fn add_object_to_object(object: &mut Node, name: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_AddArrayToObject": {
+    "c_name": "cJSON_AddArrayToObject",
+    "rust_name": "add_array_to_object",
+    "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddArrayToObject(cJSON *const object, const char *const name)",
+    "rust_signature": "fn add_array_to_object(object: &mut Node, name: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "name",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_DetachItemViaPointer": {
+    "c_name": "cJSON_DetachItemViaPointer",
+    "rust_name": "detach_item_via_pointer",
+    "c_signature": "cJSON *(cJSON *, cJSON *const) cJSON_DetachItemViaPointer(cJSON * parent, cJSON *const item)",
+    "rust_signature": "fn detach_item_via_pointer(parent: &mut Node, item: &Node) -> Option<Node>",
+    "params": [
+      {
+        "name": "parent",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_DetachItemFromArray": {
+    "c_name": "cJSON_DetachItemFromArray",
+    "rust_name": "detach_item_from_array",
+    "c_signature": "cJSON *(cJSON *, int) cJSON_DetachItemFromArray(cJSON * array, int which)",
+    "rust_signature": "fn detach_item_from_array(array: &mut Node, which: i32) -> Option<Node>",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "which",
+        "rust_type": "i32"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_DeleteItemFromArray": {
+    "c_name": "cJSON_DeleteItemFromArray",
+    "rust_name": "delete_item_from_array",
+    "c_signature": "void (cJSON *, int) cJSON_DeleteItemFromArray(cJSON * array, int which)",
+    "rust_signature": "fn delete_item_from_array(array: &mut Node, which: i32) -> ()",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "which",
+        "rust_type": "i32"
+      }
+    ],
+    "return_type": "()"
+  },
+  "cJSON_DetachItemFromObject": {
+    "c_name": "cJSON_DetachItemFromObject",
+    "rust_name": "detach_item_from_object",
+    "c_signature": "cJSON *(cJSON *, const char *) cJSON_DetachItemFromObject(cJSON * object, const char * string)",
+    "rust_signature": "fn detach_item_from_object(object: &mut Node, string: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_DetachItemFromObjectCaseSensitive": {
+    "c_name": "cJSON_DetachItemFromObjectCaseSensitive",
+    "rust_name": "detach_item_from_object_case_sensitive",
+    "c_signature": "cJSON *(cJSON *, const char *) cJSON_DetachItemFromObjectCaseSensitive(cJSON * object, const char * string)",
+    "rust_signature": "fn detach_item_from_object_case_sensitive(object: &mut Node, string: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_DeleteItemFromObject": {
+    "c_name": "cJSON_DeleteItemFromObject",
+    "rust_name": "delete_item_from_object",
+    "c_signature": "void (cJSON *, const char *) cJSON_DeleteItemFromObject(cJSON * object, const char * string)",
+    "rust_signature": "fn delete_item_from_object(object: &mut Node, string: &[u8]) -> ()",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "()"
+  },
+  "cJSON_DeleteItemFromObjectCaseSensitive": {
+    "c_name": "cJSON_DeleteItemFromObjectCaseSensitive",
+    "rust_name": "delete_item_from_object_case_sensitive",
+    "c_signature": "void (cJSON *, const char *) cJSON_DeleteItemFromObjectCaseSensitive(cJSON * object, const char * string)",
+    "rust_signature": "fn delete_item_from_object_case_sensitive(object: &mut Node, string: &[u8]) -> ()",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "()"
+  },
+  "cJSON_InsertItemInArray": {
+    "c_name": "cJSON_InsertItemInArray",
+    "rust_name": "insert_item_in_array",
+    "c_signature": "cJSON_bool (cJSON *, int, cJSON *) cJSON_InsertItemInArray(cJSON * array, int which, cJSON * newitem)",
+    "rust_signature": "fn insert_item_in_array(array: &mut Node, which: i32, item: Node) -> bool",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "which",
+        "rust_type": "i32"
+      },
+      {
+        "name": "item",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_ReplaceItemViaPointer": {
+    "c_name": "cJSON_ReplaceItemViaPointer",
+    "rust_name": "replace_item_via_pointer",
+    "c_signature": "cJSON_bool (cJSON *const, cJSON *const, cJSON *) cJSON_ReplaceItemViaPointer(cJSON *const parent, cJSON *const item, cJSON * replacement)",
+    "rust_signature": "fn replace_item_via_pointer(object: &mut Node, old: &Node, new: Node) -> bool",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "old",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "new",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_ReplaceItemInArray": {
+    "c_name": "cJSON_ReplaceItemInArray",
+    "rust_name": "replace_item_in_array",
+    "c_signature": "cJSON_bool (cJSON *, int, cJSON *) cJSON_ReplaceItemInArray(cJSON * array, int which, cJSON * newitem)",
+    "rust_signature": "fn replace_item_in_array(array: &mut Node, which: i32, new: Node) -> bool",
+    "params": [
+      {
+        "name": "array",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "which",
+        "rust_type": "i32"
+      },
+      {
+        "name": "new",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "replace_item_in_object": {
+    "c_name": "replace_item_in_object",
+    "rust_name": "replace_item_in_object_internal",
+    "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *, cJSON_bool) replace_item_in_object(cJSON * object, const char * string, cJSON * replacement, cJSON_bool case_sensitive)",
+    "rust_signature": "fn replace_item_in_object_internal(object: &mut Node, string: &[u8], new_item: Node, case_sensitive: bool) -> bool",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "new_item",
+        "rust_type": "Node"
+      },
+      {
+        "name": "case_sensitive",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_ReplaceItemInObject": {
+    "c_name": "cJSON_ReplaceItemInObject",
+    "rust_name": "replace_item_in_object",
+    "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_ReplaceItemInObject(cJSON * object, const char * string, cJSON * newitem)",
+    "rust_signature": "fn replace_item_in_object(object: &mut Node, string: &[u8], new: Node) -> bool",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "new",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_ReplaceItemInObjectCaseSensitive": {
+    "c_name": "cJSON_ReplaceItemInObjectCaseSensitive",
+    "rust_name": "replace_item_in_object_case_sensitive",
+    "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_ReplaceItemInObjectCaseSensitive(cJSON * object, const char * string, cJSON * newitem)",
+    "rust_signature": "fn replace_item_in_object_case_sensitive(object: &mut Node, string: &[u8], new: Node) -> bool",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "&mut Node"
+      },
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      },
+      {
+        "name": "new",
+        "rust_type": "Node"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_CreateNull": {
+    "c_name": "cJSON_CreateNull",
+    "rust_name": "create_null",
+    "c_signature": "cJSON *(void) cJSON_CreateNull()",
+    "rust_signature": "fn create_null() -> Option<Node>",
+    "params": [],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateTrue": {
+    "c_name": "cJSON_CreateTrue",
+    "rust_name": "create_true",
+    "c_signature": "cJSON *(void) cJSON_CreateTrue()",
+    "rust_signature": "fn create_true() -> Option<Node>",
+    "params": [],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateFalse": {
+    "c_name": "cJSON_CreateFalse",
+    "rust_name": "create_false",
+    "c_signature": "cJSON *(void) cJSON_CreateFalse()",
+    "rust_signature": "fn create_false() -> Option<Node>",
+    "params": [],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateBool": {
+    "c_name": "cJSON_CreateBool",
+    "rust_name": "create_bool",
+    "c_signature": "cJSON *(cJSON_bool) cJSON_CreateBool(cJSON_bool boolean)",
+    "rust_signature": "fn create_bool(boolean: bool) -> Option<Node>",
+    "params": [
+      {
+        "name": "boolean",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateNumber": {
+    "c_name": "cJSON_CreateNumber",
+    "rust_name": "create_number",
+    "c_signature": "cJSON *(double) cJSON_CreateNumber(double num)",
+    "rust_signature": "fn create_number(number: f64) -> Option<Node>",
+    "params": [
+      {
+        "name": "number",
+        "rust_type": "f64"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateString": {
+    "c_name": "cJSON_CreateString",
+    "rust_name": "create_string",
+    "c_signature": "cJSON *(const char *) cJSON_CreateString(const char * string)",
+    "rust_signature": "fn create_string(string: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateStringReference": {
+    "c_name": "cJSON_CreateStringReference",
+    "rust_name": "create_string_reference",
+    "c_signature": "cJSON *(const char *) cJSON_CreateStringReference(const char * string)",
+    "rust_signature": "fn create_string_reference(string: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "string",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateObjectReference": {
+    "c_name": "cJSON_CreateObjectReference",
+    "rust_name": "create_object_reference",
+    "c_signature": "cJSON *(const cJSON *) cJSON_CreateObjectReference(const cJSON * child)",
+    "rust_signature": "fn create_object_reference(child: &Node) -> Option<Node>",
+    "params": [
+      {
+        "name": "child",
+        "rust_type": "&Node"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateArrayReference": {
+    "c_name": "cJSON_CreateArrayReference",
+    "rust_name": "create_array_reference",
+    "c_signature": "cJSON *(const cJSON *) cJSON_CreateArrayReference(const cJSON * child)",
+    "rust_signature": "fn create_array_reference(child: &Node) -> Option<Node>",
+    "params": [
+      {
+        "name": "child",
+        "rust_type": "&Node"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateRaw": {
+    "c_name": "cJSON_CreateRaw",
+    "rust_name": "create_raw",
+    "c_signature": "cJSON *(const char *) cJSON_CreateRaw(const char * raw)",
+    "rust_signature": "fn create_raw(raw: &[u8]) -> Option<Node>",
+    "params": [
+      {
+        "name": "raw",
+        "rust_type": "&[u8]"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateArray": {
+    "c_name": "cJSON_CreateArray",
+    "rust_name": "create_array",
+    "c_signature": "cJSON *(void) cJSON_CreateArray()",
+    "rust_signature": "fn create_array() -> Option<Node>",
+    "params": [],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateObject": {
+    "c_name": "cJSON_CreateObject",
+    "rust_name": "create_object",
+    "c_signature": "cJSON *(void) cJSON_CreateObject()",
+    "rust_signature": "fn create_object() -> Option<Node>",
+    "params": [],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateIntArray": {
+    "c_name": "cJSON_CreateIntArray",
+    "rust_name": "create_int_array",
+    "c_signature": "cJSON *(const int *, int) cJSON_CreateIntArray(const int * numbers, int count)",
+    "rust_signature": "fn create_int_array(numbers: &[i32], count: i32) -> Option<Node>",
+    "params": [
+      {
+        "name": "numbers",
+        "rust_type": "&[i32]"
+      },
+      {
+        "name": "count",
+        "rust_type": "i32"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateFloatArray": {
+    "c_name": "cJSON_CreateFloatArray",
+    "rust_name": "create_float_array",
+    "c_signature": "cJSON *(const float *, int) cJSON_CreateFloatArray(const float * numbers, int count)",
+    "rust_signature": "fn create_float_array(numbers: &[f32], count: i32) -> Option<Node>",
+    "params": [
+      {
+        "name": "numbers",
+        "rust_type": "&[f32]"
+      },
+      {
+        "name": "count",
+        "rust_type": "i32"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateDoubleArray": {
+    "c_name": "cJSON_CreateDoubleArray",
+    "rust_name": "create_double_array",
+    "c_signature": "cJSON *(const double *, int) cJSON_CreateDoubleArray(const double * numbers, int count)",
+    "rust_signature": "fn create_double_array(numbers: &[f64], count: i32) -> Option<Node>",
+    "params": [
+      {
+        "name": "numbers",
+        "rust_type": "&[f64]"
+      },
+      {
+        "name": "count",
+        "rust_type": "i32"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_CreateStringArray": {
+    "c_name": "cJSON_CreateStringArray",
+    "rust_name": "create_string_array",
+    "c_signature": "cJSON *(const char *const *, int) cJSON_CreateStringArray(const char *const * strings, int count)",
+    "rust_signature": "fn create_string_array(strings: &[&[u8]], count: i32) -> Option<Node>",
+    "params": [
+      {
+        "name": "strings",
+        "rust_type": "&[&[u8]]"
+      },
+      {
+        "name": "count",
+        "rust_type": "i32"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_Duplicate": {
+    "c_name": "cJSON_Duplicate",
+    "rust_name": "duplicate",
+    "c_signature": "cJSON *(const cJSON *, cJSON_bool) cJSON_Duplicate(const cJSON * item, cJSON_bool recurse)",
+    "rust_signature": "fn duplicate(item: &Node, recursion: bool) -> Option<Node>",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "recursion",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "cJSON_Duplicate_rec": {
+    "c_name": "cJSON_Duplicate_rec",
+    "rust_name": "cjson_duplicate_rec",
+    "c_signature": "cJSON *(const cJSON *, size_t, cJSON_bool) cJSON_Duplicate_rec(const cJSON * item, size_t depth, cJSON_bool recurse)",
+    "rust_signature": "fn cjson_duplicate_rec(item: &Node, depth: usize, recursion: bool) -> Option<Node>",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "&Node"
+      },
+      {
+        "name": "depth",
+        "rust_type": "usize"
+      },
+      {
+        "name": "recursion",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "Option<Node>"
+  },
+  "skip_oneline_comment": {
+    "c_name": "skip_oneline_comment",
+    "rust_name": "skip_oneline_comment",
+    "c_signature": "void (char **) skip_oneline_comment(char ** input)",
+    "rust_signature": "fn skip_oneline_comment(input: &mut &[u8]) -> ()",
+    "params": [
+      {
+        "name": "input",
+        "rust_type": "&mut &[u8]"
+      }
+    ],
+    "return_type": "()"
+  },
+  "skip_multiline_comment": {
+    "c_name": "skip_multiline_comment",
+    "rust_name": "skip_multiline_comment",
+    "c_signature": "void (char **) skip_multiline_comment(char ** input)",
+    "rust_signature": "fn skip_multiline_comment(input: &mut &[u8]) -> ()",
+    "params": [
+      {
+        "name": "input",
+        "rust_type": "&mut &[u8]"
+      }
+    ],
+    "return_type": "()"
+  },
+  "minify_string": {
+    "c_name": "minify_string",
+    "rust_name": "minify_string",
+    "c_signature": "void (char **, char **) minify_string(char ** input, char ** output)",
+    "rust_signature": "fn minify_string(input: &mut &[u8], output: &mut Vec<u8>) -> ()",
+    "params": [
+      {
+        "name": "input",
+        "rust_type": "&mut &[u8]"
+      },
+      {
+        "name": "output",
+        "rust_type": "&mut Vec<u8>"
+      }
+    ],
+    "return_type": "()"
+  },
+  "cJSON_Minify": {
+    "c_name": "cJSON_Minify",
+    "rust_name": "minify",
+    "c_signature": "void (char *) cJSON_Minify(char * json)",
+    "rust_signature": "fn minify(json: &mut Vec<u8>) -> ()",
+    "params": [
+      {
+        "name": "json",
+        "rust_type": "&mut Vec<u8>"
+      }
+    ],
+    "return_type": "()"
+  },
+  "cJSON_IsInvalid": {
+    "c_name": "cJSON_IsInvalid",
+    "rust_name": "is_invalid",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsInvalid(const cJSON *const item)",
+    "rust_signature": "fn is_invalid(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_IsFalse": {
+    "c_name": "cJSON_IsFalse",
+    "rust_name": "is_false",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsFalse(const cJSON *const item)",
+    "rust_signature": "fn is_false(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_IsTrue": {
+    "c_name": "cJSON_IsTrue",
+    "rust_name": "is_true",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsTrue(const cJSON *const item)",
+    "rust_signature": "fn is_true(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_IsBool": {
+    "c_name": "cJSON_IsBool",
+    "rust_name": "is_bool",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsBool(const cJSON *const item)",
+    "rust_signature": "fn is_bool(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_IsNull": {
+    "c_name": "cJSON_IsNull",
+    "rust_name": "is_null",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsNull(const cJSON *const item)",
+    "rust_signature": "fn is_null(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_IsNumber": {
+    "c_name": "cJSON_IsNumber",
+    "rust_name": "is_number",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsNumber(const cJSON *const item)",
+    "rust_signature": "fn is_number(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_IsString": {
+    "c_name": "cJSON_IsString",
+    "rust_name": "is_string",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsString(const cJSON *const item)",
+    "rust_signature": "fn is_string(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_IsArray": {
+    "c_name": "cJSON_IsArray",
+    "rust_name": "is_array",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsArray(const cJSON *const item)",
+    "rust_signature": "fn is_array(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_IsObject": {
+    "c_name": "cJSON_IsObject",
+    "rust_name": "is_object",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsObject(const cJSON *const item)",
+    "rust_signature": "fn is_object(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_IsRaw": {
+    "c_name": "cJSON_IsRaw",
+    "rust_name": "is_raw",
+    "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsRaw(const cJSON *const item)",
+    "rust_signature": "fn is_raw(item: Option<&Node>) -> bool",
+    "params": [
+      {
+        "name": "item",
+        "rust_type": "Option<&Node>"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_Compare": {
+    "c_name": "cJSON_Compare",
+    "rust_name": "compare",
+    "c_signature": "cJSON_bool (const cJSON *const, const cJSON *const, const cJSON_bool) cJSON_Compare(const cJSON *const a, const cJSON *const b, const cJSON_bool case_sensitive)",
+    "rust_signature": "fn compare(item1: Option<&Node>, item2: Option<&Node>, case_sensitive: bool) -> bool",
+    "params": [
+      {
+        "name": "item1",
+        "rust_type": "Option<&Node>"
+      },
+      {
+        "name": "item2",
+        "rust_type": "Option<&Node>"
+      },
+      {
+        "name": "case_sensitive",
+        "rust_type": "bool"
+      }
+    ],
+    "return_type": "bool"
+  },
+  "cJSON_malloc": {
+    "c_name": "cJSON_malloc",
+    "rust_name": "cjson_malloc",
+    "c_signature": "void *(size_t) cJSON_malloc(size_t size)",
+    "rust_signature": "fn cjson_malloc(size: usize) -> Option<Vec<u8>>",
+    "params": [
+      {
+        "name": "size",
+        "rust_type": "usize"
+      }
+    ],
+    "return_type": "Option<Vec<u8>>"
+  },
+  "cJSON_free": {
+    "c_name": "cJSON_free",
+    "rust_name": "cjson_free",
+    "c_signature": "void (void *) cJSON_free(void * object)",
+    "rust_signature": "fn cjson_free(object: Vec<u8>) -> ()",
+    "params": [
+      {
+        "name": "object",
+        "rust_type": "Vec<u8>"
+      }
+    ],
+    "return_type": "()"
+  }
+}

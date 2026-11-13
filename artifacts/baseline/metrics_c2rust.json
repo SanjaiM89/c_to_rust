@@ -1,0 +1,76 @@
+{
+  "label": "c2rust_baseline",
+  "crate": "/home/sanjaim/Desktop/Projects/c_to_rust/artifacts/baseline/c2rust",
+  "files": 3,
+  "total_lines": 3265,
+  "code_lines": 3259,
+  "unsafe_total": 136,
+  "raw_pointers_total": 599,
+  "unsafe": {
+    "unsafe_blocks": 1,
+    "unsafe_fns": 135,
+    "unsafe_impls": 0,
+    "unsafe_traits": 0
+  },
+  "pointers": {
+    "ptr_const": 173,
+    "ptr_mut": 426,
+    "ptr_fields": 74,
+    "deref_sites": 627
+  },
+  "clippy": {
+    "warnings": 309,
+    "errors": 2,
+    "by_code": {
+      "clippy::collapsible_if": 2,
+      "unused_unsafe": 1,
+      "clippy::missing_safety_doc": 79,
+      "clippy::needless_return": 114,
+      "clippy::ptr_offset_with_cast": 69,
+      "clippy::unnecessary_cast": 24,
+      "clippy::assign_op_pattern": 1,
+      "clippy::nonminimal_bool": 14,
+      "ERROR:clippy::if_same_then_else": 1,
+      "clippy::toplevel_ref_arg": 4,
+      "clippy::excessive_precision": 1
+    }
+  },
+  "per_file": {
+    "build.rs": {
+      "lines": 11,
+      "code_lines": 6,
+      "unsafe_blocks": 0,
+      "unsafe_fns": 0,
+      "unsafe_impls": 0,
+      "unsafe_traits": 0,
+      "ptr_const": 0,
+      "ptr_mut": 0,
+      "ptr_fields": 0,
+      "deref_sites": 0
+    },
+    "lib.rs": {
+      "lines": 11,
+      "code_lines": 10,
+      "unsafe_blocks": 0,
+      "unsafe_fns": 0,
+      "unsafe_impls": 0,
+      "unsafe_traits": 0,
+      "ptr_const": 0,
+      "ptr_mut": 0,
+      "ptr_fields": 0,
+      "deref_sites": 0
+    },
+    "src/cJSON.rs": {
+      "lines": 3243,
+      "code_lines": 3243,
+      "unsafe_blocks": 1,
+      "unsafe_fns": 135,
+      "unsafe_impls": 0,
+      "unsafe_traits": 0,
+      "ptr_const": 173,
+      "ptr_mut": 426,
+      "ptr_fields": 74,
+      "deref_sites": 627
+    }
+  }
+}

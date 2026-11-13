@@ -1,0 +1,57 @@
+{
+  "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+  "out": "artifacts/arm_B",
+  "units": 1,
+  "compile_first_try_pass": 0,
+  "compile_first_try_rate": "0/1",
+  "compiles_after_repair_pass": 1,
+  "compiles_after_repair_rate": "1/1",
+  "total_model_calls": 3,
+  "final_crate_compiles": true,
+  "results": [
+    {
+      "unit": "U02_print_buffer",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "869a457f6b85f97100f340912fb7607d027ce57b58994c0fa9c58b167b3a9498",
+      "prompt_tokens": 2045,
+      "completion_tokens": 301,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": true,
+      "compiles_first_try": false,
+      "compiles_after_repair": true,
+      "attempts": 3,
+      "first_try_errors": [
+        "error[E0599]: no method named `reallocate` found for struct `Hooks` in the current scope",
+        "error[E0599]: no method named `deallocate` found for struct `Hooks` in the current scope",
+        "error: could not compile `cjson_rs` (lib) due to 2 previous errors"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "869a457f6b85f97100f340912fb7607d027ce57b58994c0fa9c58b167b3a9498",
+          "prompt_tokens": 2045,
+          "completion_tokens": 301,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "decb799679617014d30700b359ee735d9750a40cd2f5b9007ad55eadea90b430",
+          "prompt_tokens": 1293,
+          "completion_tokens": 367,
+          "wall_seconds": 7.8
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "f9413a29b1cc7e1a27714b54b79c815d5732b46fd2597c4ed7679b7b17349426",
+          "prompt_tokens": 1028,
+          "completion_tokens": 350,
+          "wall_seconds": 7.3
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "candidate": "artifacts/arm_B/candidates/U02_print_buffer.rs"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "passed": 21,
+  "failed": 0,
+  "total": 21,
+  "failing": [],
+  "note": "upstream Unity test binaries, compiled unmodified from C, linked against the Rust staticlib"
+}

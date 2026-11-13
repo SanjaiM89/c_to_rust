@@ -1,0 +1,30 @@
+# Large model weights and prebuilt tools
+models/
+tools/
+*.gguf
+*.tar.gz
+
+# Build artifacts & Cargo targets
+target/
+**/target/
+*.o
+*.a
+*.so
+harness/diff_c
+harness/diff_rust
+unittest
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.cache/
+
+# Large execution logs and LLM caches
+logs/
+artifacts/llm_cache/
+
+# Temporary directories
+tmp/
+.tmp*
+

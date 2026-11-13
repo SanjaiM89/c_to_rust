@@ -1,0 +1,4319 @@
+{
+  "target": "cJSON v1.7.19 (c859b25da02955fef659d658b8f324b5cde87be3)",
+  "unit_count": 31,
+  "order": [
+    "U01_hooks_alloc",
+    "U02_print_buffer",
+    "U03_number_parse",
+    "U04_string_parse",
+    "U05_string_print",
+    "U06_value_parse",
+    "U06b_parse_entry",
+    "U07_value_print_p1",
+    "U07_value_print_p2",
+    "U07_value_print_p3",
+    "U08_accessors_p1",
+    "U08_accessors_p2",
+    "U08_accessors_p3",
+    "U08_accessors_p4",
+    "U09_create_p1",
+    "U09_create_p2",
+    "U09_create_p3",
+    "U09_create_p4",
+    "U10_add_item_p1",
+    "U10_add_item_p2",
+    "U10_add_item_p3",
+    "U10_add_item_p4",
+    "U10_add_item_p5",
+    "U10_add_item_p6",
+    "U11_detach_replace_p1",
+    "U11_detach_replace_p2",
+    "U11_detach_replace_p3",
+    "U11_detach_replace_p4",
+    "U12_duplicate",
+    "U13_minify",
+    "U14_compare"
+  ],
+  "units": [
+    {
+      "unit": "U01_hooks_alloc",
+      "index": 0,
+      "description": "allocator hooks, strdup, node lifecycle",
+      "functions": [
+        "cJSON_Delete",
+        "cJSON_InitHooks",
+        "cJSON_New_Item",
+        "cJSON_free",
+        "cJSON_malloc",
+        "cJSON_strdup"
+      ],
+      "function_count": 6,
+      "lines": [
+        253,
+        209,
+        241,
+        3187,
+        3182,
+        188
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_Delete",
+          "c_signature": "void (cJSON *) cJSON_Delete(cJSON * item)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "cJSON *",
+              "role": "owned-consumed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_InitHooks",
+          "c_signature": "void (cJSON_Hooks *) cJSON_InitHooks(cJSON_Hooks * hooks)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "hooks",
+              "c_type": "cJSON_Hooks *",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_New_Item",
+          "c_signature": "cJSON *(const internal_hooks *const) cJSON_New_Item(const internal_hooks *const hooks)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "hooks",
+              "c_type": "const internal_hooks *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_free",
+          "c_signature": "void (void *) cJSON_free(void * object)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "void *",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_malloc",
+          "c_signature": "void *(size_t) cJSON_malloc(size_t size)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "size",
+              "c_type": "size_t",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_strdup",
+          "c_signature": "unsigned char *(const unsigned char *, const internal_hooks *const) cJSON_strdup(const unsigned char * string, const internal_hooks *const hooks)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "string",
+              "c_type": "const unsigned char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "hooks",
+              "c_type": "const internal_hooks *const",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "copy",
+        "global_hooks",
+        "length",
+        "next",
+        "node"
+      ],
+      "calls_earlier_units": [],
+      "calls_later_units": [],
+      "scc_id": [
+        3,
+        6,
+        8,
+        63,
+        101,
+        108
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_IsReference",
+        "cJSON_StringIsConst"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_IsReference",
+          "strategy": "inline-const",
+          "expansion": "256",
+          "rust_note": "const CJSON_IS_REFERENCE: u8 = 256;"
+        },
+        {
+          "name": "cJSON_StringIsConst",
+          "strategy": "inline-const",
+          "expansion": "512",
+          "rust_note": "const CJSON_STRING_IS_CONST: u8 = 512;"
+        }
+      ]
+    },
+    {
+      "unit": "U02_print_buffer",
+      "index": 1,
+      "description": "printbuffer growth and offset bookkeeping",
+      "functions": [
+        "ensure",
+        "update_offset"
+      ],
+      "function_count": 2,
+      "lines": [
+        485,
+        571
+      ],
+      "signatures": [
+        {
+          "name": "ensure",
+          "c_signature": "unsigned char *(printbuffer *const, size_t) ensure(printbuffer *const p, size_t needed)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "p",
+              "c_type": "printbuffer *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "needed",
+              "c_type": "size_t",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "update_offset",
+          "c_signature": "void (printbuffer *const) update_offset(printbuffer *const buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "buffer",
+              "c_type": "printbuffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "buffer_pointer",
+        "newbuffer",
+        "newsize"
+      ],
+      "calls_earlier_units": [],
+      "calls_later_units": [],
+      "scc_id": [
+        88,
+        89
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [],
+      "macro_guidance": []
+    },
+    {
+      "unit": "U03_number_parse",
+      "index": 2,
+      "description": "number scanning and decimal point",
+      "functions": [
+        "cJSON_SetNumberHelper",
+        "compare_double",
+        "get_decimal_point",
+        "parse_number"
+      ],
+      "function_count": 4,
+      "lines": [
+        411,
+        584,
+        279,
+        307
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_SetNumberHelper",
+          "c_signature": "double (cJSON *, double) cJSON_SetNumberHelper(cJSON * object, double number)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "number",
+              "c_type": "double",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "compare_double",
+          "c_signature": "cJSON_bool (double, double) compare_double(double a, double b)",
+          "return_role": "by-value",
+          "params": [
+            {
+              "name": "a",
+              "c_type": "double",
+              "role": "by-value"
+            },
+            {
+              "name": "b",
+              "c_type": "double",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "get_decimal_point",
+          "c_signature": "unsigned char (void) get_decimal_point()",
+          "return_role": "by-value",
+          "params": []
+        },
+        {
+          "name": "parse_number",
+          "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_number(cJSON *const item, parse_buffer *const input_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "input_buffer",
+              "c_type": "parse_buffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "after_end",
+        "decimal_point",
+        "has_decimal_point",
+        "i",
+        "maxVal",
+        "number",
+        "number_c_string",
+        "number_string_length"
+      ],
+      "calls_earlier_units": [],
+      "calls_later_units": [],
+      "scc_id": [
+        34,
+        78,
+        79,
+        105
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "buffer_at_offset",
+        "cJSON_Number",
+        "can_access_at_index",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "buffer_at_offset",
+          "strategy": "inline-fn",
+          "expansion": "",
+          "rust_note": "inline as `&buffer.content[buffer.offset..]`; the C version can run past the end - the Rust version must not"
+        },
+        {
+          "name": "cJSON_Number",
+          "strategy": "inline-const",
+          "expansion": "(1 << 3)",
+          "rust_note": "const CJSON_NUMBER: u8 = 1 << 3;"
+        },
+        {
+          "name": "can_access_at_index",
+          "strategy": "rust-helper",
+          "expansion": "",
+          "rust_note": "becomes `buffer.can_access_at_index(i) -> bool` with a checked bounds test (this is a Kani proof target)"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U04_string_parse",
+      "index": 3,
+      "description": "hex4 decoding, UTF-16 -> UTF-8, string parsing",
+      "functions": [
+        "parse_hex4",
+        "parse_string",
+        "utf16_literal_to_utf8"
+      ],
+      "function_count": 3,
+      "lines": [
+        661,
+        819,
+        698
+      ],
+      "signatures": [
+        {
+          "name": "parse_hex4",
+          "c_signature": "unsigned int (const unsigned char *const) parse_hex4(const unsigned char *const input)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "input",
+              "c_type": "const unsigned char *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "parse_string",
+          "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_string(cJSON *const item, parse_buffer *const input_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "input_buffer",
+              "c_type": "parse_buffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "utf16_literal_to_utf8",
+          "c_signature": "unsigned char (const unsigned char *const, const unsigned char *const, unsigned char **) utf16_literal_to_utf8(const unsigned char *const input_pointer, const unsigned char *const input_end, unsigned char ** output_pointer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "input_pointer",
+              "c_type": "const unsigned char *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "input_end",
+              "c_type": "const unsigned char *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "output_pointer",
+              "c_type": "unsigned char **",
+              "role": "output-parameter"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "allocation_length",
+        "codepoint",
+        "first_byte_mark",
+        "first_code",
+        "first_sequence",
+        "h",
+        "i",
+        "input_end",
+        "input_pointer",
+        "output",
+        "output_pointer",
+        "second_code",
+        "second_sequence",
+        "sequence_length",
+        "skipped_bytes",
+        "utf8_length",
+        "utf8_position"
+      ],
+      "calls_earlier_units": [],
+      "calls_later_units": [],
+      "scc_id": [
+        80,
+        81,
+        82
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "buffer_at_offset",
+        "cJSON_String",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "buffer_at_offset",
+          "strategy": "inline-fn",
+          "expansion": "",
+          "rust_note": "inline as `&buffer.content[buffer.offset..]`; the C version can run past the end - the Rust version must not"
+        },
+        {
+          "name": "cJSON_String",
+          "strategy": "inline-const",
+          "expansion": "(1 << 4)",
+          "rust_note": "const CJSON_STRING: u8 = 1 << 4;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U05_string_print",
+      "index": 4,
+      "description": "string escaping for output",
+      "functions": [
+        "print_string",
+        "print_string_ptr"
+      ],
+      "function_count": 2,
+      "lines": [
+        1071,
+        949
+      ],
+      "signatures": [
+        {
+          "name": "print_string",
+          "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_string(const cJSON *const item, printbuffer *const p)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "p",
+              "c_type": "printbuffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "print_string_ptr",
+          "c_signature": "cJSON_bool (const unsigned char *const, printbuffer *const) print_string_ptr(const unsigned char *const input, printbuffer *const output_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "input",
+              "c_type": "const unsigned char *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "output_buffer",
+              "c_type": "printbuffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "escape_characters",
+        "input_pointer",
+        "output",
+        "output_length",
+        "output_pointer"
+      ],
+      "calls_earlier_units": [
+        "ensure"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        90,
+        92
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U06_value_parse",
+      "index": 5,
+      "description": "the mutually recursive value/array/object parsers (one SCC)",
+      "functions": [
+        "buffer_skip_whitespace",
+        "parse_array",
+        "parse_object",
+        "parse_value",
+        "skip_utf8_bom"
+      ],
+      "function_count": 5,
+      "lines": [
+        1085,
+        1492,
+        1652,
+        1363,
+        1111
+      ],
+      "signatures": [
+        {
+          "name": "buffer_skip_whitespace",
+          "c_signature": "parse_buffer *(parse_buffer *const) buffer_skip_whitespace(parse_buffer *const buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "buffer",
+              "c_type": "parse_buffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "parse_array",
+          "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_array(cJSON *const item, parse_buffer *const input_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "input_buffer",
+              "c_type": "parse_buffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "parse_object",
+          "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_object(cJSON *const item, parse_buffer *const input_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "input_buffer",
+              "c_type": "parse_buffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "parse_value",
+          "c_signature": "cJSON_bool (cJSON *const, parse_buffer *const) parse_value(cJSON *const item, parse_buffer *const input_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "input_buffer",
+              "c_type": "parse_buffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "skip_utf8_bom",
+          "c_signature": "parse_buffer *(parse_buffer *const) skip_utf8_bom(parse_buffer *const buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "buffer",
+              "c_type": "parse_buffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "current_item",
+        "head",
+        "new_item"
+      ],
+      "calls_earlier_units": [
+        "cJSON_Delete",
+        "cJSON_New_Item",
+        "parse_number",
+        "parse_string"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        5,
+        77,
+        83
+      ],
+      "in_cyclic_scc": true,
+      "macros_used": [
+        "CJSON_NESTING_LIMIT",
+        "buffer_at_offset",
+        "cJSON_Array",
+        "cJSON_False",
+        "cJSON_NULL",
+        "cJSON_Number",
+        "cJSON_Object",
+        "cJSON_Raw",
+        "cJSON_String",
+        "cJSON_True",
+        "can_access_at_index",
+        "can_read",
+        "cannot_access_at_index",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_NESTING_LIMIT",
+          "strategy": "inline-const",
+          "expansion": "1000",
+          "rust_note": "pub const CJSON_NESTING_LIMIT: usize = 1000;  // parse recursion depth limit - MUST be preserved exactly"
+        },
+        {
+          "name": "buffer_at_offset",
+          "strategy": "inline-fn",
+          "expansion": "",
+          "rust_note": "inline as `&buffer.content[buffer.offset..]`; the C version can run past the end - the Rust version must not"
+        },
+        {
+          "name": "cJSON_Array",
+          "strategy": "inline-const",
+          "expansion": "(1 << 5)",
+          "rust_note": "const CJSON_ARRAY: u8 = 1 << 5;"
+        },
+        {
+          "name": "cJSON_False",
+          "strategy": "inline-const",
+          "expansion": "(1 << 0)",
+          "rust_note": "const CJSON_FALSE: u8 = 1 << 0;"
+        },
+        {
+          "name": "cJSON_NULL",
+          "strategy": "inline-const",
+          "expansion": "(1 << 2)",
+          "rust_note": "const CJSON_NULL: u8 = 1 << 2;"
+        },
+        {
+          "name": "cJSON_Number",
+          "strategy": "inline-const",
+          "expansion": "(1 << 3)",
+          "rust_note": "const CJSON_NUMBER: u8 = 1 << 3;"
+        },
+        {
+          "name": "cJSON_Object",
+          "strategy": "inline-const",
+          "expansion": "(1 << 6)",
+          "rust_note": "const CJSON_OBJECT: u8 = 1 << 6;"
+        },
+        {
+          "name": "cJSON_Raw",
+          "strategy": "inline-const",
+          "expansion": "(1 << 7)",
+          "rust_note": "const CJSON_RAW: u8 = 1 << 7;"
+        },
+        {
+          "name": "cJSON_String",
+          "strategy": "inline-const",
+          "expansion": "(1 << 4)",
+          "rust_note": "const CJSON_STRING: u8 = 1 << 4;"
+        },
+        {
+          "name": "cJSON_True",
+          "strategy": "inline-const",
+          "expansion": "(1 << 1)",
+          "rust_note": "const CJSON_TRUE: u8 = 1 << 1;"
+        },
+        {
+          "name": "can_access_at_index",
+          "strategy": "rust-helper",
+          "expansion": "",
+          "rust_note": "becomes `buffer.can_access_at_index(i) -> bool` with a checked bounds test (this is a Kani proof target)"
+        },
+        {
+          "name": "can_read",
+          "strategy": "rust-helper",
+          "expansion": "",
+          "rust_note": "becomes `buffer.can_read(n) -> bool` with a checked bounds test (this is a Kani proof target)"
+        },
+        {
+          "name": "cannot_access_at_index",
+          "strategy": "rust-helper",
+          "expansion": "",
+          "rust_note": "becomes `!buffer.can_access_at_index(i)`"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U06b_parse_entry",
+      "index": 6,
+      "description": "the public parse entry points",
+      "functions": [
+        "cJSON_Parse",
+        "cJSON_ParseWithLength",
+        "cJSON_ParseWithLengthOpts",
+        "cJSON_ParseWithOpts"
+      ],
+      "function_count": 4,
+      "lines": [
+        1222,
+        1227,
+        1142,
+        1126
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_Parse",
+          "c_signature": "cJSON *(const char *) cJSON_Parse(const char * value)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "value",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_ParseWithLength",
+          "c_signature": "cJSON *(const char *, size_t) cJSON_ParseWithLength(const char * value, size_t buffer_length)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "value",
+              "c_type": "const char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "buffer_length",
+              "c_type": "size_t",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_ParseWithLengthOpts",
+          "c_signature": "cJSON *(const char *, size_t, const char **, cJSON_bool) cJSON_ParseWithLengthOpts(const char * value, size_t buffer_length, const char ** return_parse_end, cJSON_bool require_null_terminated)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "value",
+              "c_type": "const char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "buffer_length",
+              "c_type": "size_t",
+              "role": "by-value"
+            },
+            {
+              "name": "return_parse_end",
+              "c_type": "const char **",
+              "role": "output-parameter"
+            },
+            {
+              "name": "require_null_terminated",
+              "c_type": "cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_ParseWithOpts",
+          "c_signature": "cJSON *(const char *, const char **, cJSON_bool) cJSON_ParseWithOpts(const char * value, const char ** return_parse_end, cJSON_bool require_null_terminated)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "value",
+              "c_type": "const char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "return_parse_end",
+              "c_type": "const char **",
+              "role": "output-parameter"
+            },
+            {
+              "name": "require_null_terminated",
+              "c_type": "cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "buffer",
+        "buffer_length",
+        "global_error",
+        "global_hooks",
+        "item",
+        "local_error"
+      ],
+      "calls_earlier_units": [
+        "buffer_skip_whitespace",
+        "cJSON_Delete",
+        "cJSON_New_Item",
+        "parse_value",
+        "skip_utf8_bom"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "buffer_at_offset"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "buffer_at_offset",
+          "strategy": "inline-fn",
+          "expansion": "",
+          "rust_note": "inline as `&buffer.content[buffer.offset..]`; the C version can run past the end - the Rust version must not"
+        }
+      ]
+    },
+    {
+      "unit": "U07_value_print_p1",
+      "index": 7,
+      "description": "value/array/object printing and the public print entry points (part 1 of 3)",
+      "functions": [
+        "print_number"
+      ],
+      "function_count": 1,
+      "lines": [
+        591
+      ],
+      "signatures": [
+        {
+          "name": "print_number",
+          "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_number(const cJSON *const item, printbuffer *const output_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "output_buffer",
+              "c_type": "printbuffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "d",
+        "decimal_point",
+        "i",
+        "length",
+        "number_buffer",
+        "output_pointer",
+        "test"
+      ],
+      "calls_earlier_units": [
+        "compare_double",
+        "ensure",
+        "get_decimal_point"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        91
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "false",
+        "isinf",
+        "isnan",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "isinf",
+          "strategy": "inline-fn",
+          "expansion": "",
+          "rust_note": "Rust's `f64::is_infinite()`"
+        },
+        {
+          "name": "isnan",
+          "strategy": "inline-fn",
+          "expansion": "",
+          "rust_note": "Rust's `f64::is_nan()`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U07_value_print_p2",
+      "index": 8,
+      "description": "value/array/object printing and the public print entry points (part 2 of 3)",
+      "functions": [
+        "cJSON_Print",
+        "print",
+        "print_array",
+        "print_object",
+        "print_value"
+      ],
+      "function_count": 5,
+      "lines": [
+        1302,
+        1234,
+        1590,
+        1770,
+        1418
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_Print",
+          "c_signature": "char *(const cJSON *) cJSON_Print(const cJSON * item)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "print",
+          "c_signature": "unsigned char *(const cJSON *const, cJSON_bool, const internal_hooks *const) print(const cJSON *const item, cJSON_bool format, const internal_hooks *const hooks)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "format",
+              "c_type": "cJSON_bool",
+              "role": "by-value"
+            },
+            {
+              "name": "hooks",
+              "c_type": "const internal_hooks *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "print_array",
+          "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_array(const cJSON *const item, printbuffer *const output_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "output_buffer",
+              "c_type": "printbuffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "print_object",
+          "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_object(const cJSON *const item, printbuffer *const output_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "output_buffer",
+              "c_type": "printbuffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "print_value",
+          "c_signature": "cJSON_bool (const cJSON *const, printbuffer *const) print_value(const cJSON *const item, printbuffer *const output_buffer)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "output_buffer",
+              "c_type": "printbuffer *const",
+              "role": "borrowed-mutable"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "buffer",
+        "current_element",
+        "current_item",
+        "default_buffer_size",
+        "global_hooks",
+        "i",
+        "length",
+        "output",
+        "output_pointer",
+        "printed",
+        "raw_length"
+      ],
+      "calls_earlier_units": [
+        "ensure",
+        "print_number",
+        "print_string",
+        "print_string_ptr",
+        "update_offset"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        93,
+        94,
+        95
+      ],
+      "in_cyclic_scc": true,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_Array",
+        "cJSON_False",
+        "cJSON_NULL",
+        "cJSON_Number",
+        "cJSON_Object",
+        "cJSON_Raw",
+        "cJSON_String",
+        "cJSON_True",
+        "cjson_min",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_Array",
+          "strategy": "inline-const",
+          "expansion": "(1 << 5)",
+          "rust_note": "const CJSON_ARRAY: u8 = 1 << 5;"
+        },
+        {
+          "name": "cJSON_False",
+          "strategy": "inline-const",
+          "expansion": "(1 << 0)",
+          "rust_note": "const CJSON_FALSE: u8 = 1 << 0;"
+        },
+        {
+          "name": "cJSON_NULL",
+          "strategy": "inline-const",
+          "expansion": "(1 << 2)",
+          "rust_note": "const CJSON_NULL: u8 = 1 << 2;"
+        },
+        {
+          "name": "cJSON_Number",
+          "strategy": "inline-const",
+          "expansion": "(1 << 3)",
+          "rust_note": "const CJSON_NUMBER: u8 = 1 << 3;"
+        },
+        {
+          "name": "cJSON_Object",
+          "strategy": "inline-const",
+          "expansion": "(1 << 6)",
+          "rust_note": "const CJSON_OBJECT: u8 = 1 << 6;"
+        },
+        {
+          "name": "cJSON_Raw",
+          "strategy": "inline-const",
+          "expansion": "(1 << 7)",
+          "rust_note": "const CJSON_RAW: u8 = 1 << 7;"
+        },
+        {
+          "name": "cJSON_String",
+          "strategy": "inline-const",
+          "expansion": "(1 << 4)",
+          "rust_note": "const CJSON_STRING: u8 = 1 << 4;"
+        },
+        {
+          "name": "cJSON_True",
+          "strategy": "inline-const",
+          "expansion": "(1 << 1)",
+          "rust_note": "const CJSON_TRUE: u8 = 1 << 1;"
+        },
+        {
+          "name": "cjson_min",
+          "strategy": "inline-fn",
+          "expansion": "",
+          "rust_note": "inline as Rust `a.min(b)`"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U07_value_print_p3",
+      "index": 9,
+      "description": "value/array/object printing and the public print entry points (part 3 of 3)",
+      "functions": [
+        "cJSON_PrintBuffered",
+        "cJSON_PrintPreallocated",
+        "cJSON_PrintUnformatted"
+      ],
+      "function_count": 3,
+      "lines": [
+        1312,
+        1343,
+        1307
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_PrintBuffered",
+          "c_signature": "char *(const cJSON *, int, cJSON_bool) cJSON_PrintBuffered(const cJSON * item, int prebuffer, cJSON_bool fmt)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            },
+            {
+              "name": "prebuffer",
+              "c_type": "int",
+              "role": "by-value"
+            },
+            {
+              "name": "fmt",
+              "c_type": "cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_PrintPreallocated",
+          "c_signature": "cJSON_bool (cJSON *, char *, const int, const cJSON_bool) cJSON_PrintPreallocated(cJSON * item, char * buffer, const int length, const cJSON_bool format)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "buffer",
+              "c_type": "char *",
+              "role": "borrowed-mutable"
+            },
+            {
+              "name": "length",
+              "c_type": "const int",
+              "role": "by-value"
+            },
+            {
+              "name": "format",
+              "c_type": "const cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_PrintUnformatted",
+          "c_signature": "char *(const cJSON *) cJSON_PrintUnformatted(const cJSON * item)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "global_hooks",
+        "p"
+      ],
+      "calls_earlier_units": [
+        "print",
+        "print_value"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        96,
+        97,
+        98
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U08_accessors_p1",
+      "index": 10,
+      "description": "read-only accessors and type predicates (part 1 of 4)",
+      "functions": [
+        "cJSON_GetArrayItem",
+        "cJSON_GetArraySize",
+        "cJSON_GetErrorPtr",
+        "cJSON_GetNumberValue",
+        "cJSON_IsNumber",
+        "get_array_item"
+      ],
+      "function_count": 6,
+      "lines": [
+        1926,
+        1884,
+        94,
+        109,
+        3007,
+        1907
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_GetArrayItem",
+          "c_signature": "cJSON *(const cJSON *, int) cJSON_GetArrayItem(const cJSON * array, int index)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            },
+            {
+              "name": "index",
+              "c_type": "int",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_GetArraySize",
+          "c_signature": "int (const cJSON *) cJSON_GetArraySize(const cJSON * array)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_GetErrorPtr",
+          "c_signature": "const char *(void) cJSON_GetErrorPtr()",
+          "return_role": "borrowed-pointer",
+          "params": []
+        },
+        {
+          "name": "cJSON_GetNumberValue",
+          "c_signature": "double (const cJSON *const) cJSON_GetNumberValue(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_IsNumber",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsNumber(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "get_array_item",
+          "c_signature": "cJSON *(const cJSON *, size_t) get_array_item(const cJSON * array, size_t index)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            },
+            {
+              "name": "index",
+              "c_type": "size_t",
+              "role": "by-value"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "child",
+        "current_child",
+        "global_error",
+        "size"
+      ],
+      "calls_earlier_units": [],
+      "calls_later_units": [],
+      "scc_id": [
+        43,
+        55,
+        56,
+        57,
+        58,
+        59
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "NAN",
+        "cJSON_Number",
+        "false"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "NAN",
+          "strategy": "inline-fn",
+          "expansion": "(__builtin_nanf (\"\"))",
+          "rust_note": "Rust's `f64::NAN`"
+        },
+        {
+          "name": "cJSON_Number",
+          "strategy": "inline-const",
+          "expansion": "(1 << 3)",
+          "rust_note": "const CJSON_NUMBER: u8 = 1 << 3;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        }
+      ]
+    },
+    {
+      "unit": "U08_accessors_p2",
+      "index": 11,
+      "description": "read-only accessors and type predicates (part 2 of 4)",
+      "functions": [
+        "cJSON_GetObjectItem",
+        "cJSON_GetObjectItemCaseSensitive",
+        "cJSON_GetStringValue",
+        "cJSON_IsString",
+        "case_insensitive_strcmp",
+        "get_object_item"
+      ],
+      "function_count": 6,
+      "lines": [
+        1968,
+        1973,
+        99,
+        3017,
+        133,
+        1936
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_GetObjectItem",
+          "c_signature": "cJSON *(const cJSON *const, const char *const) cJSON_GetObjectItem(const cJSON *const object, const char *const string)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_GetObjectItemCaseSensitive",
+          "c_signature": "cJSON *(const cJSON *const, const char *const) cJSON_GetObjectItemCaseSensitive(const cJSON *const object, const char *const string)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_GetStringValue",
+          "c_signature": "char *(const cJSON *const) cJSON_GetStringValue(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_IsString",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsString(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "case_insensitive_strcmp",
+          "c_signature": "int (const unsigned char *, const unsigned char *) case_insensitive_strcmp(const unsigned char * string1, const unsigned char * string2)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "string1",
+              "c_type": "const unsigned char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "string2",
+              "c_type": "const unsigned char *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "get_object_item",
+          "c_signature": "cJSON *(const cJSON *const, const char *const, const cJSON_bool) get_object_item(const cJSON *const object, const char *const name, const cJSON_bool case_sensitive)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "case_sensitive",
+              "c_type": "const cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "current_element"
+      ],
+      "calls_earlier_units": [],
+      "calls_later_units": [],
+      "scc_id": [
+        32,
+        33,
+        47,
+        50,
+        60,
+        61
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_String",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_String",
+          "strategy": "inline-const",
+          "expansion": "(1 << 4)",
+          "rust_note": "const CJSON_STRING: u8 = 1 << 4;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U08_accessors_p3",
+      "index": 12,
+      "description": "read-only accessors and type predicates (part 3 of 4)",
+      "functions": [
+        "cJSON_HasObjectItem",
+        "cJSON_IsArray",
+        "cJSON_IsBool",
+        "cJSON_IsFalse",
+        "cJSON_IsInvalid",
+        "cJSON_IsNull"
+      ],
+      "function_count": 6,
+      "lines": [
+        1978,
+        3027,
+        2988,
+        2967,
+        2957,
+        2997
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_HasObjectItem",
+          "c_signature": "cJSON_bool (const cJSON *, const char *) cJSON_HasObjectItem(const cJSON * object, const char * string)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_IsArray",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsArray(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_IsBool",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsBool(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_IsFalse",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsFalse(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_IsInvalid",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsInvalid(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_IsNull",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsNull(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [],
+      "calls_earlier_units": [
+        "cJSON_GetObjectItem"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        62,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_Array",
+        "cJSON_False",
+        "cJSON_Invalid",
+        "cJSON_NULL",
+        "cJSON_True",
+        "false"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_Array",
+          "strategy": "inline-const",
+          "expansion": "(1 << 5)",
+          "rust_note": "const CJSON_ARRAY: u8 = 1 << 5;"
+        },
+        {
+          "name": "cJSON_False",
+          "strategy": "inline-const",
+          "expansion": "(1 << 0)",
+          "rust_note": "const CJSON_FALSE: u8 = 1 << 0;"
+        },
+        {
+          "name": "cJSON_Invalid",
+          "strategy": "inline-const",
+          "expansion": "(0)",
+          "rust_note": "const CJSON_INVALID: u8 = 0;"
+        },
+        {
+          "name": "cJSON_NULL",
+          "strategy": "inline-const",
+          "expansion": "(1 << 2)",
+          "rust_note": "const CJSON_NULL: u8 = 1 << 2;"
+        },
+        {
+          "name": "cJSON_True",
+          "strategy": "inline-const",
+          "expansion": "(1 << 1)",
+          "rust_note": "const CJSON_TRUE: u8 = 1 << 1;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        }
+      ]
+    },
+    {
+      "unit": "U08_accessors_p4",
+      "index": 13,
+      "description": "read-only accessors and type predicates (part 4 of 4)",
+      "functions": [
+        "cJSON_IsObject",
+        "cJSON_IsRaw",
+        "cJSON_IsTrue",
+        "cJSON_Version"
+      ],
+      "function_count": 4,
+      "lines": [
+        3037,
+        3047,
+        2977,
+        124
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_IsObject",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsObject(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_IsRaw",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsRaw(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_IsTrue",
+          "c_signature": "cJSON_bool (const cJSON *const) cJSON_IsTrue(const cJSON *const item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_Version",
+          "c_signature": "const char *(void) cJSON_Version()",
+          "return_role": "borrowed-pointer",
+          "params": []
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "version"
+      ],
+      "calls_earlier_units": [],
+      "calls_later_units": [],
+      "scc_id": [
+        70,
+        71,
+        72,
+        107
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "CJSON_VERSION_MAJOR",
+        "CJSON_VERSION_MINOR",
+        "CJSON_VERSION_PATCH",
+        "cJSON_Object",
+        "cJSON_Raw",
+        "cJSON_True",
+        "false"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "CJSON_VERSION_MAJOR",
+          "strategy": "inline-const",
+          "expansion": "1",
+          "rust_note": "pub const CJSON_VERSION_MAJOR: u32 = 1;"
+        },
+        {
+          "name": "CJSON_VERSION_MINOR",
+          "strategy": "inline-const",
+          "expansion": "7",
+          "rust_note": "pub const CJSON_VERSION_MINOR: u32 = 7;"
+        },
+        {
+          "name": "CJSON_VERSION_PATCH",
+          "strategy": "inline-const",
+          "expansion": "19",
+          "rust_note": "pub const CJSON_VERSION_PATCH: u32 = 19;"
+        },
+        {
+          "name": "cJSON_Object",
+          "strategy": "inline-const",
+          "expansion": "(1 << 6)",
+          "rust_note": "const CJSON_OBJECT: u8 = 1 << 6;"
+        },
+        {
+          "name": "cJSON_Raw",
+          "strategy": "inline-const",
+          "expansion": "(1 << 7)",
+          "rust_note": "const CJSON_RAW: u8 = 1 << 7;"
+        },
+        {
+          "name": "cJSON_True",
+          "strategy": "inline-const",
+          "expansion": "(1 << 1)",
+          "rust_note": "const CJSON_TRUE: u8 = 1 << 1;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        }
+      ]
+    },
+    {
+      "unit": "U09_create_p1",
+      "index": 14,
+      "description": "node constructors (part 1 of 4)",
+      "functions": [
+        "cJSON_CreateArray",
+        "cJSON_CreateArrayReference",
+        "cJSON_CreateBool",
+        "cJSON_CreateNumber",
+        "cast_away_const"
+      ],
+      "function_count": 5,
+      "lines": [
+        2583,
+        2556,
+        2479,
+        2490,
+        2058
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_CreateArray",
+          "c_signature": "cJSON *(void) cJSON_CreateArray()",
+          "return_role": "owning-pointer",
+          "params": []
+        },
+        {
+          "name": "cJSON_CreateArrayReference",
+          "c_signature": "cJSON *(const cJSON *) cJSON_CreateArrayReference(const cJSON * child)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "child",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_CreateBool",
+          "c_signature": "cJSON *(cJSON_bool) cJSON_CreateBool(cJSON_bool boolean)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "boolean",
+              "c_type": "cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_CreateNumber",
+          "c_signature": "cJSON *(double) cJSON_CreateNumber(double num)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "num",
+              "c_type": "double",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cast_away_const",
+          "c_signature": "void *(const void *) cast_away_const(const void * string)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "string",
+              "c_type": "const void *",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "global_hooks",
+        "item"
+      ],
+      "calls_earlier_units": [
+        "cJSON_New_Item"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        2,
+        7,
+        10,
+        22,
+        36
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_Array",
+        "cJSON_False",
+        "cJSON_IsReference",
+        "cJSON_Number",
+        "cJSON_True"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_Array",
+          "strategy": "inline-const",
+          "expansion": "(1 << 5)",
+          "rust_note": "const CJSON_ARRAY: u8 = 1 << 5;"
+        },
+        {
+          "name": "cJSON_False",
+          "strategy": "inline-const",
+          "expansion": "(1 << 0)",
+          "rust_note": "const CJSON_FALSE: u8 = 1 << 0;"
+        },
+        {
+          "name": "cJSON_IsReference",
+          "strategy": "inline-const",
+          "expansion": "256",
+          "rust_note": "const CJSON_IS_REFERENCE: u8 = 256;"
+        },
+        {
+          "name": "cJSON_Number",
+          "strategy": "inline-const",
+          "expansion": "(1 << 3)",
+          "rust_note": "const CJSON_NUMBER: u8 = 1 << 3;"
+        },
+        {
+          "name": "cJSON_True",
+          "strategy": "inline-const",
+          "expansion": "(1 << 1)",
+          "rust_note": "const CJSON_TRUE: u8 = 1 << 1;"
+        }
+      ]
+    },
+    {
+      "unit": "U09_create_p2",
+      "index": 15,
+      "description": "node constructors (part 2 of 4)",
+      "functions": [
+        "cJSON_CreateDoubleArray",
+        "cJSON_CreateFalse",
+        "cJSON_CreateFloatArray",
+        "cJSON_CreateIntArray",
+        "suffix_object"
+      ],
+      "function_count": 5,
+      "lines": [
+        2686,
+        2468,
+        2646,
+        2606,
+        1984
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_CreateDoubleArray",
+          "c_signature": "cJSON *(const double *, int) cJSON_CreateDoubleArray(const double * numbers, int count)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "numbers",
+              "c_type": "const double *",
+              "role": "borrowed"
+            },
+            {
+              "name": "count",
+              "c_type": "int",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_CreateFalse",
+          "c_signature": "cJSON *(void) cJSON_CreateFalse()",
+          "return_role": "owning-pointer",
+          "params": []
+        },
+        {
+          "name": "cJSON_CreateFloatArray",
+          "c_signature": "cJSON *(const float *, int) cJSON_CreateFloatArray(const float * numbers, int count)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "numbers",
+              "c_type": "const float *",
+              "role": "borrowed"
+            },
+            {
+              "name": "count",
+              "c_type": "int",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_CreateIntArray",
+          "c_signature": "cJSON *(const int *, int) cJSON_CreateIntArray(const int * numbers, int count)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "numbers",
+              "c_type": "const int *",
+              "role": "borrowed"
+            },
+            {
+              "name": "count",
+              "c_type": "int",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "suffix_object",
+          "c_signature": "void (cJSON *, cJSON *) suffix_object(cJSON * prev, cJSON * item)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "prev",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "a",
+        "global_hooks",
+        "i",
+        "item",
+        "n",
+        "p"
+      ],
+      "calls_earlier_units": [
+        "cJSON_CreateArray",
+        "cJSON_CreateNumber",
+        "cJSON_Delete",
+        "cJSON_New_Item"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        0,
+        12,
+        37,
+        38,
+        39
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_False",
+        "cJSON_IsReference",
+        "cJSON_StringIsConst"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_False",
+          "strategy": "inline-const",
+          "expansion": "(1 << 0)",
+          "rust_note": "const CJSON_FALSE: u8 = 1 << 0;"
+        },
+        {
+          "name": "cJSON_IsReference",
+          "strategy": "inline-const",
+          "expansion": "256",
+          "rust_note": "const CJSON_IS_REFERENCE: u8 = 256;"
+        },
+        {
+          "name": "cJSON_StringIsConst",
+          "strategy": "inline-const",
+          "expansion": "512",
+          "rust_note": "const CJSON_STRING_IS_CONST: u8 = 512;"
+        }
+      ]
+    },
+    {
+      "unit": "U09_create_p3",
+      "index": 16,
+      "description": "node constructors (part 3 of 4)",
+      "functions": [
+        "cJSON_CreateNull",
+        "cJSON_CreateObject",
+        "cJSON_CreateObjectReference",
+        "cJSON_CreateRaw",
+        "cJSON_CreateString"
+      ],
+      "function_count": 5,
+      "lines": [
+        2446,
+        2594,
+        2545,
+        2566,
+        2516
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_CreateNull",
+          "c_signature": "cJSON *(void) cJSON_CreateNull()",
+          "return_role": "owning-pointer",
+          "params": []
+        },
+        {
+          "name": "cJSON_CreateObject",
+          "c_signature": "cJSON *(void) cJSON_CreateObject()",
+          "return_role": "owning-pointer",
+          "params": []
+        },
+        {
+          "name": "cJSON_CreateObjectReference",
+          "c_signature": "cJSON *(const cJSON *) cJSON_CreateObjectReference(const cJSON * child)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "child",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_CreateRaw",
+          "c_signature": "cJSON *(const char *) cJSON_CreateRaw(const char * raw)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "raw",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_CreateString",
+          "c_signature": "cJSON *(const char *) cJSON_CreateString(const char * string)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "global_hooks",
+        "item"
+      ],
+      "calls_earlier_units": [
+        "cJSON_Delete",
+        "cJSON_New_Item",
+        "cJSON_strdup",
+        "cast_away_const"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        20,
+        24,
+        26,
+        28,
+        40
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_IsReference",
+        "cJSON_NULL",
+        "cJSON_Object",
+        "cJSON_Raw",
+        "cJSON_String"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_IsReference",
+          "strategy": "inline-const",
+          "expansion": "256",
+          "rust_note": "const CJSON_IS_REFERENCE: u8 = 256;"
+        },
+        {
+          "name": "cJSON_NULL",
+          "strategy": "inline-const",
+          "expansion": "(1 << 2)",
+          "rust_note": "const CJSON_NULL: u8 = 1 << 2;"
+        },
+        {
+          "name": "cJSON_Object",
+          "strategy": "inline-const",
+          "expansion": "(1 << 6)",
+          "rust_note": "const CJSON_OBJECT: u8 = 1 << 6;"
+        },
+        {
+          "name": "cJSON_Raw",
+          "strategy": "inline-const",
+          "expansion": "(1 << 7)",
+          "rust_note": "const CJSON_RAW: u8 = 1 << 7;"
+        },
+        {
+          "name": "cJSON_String",
+          "strategy": "inline-const",
+          "expansion": "(1 << 4)",
+          "rust_note": "const CJSON_STRING: u8 = 1 << 4;"
+        }
+      ]
+    },
+    {
+      "unit": "U09_create_p4",
+      "index": 17,
+      "description": "node constructors (part 4 of 4)",
+      "functions": [
+        "cJSON_CreateStringArray",
+        "cJSON_CreateStringReference",
+        "cJSON_CreateTrue",
+        "cJSON_SetValuestring",
+        "create_reference"
+      ],
+      "function_count": 5,
+      "lines": [
+        2726,
+        2533,
+        2457,
+        430,
+        1991
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_CreateStringArray",
+          "c_signature": "cJSON *(const char *const *, int) cJSON_CreateStringArray(const char *const * strings, int count)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "strings",
+              "c_type": "const char *const *",
+              "role": "output-parameter"
+            },
+            {
+              "name": "count",
+              "c_type": "int",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_CreateStringReference",
+          "c_signature": "cJSON *(const char *) cJSON_CreateStringReference(const char * string)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_CreateTrue",
+          "c_signature": "cJSON *(void) cJSON_CreateTrue()",
+          "return_role": "owning-pointer",
+          "params": []
+        },
+        {
+          "name": "cJSON_SetValuestring",
+          "c_signature": "char *(cJSON *, const char *) cJSON_SetValuestring(cJSON * object, const char * valuestring)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "valuestring",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "create_reference",
+          "c_signature": "cJSON *(const cJSON *, const internal_hooks *const) create_reference(const cJSON * item, const internal_hooks *const hooks)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            },
+            {
+              "name": "hooks",
+              "c_type": "const internal_hooks *const",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "a",
+        "copy",
+        "global_hooks",
+        "i",
+        "item",
+        "n",
+        "p",
+        "reference",
+        "v1_len",
+        "v2_len"
+      ],
+      "calls_earlier_units": [
+        "cJSON_CreateArray",
+        "cJSON_CreateString",
+        "cJSON_Delete",
+        "cJSON_New_Item",
+        "cJSON_free",
+        "cJSON_strdup",
+        "cast_away_const",
+        "suffix_object"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        14,
+        30,
+        41,
+        42,
+        106
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_IsReference",
+        "cJSON_String",
+        "cJSON_True"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_IsReference",
+          "strategy": "inline-const",
+          "expansion": "256",
+          "rust_note": "const CJSON_IS_REFERENCE: u8 = 256;"
+        },
+        {
+          "name": "cJSON_String",
+          "strategy": "inline-const",
+          "expansion": "(1 << 4)",
+          "rust_note": "const CJSON_STRING: u8 = 1 << 4;"
+        },
+        {
+          "name": "cJSON_True",
+          "strategy": "inline-const",
+          "expansion": "(1 << 1)",
+          "rust_note": "const CJSON_TRUE: u8 = 1 << 1;"
+        }
+      ]
+    },
+    {
+      "unit": "U10_add_item_p1",
+      "index": 18,
+      "description": "attaching nodes to arrays and objects (part 1 of 6)",
+      "functions": [
+        "add_item_to_array",
+        "add_item_to_object"
+      ],
+      "function_count": 2,
+      "lines": [
+        2012,
+        2067
+      ],
+      "signatures": [
+        {
+          "name": "add_item_to_array",
+          "c_signature": "cJSON_bool (cJSON *, cJSON *) add_item_to_array(cJSON * array, cJSON * item)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            }
+          ]
+        },
+        {
+          "name": "add_item_to_object",
+          "c_signature": "cJSON_bool (cJSON *const, const char *const, cJSON *const, const internal_hooks *const, const cJSON_bool) add_item_to_object(cJSON *const object, const char *const string, cJSON *const item, const internal_hooks *const hooks, const cJSON_bool constant_key)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "hooks",
+              "c_type": "const internal_hooks *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "constant_key",
+              "c_type": "const cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "child",
+        "new_key",
+        "new_type"
+      ],
+      "calls_earlier_units": [
+        "cJSON_strdup",
+        "cast_away_const",
+        "suffix_object"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        1,
+        4
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "cJSON_Invalid",
+        "cJSON_StringIsConst",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "cJSON_Invalid",
+          "strategy": "inline-const",
+          "expansion": "(0)",
+          "rust_note": "const CJSON_INVALID: u8 = 0;"
+        },
+        {
+          "name": "cJSON_StringIsConst",
+          "strategy": "inline-const",
+          "expansion": "512",
+          "rust_note": "const CJSON_STRING_IS_CONST: u8 = 512;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U10_add_item_p2",
+      "index": 19,
+      "description": "attaching nodes to arrays and objects (part 2 of 6)",
+      "functions": [
+        "cJSON_AddArrayToObject",
+        "cJSON_AddBoolToObject"
+      ],
+      "function_count": 2,
+      "lines": [
+        2231,
+        2171
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_AddArrayToObject",
+          "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddArrayToObject(cJSON *const object, const char *const name)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_AddBoolToObject",
+          "c_signature": "cJSON *(cJSON *const, const char *const, const cJSON_bool) cJSON_AddBoolToObject(cJSON *const object, const char *const name, const cJSON_bool boolean)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "boolean",
+              "c_type": "const cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "array",
+        "bool_item",
+        "global_hooks"
+      ],
+      "calls_earlier_units": [
+        "add_item_to_object",
+        "cJSON_CreateArray",
+        "cJSON_CreateBool",
+        "cJSON_Delete"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        9,
+        11
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_Array",
+        "cJSON_False",
+        "cJSON_IsReference",
+        "cJSON_StringIsConst",
+        "cJSON_True",
+        "false"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_Array",
+          "strategy": "inline-const",
+          "expansion": "(1 << 5)",
+          "rust_note": "const CJSON_ARRAY: u8 = 1 << 5;"
+        },
+        {
+          "name": "cJSON_False",
+          "strategy": "inline-const",
+          "expansion": "(1 << 0)",
+          "rust_note": "const CJSON_FALSE: u8 = 1 << 0;"
+        },
+        {
+          "name": "cJSON_IsReference",
+          "strategy": "inline-const",
+          "expansion": "256",
+          "rust_note": "const CJSON_IS_REFERENCE: u8 = 256;"
+        },
+        {
+          "name": "cJSON_StringIsConst",
+          "strategy": "inline-const",
+          "expansion": "512",
+          "rust_note": "const CJSON_STRING_IS_CONST: u8 = 512;"
+        },
+        {
+          "name": "cJSON_True",
+          "strategy": "inline-const",
+          "expansion": "(1 << 1)",
+          "rust_note": "const CJSON_TRUE: u8 = 1 << 1;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        }
+      ]
+    },
+    {
+      "unit": "U10_add_item_p3",
+      "index": 20,
+      "description": "attaching nodes to arrays and objects (part 3 of 6)",
+      "functions": [
+        "cJSON_AddFalseToObject",
+        "cJSON_AddItemReferenceToArray",
+        "cJSON_AddItemReferenceToObject",
+        "cJSON_AddItemToArray",
+        "cJSON_AddItemToObject"
+      ],
+      "function_count": 5,
+      "lines": [
+        2159,
+        2115,
+        2125,
+        2046,
+        2104
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_AddFalseToObject",
+          "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddFalseToObject(cJSON *const object, const char *const name)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_AddItemReferenceToArray",
+          "c_signature": "cJSON_bool (cJSON *, cJSON *) cJSON_AddItemReferenceToArray(cJSON * array, cJSON * item)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_AddItemReferenceToObject",
+          "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_AddItemReferenceToObject(cJSON * object, const char * string, cJSON * item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_AddItemToArray",
+          "c_signature": "cJSON_bool (cJSON *, cJSON *) cJSON_AddItemToArray(cJSON * array, cJSON * item)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_AddItemToObject",
+          "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_AddItemToObject(cJSON * object, const char * string, cJSON * item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "false_item",
+        "global_hooks"
+      ],
+      "calls_earlier_units": [
+        "add_item_to_array",
+        "add_item_to_object",
+        "cJSON_CreateFalse",
+        "cJSON_Delete",
+        "create_reference"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        13,
+        15,
+        16,
+        17,
+        18
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_IsReference",
+        "false"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_IsReference",
+          "strategy": "inline-const",
+          "expansion": "256",
+          "rust_note": "const CJSON_IS_REFERENCE: u8 = 256;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        }
+      ]
+    },
+    {
+      "unit": "U10_add_item_p4",
+      "index": 21,
+      "description": "attaching nodes to arrays and objects (part 4 of 6)",
+      "functions": [
+        "cJSON_AddItemToObjectCS",
+        "cJSON_AddNullToObject",
+        "cJSON_AddNumberToObject"
+      ],
+      "function_count": 3,
+      "lines": [
+        2110,
+        2135,
+        2183
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_AddItemToObjectCS",
+          "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_AddItemToObjectCS(cJSON * object, const char * string, cJSON * item)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_AddNullToObject",
+          "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddNullToObject(cJSON *const object, const char *const name)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_AddNumberToObject",
+          "c_signature": "cJSON *(cJSON *const, const char *const, const double) cJSON_AddNumberToObject(cJSON *const object, const char *const name, const double number)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "number",
+              "c_type": "const double",
+              "role": "by-value"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "global_hooks",
+        "null",
+        "number_item"
+      ],
+      "calls_earlier_units": [
+        "add_item_to_object",
+        "cJSON_CreateNull",
+        "cJSON_CreateNumber",
+        "cJSON_Delete"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        19,
+        21,
+        23
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_NULL",
+        "cJSON_Number",
+        "cJSON_Object",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_NULL",
+          "strategy": "inline-const",
+          "expansion": "(1 << 2)",
+          "rust_note": "const CJSON_NULL: u8 = 1 << 2;"
+        },
+        {
+          "name": "cJSON_Number",
+          "strategy": "inline-const",
+          "expansion": "(1 << 3)",
+          "rust_note": "const CJSON_NUMBER: u8 = 1 << 3;"
+        },
+        {
+          "name": "cJSON_Object",
+          "strategy": "inline-const",
+          "expansion": "(1 << 6)",
+          "rust_note": "const CJSON_OBJECT: u8 = 1 << 6;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U10_add_item_p5",
+      "index": 22,
+      "description": "attaching nodes to arrays and objects (part 5 of 6)",
+      "functions": [
+        "cJSON_AddObjectToObject",
+        "cJSON_AddRawToObject",
+        "cJSON_AddStringToObject"
+      ],
+      "function_count": 3,
+      "lines": [
+        2219,
+        2207,
+        2195
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_AddObjectToObject",
+          "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddObjectToObject(cJSON *const object, const char *const name)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_AddRawToObject",
+          "c_signature": "cJSON *(cJSON *const, const char *const, const char *const) cJSON_AddRawToObject(cJSON *const object, const char *const name, const char *const raw)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "raw",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_AddStringToObject",
+          "c_signature": "cJSON *(cJSON *const, const char *const, const char *const) cJSON_AddStringToObject(cJSON *const object, const char *const name, const char *const string)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "global_hooks",
+        "object_item",
+        "raw_item",
+        "string_item"
+      ],
+      "calls_earlier_units": [
+        "add_item_to_object",
+        "cJSON_CreateObject",
+        "cJSON_CreateRaw",
+        "cJSON_CreateString",
+        "cJSON_Delete"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        25,
+        27,
+        29
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_Raw",
+        "cJSON_String",
+        "cJSON_True",
+        "false"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_Raw",
+          "strategy": "inline-const",
+          "expansion": "(1 << 7)",
+          "rust_note": "const CJSON_RAW: u8 = 1 << 7;"
+        },
+        {
+          "name": "cJSON_String",
+          "strategy": "inline-const",
+          "expansion": "(1 << 4)",
+          "rust_note": "const CJSON_STRING: u8 = 1 << 4;"
+        },
+        {
+          "name": "cJSON_True",
+          "strategy": "inline-const",
+          "expansion": "(1 << 1)",
+          "rust_note": "const CJSON_TRUE: u8 = 1 << 1;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        }
+      ]
+    },
+    {
+      "unit": "U10_add_item_p6",
+      "index": 23,
+      "description": "attaching nodes to arrays and objects (part 6 of 6)",
+      "functions": [
+        "cJSON_AddTrueToObject"
+      ],
+      "function_count": 1,
+      "lines": [
+        2147
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_AddTrueToObject",
+          "c_signature": "cJSON *(cJSON *const, const char *const) cJSON_AddTrueToObject(cJSON *const object, const char *const name)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "name",
+              "c_type": "const char *const",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "global_hooks",
+        "true_item"
+      ],
+      "calls_earlier_units": [
+        "add_item_to_object",
+        "cJSON_CreateTrue",
+        "cJSON_Delete"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        31
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "false"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        }
+      ]
+    },
+    {
+      "unit": "U11_detach_replace_p1",
+      "index": 24,
+      "description": "detaching, deleting and replacing nodes (part 1 of 4)",
+      "functions": [
+        "cJSON_DeleteItemFromArray",
+        "cJSON_DetachItemFromArray",
+        "cJSON_DetachItemViaPointer"
+      ],
+      "function_count": 3,
+      "lines": [
+        2289,
+        2279,
+        2243
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_DeleteItemFromArray",
+          "c_signature": "void (cJSON *, int) cJSON_DeleteItemFromArray(cJSON * array, int which)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "cJSON *",
+              "role": "owned-consumed"
+            },
+            {
+              "name": "which",
+              "c_type": "int",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_DetachItemFromArray",
+          "c_signature": "cJSON *(cJSON *, int) cJSON_DetachItemFromArray(cJSON * array, int which)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "which",
+              "c_type": "int",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_DetachItemViaPointer",
+          "c_signature": "cJSON *(cJSON *, cJSON *const) cJSON_DetachItemViaPointer(cJSON * parent, cJSON *const item)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "parent",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [],
+      "calls_earlier_units": [
+        "cJSON_Delete",
+        "get_array_item"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        44,
+        45,
+        46
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_IsReference",
+        "cJSON_StringIsConst"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_IsReference",
+          "strategy": "inline-const",
+          "expansion": "256",
+          "rust_note": "const CJSON_IS_REFERENCE: u8 = 256;"
+        },
+        {
+          "name": "cJSON_StringIsConst",
+          "strategy": "inline-const",
+          "expansion": "512",
+          "rust_note": "const CJSON_STRING_IS_CONST: u8 = 512;"
+        }
+      ]
+    },
+    {
+      "unit": "U11_detach_replace_p2",
+      "index": 25,
+      "description": "detaching, deleting and replacing nodes (part 2 of 4)",
+      "functions": [
+        "cJSON_DeleteItemFromObject",
+        "cJSON_DetachItemFromObject",
+        "cJSON_DetachItemFromObjectCaseSensitive"
+      ],
+      "function_count": 3,
+      "lines": [
+        2308,
+        2294,
+        2301
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_DeleteItemFromObject",
+          "c_signature": "void (cJSON *, const char *) cJSON_DeleteItemFromObject(cJSON * object, const char * string)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "owned-consumed"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_DetachItemFromObject",
+          "c_signature": "cJSON *(cJSON *, const char *) cJSON_DetachItemFromObject(cJSON * object, const char * string)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_DetachItemFromObjectCaseSensitive",
+          "c_signature": "cJSON *(cJSON *, const char *) cJSON_DetachItemFromObjectCaseSensitive(cJSON * object, const char * string)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "to_detach"
+      ],
+      "calls_earlier_units": [
+        "cJSON_Delete",
+        "cJSON_DetachItemViaPointer",
+        "cJSON_GetObjectItem",
+        "cJSON_GetObjectItemCaseSensitive"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        48,
+        49,
+        51
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U11_detach_replace_p3",
+      "index": 26,
+      "description": "detaching, deleting and replacing nodes (part 3 of 4)",
+      "functions": [
+        "cJSON_DeleteItemFromObjectCaseSensitive",
+        "cJSON_InsertItemInArray",
+        "cJSON_ReplaceItemInArray",
+        "cJSON_ReplaceItemViaPointer"
+      ],
+      "function_count": 4,
+      "lines": [
+        2313,
+        2319,
+        2402,
+        2353
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_DeleteItemFromObjectCaseSensitive",
+          "c_signature": "void (cJSON *, const char *) cJSON_DeleteItemFromObjectCaseSensitive(cJSON * object, const char * string)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "owned-consumed"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_InsertItemInArray",
+          "c_signature": "cJSON_bool (cJSON *, int, cJSON *) cJSON_InsertItemInArray(cJSON * array, int which, cJSON * newitem)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            },
+            {
+              "name": "which",
+              "c_type": "int",
+              "role": "by-value"
+            },
+            {
+              "name": "newitem",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_ReplaceItemInArray",
+          "c_signature": "cJSON_bool (cJSON *, int, cJSON *) cJSON_ReplaceItemInArray(cJSON * array, int which, cJSON * newitem)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "array",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            },
+            {
+              "name": "which",
+              "c_type": "int",
+              "role": "by-value"
+            },
+            {
+              "name": "newitem",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_ReplaceItemViaPointer",
+          "c_signature": "cJSON_bool (cJSON *const, cJSON *const, cJSON *) cJSON_ReplaceItemViaPointer(cJSON *const parent, cJSON *const item, cJSON * replacement)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "parent",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "item",
+              "c_type": "cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "replacement",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "after_inserted"
+      ],
+      "calls_earlier_units": [
+        "add_item_to_array",
+        "cJSON_Delete",
+        "cJSON_DetachItemFromObjectCaseSensitive",
+        "get_array_item"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        52,
+        64,
+        99,
+        100
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U11_detach_replace_p4",
+      "index": 27,
+      "description": "detaching, deleting and replacing nodes (part 4 of 4)",
+      "functions": [
+        "cJSON_ReplaceItemInObject",
+        "cJSON_ReplaceItemInObjectCaseSensitive",
+        "replace_item_in_object"
+      ],
+      "function_count": 3,
+      "lines": [
+        2435,
+        2440,
+        2412
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_ReplaceItemInObject",
+          "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_ReplaceItemInObject(cJSON * object, const char * string, cJSON * newitem)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "newitem",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_ReplaceItemInObjectCaseSensitive",
+          "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *) cJSON_ReplaceItemInObjectCaseSensitive(cJSON * object, const char * string, cJSON * newitem)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "newitem",
+              "c_type": "cJSON *",
+              "role": "owned-transferred"
+            }
+          ]
+        },
+        {
+          "name": "replace_item_in_object",
+          "c_signature": "cJSON_bool (cJSON *, const char *, cJSON *, cJSON_bool) replace_item_in_object(cJSON * object, const char * string, cJSON * replacement, cJSON_bool case_sensitive)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "object",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "string",
+              "c_type": "const char *",
+              "role": "borrowed"
+            },
+            {
+              "name": "replacement",
+              "c_type": "cJSON *",
+              "role": "tree-handle"
+            },
+            {
+              "name": "case_sensitive",
+              "c_type": "cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "global_hooks"
+      ],
+      "calls_earlier_units": [
+        "cJSON_ReplaceItemViaPointer",
+        "cJSON_free",
+        "cJSON_strdup",
+        "get_object_item"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        102,
+        103,
+        104
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_StringIsConst",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_StringIsConst",
+          "strategy": "inline-const",
+          "expansion": "512",
+          "rust_note": "const CJSON_STRING_IS_CONST: u8 = 512;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U12_duplicate",
+      "index": 28,
+      "description": "deep copy",
+      "functions": [
+        "cJSON_Duplicate",
+        "cJSON_Duplicate_rec"
+      ],
+      "function_count": 2,
+      "lines": [
+        2769,
+        2774
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_Duplicate",
+          "c_signature": "cJSON *(const cJSON *, cJSON_bool) cJSON_Duplicate(const cJSON * item, cJSON_bool recurse)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            },
+            {
+              "name": "recurse",
+              "c_type": "cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        },
+        {
+          "name": "cJSON_Duplicate_rec",
+          "c_signature": "cJSON *(const cJSON *, size_t, cJSON_bool) cJSON_Duplicate_rec(const cJSON * item, size_t depth, cJSON_bool recurse)",
+          "return_role": "owning-pointer",
+          "params": [
+            {
+              "name": "item",
+              "c_type": "const cJSON *",
+              "role": "borrowed"
+            },
+            {
+              "name": "depth",
+              "c_type": "size_t",
+              "role": "by-value"
+            },
+            {
+              "name": "recurse",
+              "c_type": "cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "child",
+        "global_hooks",
+        "newchild",
+        "newitem",
+        "next"
+      ],
+      "calls_earlier_units": [
+        "cJSON_Delete",
+        "cJSON_New_Item",
+        "cJSON_strdup"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        53,
+        54
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_CIRCULAR_LIMIT",
+        "CJSON_PUBLIC",
+        "cJSON_IsReference",
+        "cJSON_StringIsConst",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_CIRCULAR_LIMIT",
+          "strategy": "inline-const",
+          "expansion": "10000",
+          "rust_note": "pub const CJSON_CIRCULAR_LIMIT: usize = 10000;  // duplicate/compare cycle limit - MUST be preserved exactly"
+        },
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_IsReference",
+          "strategy": "inline-const",
+          "expansion": "256",
+          "rust_note": "const CJSON_IS_REFERENCE: u8 = 256;"
+        },
+        {
+          "name": "cJSON_StringIsConst",
+          "strategy": "inline-const",
+          "expansion": "512",
+          "rust_note": "const CJSON_STRING_IS_CONST: u8 = 512;"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    },
+    {
+      "unit": "U13_minify",
+      "index": 29,
+      "description": "whitespace/comment stripping",
+      "functions": [
+        "cJSON_Minify",
+        "minify_string",
+        "skip_multiline_comment",
+        "skip_oneline_comment"
+      ],
+      "function_count": 4,
+      "lines": [
+        2909,
+        2887,
+        2873,
+        2860
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_Minify",
+          "c_signature": "void (char *) cJSON_Minify(char * json)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "json",
+              "c_type": "char *",
+              "role": "borrowed-mutable"
+            }
+          ]
+        },
+        {
+          "name": "minify_string",
+          "c_signature": "void (char **, char **) minify_string(char ** input, char ** output)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "input",
+              "c_type": "char **",
+              "role": "output-parameter"
+            },
+            {
+              "name": "output",
+              "c_type": "char **",
+              "role": "output-parameter"
+            }
+          ]
+        },
+        {
+          "name": "skip_multiline_comment",
+          "c_signature": "void (char **) skip_multiline_comment(char ** input)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "input",
+              "c_type": "char **",
+              "role": "output-parameter"
+            }
+          ]
+        },
+        {
+          "name": "skip_oneline_comment",
+          "c_signature": "void (char **) skip_oneline_comment(char ** input)",
+          "return_role": "raw-pointer",
+          "params": [
+            {
+              "name": "input",
+              "c_type": "char **",
+              "role": "output-parameter"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "into"
+      ],
+      "calls_earlier_units": [],
+      "calls_later_units": [],
+      "scc_id": [
+        73,
+        74,
+        75,
+        76
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "static_strlen"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "static_strlen",
+          "strategy": "inline-fn",
+          "expansion": "",
+          "rust_note": "C's `sizeof(literal) - 1`; in Rust use `literal.len()` on a `&str`"
+        }
+      ]
+    },
+    {
+      "unit": "U14_compare",
+      "index": 30,
+      "description": "deep structural comparison (used by cJSON_Utils)",
+      "functions": [
+        "cJSON_Compare"
+      ],
+      "function_count": 1,
+      "lines": [
+        3057
+      ],
+      "signatures": [
+        {
+          "name": "cJSON_Compare",
+          "c_signature": "cJSON_bool (const cJSON *const, const cJSON *const, const cJSON_bool) cJSON_Compare(const cJSON *const a, const cJSON *const b, const cJSON_bool case_sensitive)",
+          "return_role": "borrowed-pointer",
+          "params": [
+            {
+              "name": "a",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "b",
+              "c_type": "const cJSON *const",
+              "role": "borrowed"
+            },
+            {
+              "name": "case_sensitive",
+              "c_type": "const cJSON_bool",
+              "role": "by-value"
+            }
+          ]
+        }
+      ],
+      "structs_used": [],
+      "globals_used": [
+        "a_element",
+        "b_element"
+      ],
+      "calls_earlier_units": [
+        "compare_double",
+        "get_object_item"
+      ],
+      "calls_later_units": [],
+      "scc_id": [
+        35
+      ],
+      "in_cyclic_scc": false,
+      "macros_used": [
+        "CJSON_PUBLIC",
+        "cJSON_Array",
+        "cJSON_ArrayForEach",
+        "cJSON_False",
+        "cJSON_NULL",
+        "cJSON_Number",
+        "cJSON_Object",
+        "cJSON_Raw",
+        "cJSON_String",
+        "cJSON_True",
+        "false",
+        "true"
+      ],
+      "macro_guidance": [
+        {
+          "name": "CJSON_PUBLIC",
+          "strategy": "drop",
+          "expansion": "",
+          "rust_note": "C linkage decoration; has no Rust equivalent. Rust items are exported with `pub` and the C ABI is added separately."
+        },
+        {
+          "name": "cJSON_Array",
+          "strategy": "inline-const",
+          "expansion": "(1 << 5)",
+          "rust_note": "const CJSON_ARRAY: u8 = 1 << 5;"
+        },
+        {
+          "name": "cJSON_ArrayForEach",
+          "strategy": "rust-helper",
+          "expansion": "for(element = (array != NULL) ? (array)->child : NULL; element != NULL; element = element->next)",
+          "rust_note": "becomes an iterator: `node.children()` returning `impl Iterator<Item = &Node>` - do NOT port the for-loop macro"
+        },
+        {
+          "name": "cJSON_False",
+          "strategy": "inline-const",
+          "expansion": "(1 << 0)",
+          "rust_note": "const CJSON_FALSE: u8 = 1 << 0;"
+        },
+        {
+          "name": "cJSON_NULL",
+          "strategy": "inline-const",
+          "expansion": "(1 << 2)",
+          "rust_note": "const CJSON_NULL: u8 = 1 << 2;"
+        },
+        {
+          "name": "cJSON_Number",
+          "strategy": "inline-const",
+          "expansion": "(1 << 3)",
+          "rust_note": "const CJSON_NUMBER: u8 = 1 << 3;"
+        },
+        {
+          "name": "cJSON_Object",
+          "strategy": "inline-const",
+          "expansion": "(1 << 6)",
+          "rust_note": "const CJSON_OBJECT: u8 = 1 << 6;"
+        },
+        {
+          "name": "cJSON_Raw",
+          "strategy": "inline-const",
+          "expansion": "(1 << 7)",
+          "rust_note": "const CJSON_RAW: u8 = 1 << 7;"
+        },
+        {
+          "name": "cJSON_String",
+          "strategy": "inline-const",
+          "expansion": "(1 << 4)",
+          "rust_note": "const CJSON_STRING: u8 = 1 << 4;"
+        },
+        {
+          "name": "cJSON_True",
+          "strategy": "inline-const",
+          "expansion": "(1 << 1)",
+          "rust_note": "const CJSON_TRUE: u8 = 1 << 1;"
+        },
+        {
+          "name": "false",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)0)",
+          "rust_note": "Rust's `false`"
+        },
+        {
+          "name": "true",
+          "strategy": "inline-const",
+          "expansion": "((cJSON_bool)1)",
+          "rust_note": "Rust's `true`"
+        }
+      ]
+    }
+  ],
+  "area_of_function": {
+    "cJSON_Delete": "U01_hooks_alloc",
+    "cJSON_InitHooks": "U01_hooks_alloc",
+    "cJSON_New_Item": "U01_hooks_alloc",
+    "cJSON_free": "U01_hooks_alloc",
+    "cJSON_malloc": "U01_hooks_alloc",
+    "cJSON_strdup": "U01_hooks_alloc",
+    "ensure": "U02_print_buffer",
+    "update_offset": "U02_print_buffer",
+    "cJSON_SetNumberHelper": "U03_number_parse",
+    "compare_double": "U03_number_parse",
+    "get_decimal_point": "U03_number_parse",
+    "parse_number": "U03_number_parse",
+    "parse_hex4": "U04_string_parse",
+    "parse_string": "U04_string_parse",
+    "utf16_literal_to_utf8": "U04_string_parse",
+    "print_string": "U05_string_print",
+    "print_string_ptr": "U05_string_print",
+    "buffer_skip_whitespace": "U06_value_parse",
+    "parse_array": "U06_value_parse",
+    "parse_object": "U06_value_parse",
+    "parse_value": "U06_value_parse",
+    "skip_utf8_bom": "U06_value_parse",
+    "cJSON_Parse": "U06b_parse_entry",
+    "cJSON_ParseWithLength": "U06b_parse_entry",
+    "cJSON_ParseWithLengthOpts": "U06b_parse_entry",
+    "cJSON_ParseWithOpts": "U06b_parse_entry",
+    "print_number": "U07_value_print_p1",
+    "print_array": "U07_value_print_p2",
+    "print_object": "U07_value_print_p2",
+    "print_value": "U07_value_print_p2",
+    "print": "U07_value_print_p2",
+    "cJSON_Print": "U07_value_print_p2",
+    "cJSON_PrintBuffered": "U07_value_print_p3",
+    "cJSON_PrintPreallocated": "U07_value_print_p3",
+    "cJSON_PrintUnformatted": "U07_value_print_p3",
+    "get_array_item": "U08_accessors_p1",
+    "cJSON_GetArrayItem": "U08_accessors_p1",
+    "cJSON_GetArraySize": "U08_accessors_p1",
+    "cJSON_GetErrorPtr": "U08_accessors_p1",
+    "cJSON_IsNumber": "U08_accessors_p1",
+    "cJSON_GetNumberValue": "U08_accessors_p1",
+    "case_insensitive_strcmp": "U08_accessors_p2",
+    "get_object_item": "U08_accessors_p2",
+    "cJSON_GetObjectItem": "U08_accessors_p2",
+    "cJSON_GetObjectItemCaseSensitive": "U08_accessors_p2",
+    "cJSON_IsString": "U08_accessors_p2",
+    "cJSON_GetStringValue": "U08_accessors_p2",
+    "cJSON_HasObjectItem": "U08_accessors_p3",
+    "cJSON_IsArray": "U08_accessors_p3",
+    "cJSON_IsBool": "U08_accessors_p3",
+    "cJSON_IsFalse": "U08_accessors_p3",
+    "cJSON_IsInvalid": "U08_accessors_p3",
+    "cJSON_IsNull": "U08_accessors_p3",
+    "cJSON_IsObject": "U08_accessors_p4",
+    "cJSON_IsRaw": "U08_accessors_p4",
+    "cJSON_IsTrue": "U08_accessors_p4",
+    "cJSON_Version": "U08_accessors_p4",
+    "cJSON_CreateArray": "U09_create_p1",
+    "cast_away_const": "U09_create_p1",
+    "cJSON_CreateArrayReference": "U09_create_p1",
+    "cJSON_CreateBool": "U09_create_p1",
+    "cJSON_CreateNumber": "U09_create_p1",
+    "suffix_object": "U09_create_p2",
+    "cJSON_CreateDoubleArray": "U09_create_p2",
+    "cJSON_CreateFalse": "U09_create_p2",
+    "cJSON_CreateFloatArray": "U09_create_p2",
+    "cJSON_CreateIntArray": "U09_create_p2",
+    "cJSON_CreateNull": "U09_create_p3",
+    "cJSON_CreateObject": "U09_create_p3",
+    "cJSON_CreateObjectReference": "U09_create_p3",
+    "cJSON_CreateRaw": "U09_create_p3",
+    "cJSON_CreateString": "U09_create_p3",
+    "cJSON_CreateStringArray": "U09_create_p4",
+    "cJSON_CreateStringReference": "U09_create_p4",
+    "cJSON_CreateTrue": "U09_create_p4",
+    "cJSON_SetValuestring": "U09_create_p4",
+    "create_reference": "U09_create_p4",
+    "add_item_to_array": "U10_add_item_p1",
+    "add_item_to_object": "U10_add_item_p1",
+    "cJSON_AddArrayToObject": "U10_add_item_p2",
+    "cJSON_AddBoolToObject": "U10_add_item_p2",
+    "cJSON_AddFalseToObject": "U10_add_item_p3",
+    "cJSON_AddItemReferenceToArray": "U10_add_item_p3",
+    "cJSON_AddItemReferenceToObject": "U10_add_item_p3",
+    "cJSON_AddItemToArray": "U10_add_item_p3",
+    "cJSON_AddItemToObject": "U10_add_item_p3",
+    "cJSON_AddItemToObjectCS": "U10_add_item_p4",
+    "cJSON_AddNullToObject": "U10_add_item_p4",
+    "cJSON_AddNumberToObject": "U10_add_item_p4",
+    "cJSON_AddObjectToObject": "U10_add_item_p5",
+    "cJSON_AddRawToObject": "U10_add_item_p5",
+    "cJSON_AddStringToObject": "U10_add_item_p5",
+    "cJSON_AddTrueToObject": "U10_add_item_p6",
+    "cJSON_DetachItemViaPointer": "U11_detach_replace_p1",
+    "cJSON_DetachItemFromArray": "U11_detach_replace_p1",
+    "cJSON_DeleteItemFromArray": "U11_detach_replace_p1",
+    "cJSON_DetachItemFromObject": "U11_detach_replace_p2",
+    "cJSON_DeleteItemFromObject": "U11_detach_replace_p2",
+    "cJSON_DetachItemFromObjectCaseSensitive": "U11_detach_replace_p2",
+    "cJSON_DeleteItemFromObjectCaseSensitive": "U11_detach_replace_p3",
+    "cJSON_InsertItemInArray": "U11_detach_replace_p3",
+    "cJSON_ReplaceItemViaPointer": "U11_detach_replace_p3",
+    "cJSON_ReplaceItemInArray": "U11_detach_replace_p3",
+    "replace_item_in_object": "U11_detach_replace_p4",
+    "cJSON_ReplaceItemInObject": "U11_detach_replace_p4",
+    "cJSON_ReplaceItemInObjectCaseSensitive": "U11_detach_replace_p4",
+    "cJSON_Duplicate": "U12_duplicate",
+    "cJSON_Duplicate_rec": "U12_duplicate",
+    "cJSON_Minify": "U13_minify",
+    "minify_string": "U13_minify",
+    "skip_multiline_comment": "U13_minify",
+    "skip_oneline_comment": "U13_minify",
+    "cJSON_Compare": "U14_compare"
+  },
+  "order_violations": []
+}

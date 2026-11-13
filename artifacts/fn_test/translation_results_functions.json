@@ -1,0 +1,67 @@
+{
+  "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+  "granularity": "function",
+  "out": "artifacts/fn_test",
+  "functions": 6,
+  "functions_attempted": 6,
+  "compile_first_try": "2/6",
+  "compiles_after_repair": "4/6",
+  "total_model_calls": 16,
+  "final_crate_compiles": false,
+  "results": [
+    {
+      "unit": "U02_print_buffer",
+      "function": "ensure",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn ensure(p: &mut PrintBuffer, needed: usize) -> Option<usize>"
+    },
+    {
+      "unit": "U02_print_buffer",
+      "function": "update_offset",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn update_offset(buffer: &mut PrintBuffer) -> ()"
+    },
+    {
+      "unit": "U05_string_print",
+      "function": "print_string",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_string(item: &Node, p: &mut PrintBuffer) -> bool"
+    },
+    {
+      "unit": "U05_string_print",
+      "function": "print_string_ptr",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": false,
+      "rust_signature": "fn print_string_ptr(input: Option<&[u8]>, output_buffer: &mut PrintBuffer) -> bool"
+    },
+    {
+      "unit": "U12_duplicate",
+      "function": "cJSON_Duplicate",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn duplicate(item: &Node, recursion: bool) -> Option<Node>"
+    },
+    {
+      "unit": "U12_duplicate",
+      "function": "cJSON_Duplicate_rec",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": false,
+      "rust_signature": "fn cjson_duplicate_rec(item: &Node, depth: usize, recursion: bool) -> Option<Node>"
+    }
+  ]
+}

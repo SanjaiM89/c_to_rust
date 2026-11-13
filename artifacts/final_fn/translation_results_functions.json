@@ -1,0 +1,1030 @@
+{
+  "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+  "granularity": "function",
+  "out": "artifacts/final_fn",
+  "functions": 113,
+  "functions_attempted": 113,
+  "compile_first_try": "28/113",
+  "compiles_after_repair": "113/113",
+  "total_model_calls": 363,
+  "final_crate_compiles": true,
+  "results": [
+    {
+      "unit": "U01_hooks_alloc",
+      "function": "cJSON_Delete",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn delete(item: Node) -> ()"
+    },
+    {
+      "unit": "U01_hooks_alloc",
+      "function": "cJSON_InitHooks",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn init_hooks(hooks: Option<&Hooks>) -> ()"
+    },
+    {
+      "unit": "U01_hooks_alloc",
+      "function": "cJSON_New_Item",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn new__item(hooks: &Hooks) -> Option<Node>"
+    },
+    {
+      "unit": "U01_hooks_alloc",
+      "function": "cJSON_free",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn cjson_free(object: Vec<u8>) -> ()"
+    },
+    {
+      "unit": "U01_hooks_alloc",
+      "function": "cJSON_malloc",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn cjson_malloc(size: usize) -> Option<Vec<u8>>"
+    },
+    {
+      "unit": "U01_hooks_alloc",
+      "function": "cJSON_strdup",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn cjson_strdup(string: &[u8], hooks: &Hooks) -> Option<Vec<u8>>"
+    },
+    {
+      "unit": "U02_print_buffer",
+      "function": "ensure",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn ensure(p: &mut PrintBuffer, needed: usize) -> Option<usize>"
+    },
+    {
+      "unit": "U02_print_buffer",
+      "function": "update_offset",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn update_offset(buffer: &mut PrintBuffer) -> ()"
+    },
+    {
+      "unit": "U03_number_parse",
+      "function": "cJSON_SetNumberHelper",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn set_number_helper(object: &mut Node, number: f64) -> f64"
+    },
+    {
+      "unit": "U03_number_parse",
+      "function": "compare_double",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn compare_double(a: f64, b: f64) -> bool"
+    },
+    {
+      "unit": "U03_number_parse",
+      "function": "get_decimal_point",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn get_decimal_point() -> u8"
+    },
+    {
+      "unit": "U03_number_parse",
+      "function": "parse_number",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn parse_number(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool"
+    },
+    {
+      "unit": "U04_string_parse",
+      "function": "parse_hex4",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn parse_hex4(input: &[u8]) -> u32"
+    },
+    {
+      "unit": "U04_string_parse",
+      "function": "parse_string",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn parse_string(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool"
+    },
+    {
+      "unit": "U04_string_parse",
+      "function": "utf16_literal_to_utf8",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn utf16_literal_to_utf8(input_pointer: &[u8], input_end: &[u8], output_pointer: &mut Vec<u8>) -> Option<Vec<u8>>"
+    },
+    {
+      "unit": "U05_string_print",
+      "function": "print_string",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_string(item: &Node, p: &mut PrintBuffer) -> bool"
+    },
+    {
+      "unit": "U05_string_print",
+      "function": "print_string_ptr",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_string_ptr(input: Option<&[u8]>, output_buffer: &mut PrintBuffer) -> bool"
+    },
+    {
+      "unit": "U06_value_parse",
+      "function": "buffer_skip_whitespace",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn buffer_skip_whitespace(buffer: &mut ParseBuffer<'_>) -> &mut ParseBuffer<'_>"
+    },
+    {
+      "unit": "U06_value_parse",
+      "function": "parse_array",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn parse_array(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool"
+    },
+    {
+      "unit": "U06_value_parse",
+      "function": "parse_object",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn parse_object(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool"
+    },
+    {
+      "unit": "U06_value_parse",
+      "function": "parse_value",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn parse_value(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool"
+    },
+    {
+      "unit": "U06_value_parse",
+      "function": "skip_utf8_bom",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn skip_utf8_bom(buffer: &mut ParseBuffer<'_>) -> &mut ParseBuffer<'_>"
+    },
+    {
+      "unit": "U06b_parse_entry",
+      "function": "cJSON_Parse",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn parse(value: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U06b_parse_entry",
+      "function": "cJSON_ParseWithLength",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn parse_with_length(value: &[u8], buffer_length: usize) -> Option<Node>"
+    },
+    {
+      "unit": "U06b_parse_entry",
+      "function": "cJSON_ParseWithLengthOpts",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn parse_with_length_opts(value: &[u8], buffer_length: usize, return_parse_end: Option<&mut usize>, require_null_terminated: bool) -> Option<Node>"
+    },
+    {
+      "unit": "U06b_parse_entry",
+      "function": "cJSON_ParseWithOpts",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn parse_with_opts(value: &[u8], return_parse_end: Option<&mut usize>, require_null_terminated: bool) -> Option<Node>"
+    },
+    {
+      "unit": "U07_value_print_p1",
+      "function": "print_number",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_number(item: &Node, output_buffer: &mut PrintBuffer) -> bool"
+    },
+    {
+      "unit": "U07_value_print_p2",
+      "function": "cJSON_Print",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn print(item: &Node) -> Option<Vec<u8>>"
+    },
+    {
+      "unit": "U07_value_print_p2",
+      "function": "print",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print(item: &Node, format: bool, hooks: &Hooks) -> ()"
+    },
+    {
+      "unit": "U07_value_print_p2",
+      "function": "print_array",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_array(item: &Node, output_buffer: &mut PrintBuffer) -> bool"
+    },
+    {
+      "unit": "U07_value_print_p2",
+      "function": "print_object",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_object(item: &Node, output_buffer: &mut PrintBuffer) -> bool"
+    },
+    {
+      "unit": "U07_value_print_p2",
+      "function": "print_value",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_value(item: &Node, output_buffer: &mut PrintBuffer) -> bool"
+    },
+    {
+      "unit": "U07_value_print_p3",
+      "function": "cJSON_PrintBuffered",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_buffered(item: &Node, prebuffer: usize, fmt: bool) -> Option<Vec<u8>>"
+    },
+    {
+      "unit": "U07_value_print_p3",
+      "function": "cJSON_PrintPreallocated",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_preallocated(item: &Node, buffer: &mut [u8], length: i32, format: bool) -> bool"
+    },
+    {
+      "unit": "U07_value_print_p3",
+      "function": "cJSON_PrintUnformatted",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn print_unformatted(item: &Node) -> Option<Vec<u8>>"
+    },
+    {
+      "unit": "U08_accessors_p1",
+      "function": "cJSON_GetArrayItem",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn get_array_item(array: Option<&Node>, index: i32) -> Option<&Node>"
+    },
+    {
+      "unit": "U08_accessors_p1",
+      "function": "cJSON_GetArraySize",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn get_array_size(array: Option<&Node>) -> i32"
+    },
+    {
+      "unit": "U08_accessors_p1",
+      "function": "cJSON_GetErrorPtr",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn get_error_ptr() -> Option<&'static [u8]>"
+    },
+    {
+      "unit": "U08_accessors_p1",
+      "function": "cJSON_GetNumberValue",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn get_number_value(item: Option<&Node>) -> f64"
+    },
+    {
+      "unit": "U08_accessors_p1",
+      "function": "cJSON_IsNumber",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn is_number(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p1",
+      "function": "get_array_item",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn get_array_item(array: &Node, index: usize) -> Option<&Node>"
+    },
+    {
+      "unit": "U08_accessors_p2",
+      "function": "cJSON_GetObjectItem",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn get_object_item(object: Option<&Node>, string: &[u8]) -> Option<&Node>"
+    },
+    {
+      "unit": "U08_accessors_p2",
+      "function": "cJSON_GetObjectItemCaseSensitive",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn get_object_item_case_sensitive(object: Option<&Node>, string: &[u8]) -> Option<&Node>"
+    },
+    {
+      "unit": "U08_accessors_p2",
+      "function": "cJSON_GetStringValue",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn get_string_value(item: Option<&Node>) -> Option<&[u8]>"
+    },
+    {
+      "unit": "U08_accessors_p2",
+      "function": "cJSON_IsString",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn is_string(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p2",
+      "function": "case_insensitive_strcmp",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn case_insensitive_strcmp(string1: &[u8], string2: &[u8]) -> i32"
+    },
+    {
+      "unit": "U08_accessors_p2",
+      "function": "get_object_item",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn get_object_item(object: &Node, name: &[u8], case_sensitive: bool) -> Option<&Node>"
+    },
+    {
+      "unit": "U08_accessors_p3",
+      "function": "cJSON_HasObjectItem",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn has_object_item(object: Option<&Node>, string: &[u8]) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p3",
+      "function": "cJSON_IsArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn is_array(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p3",
+      "function": "cJSON_IsBool",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn is_bool(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p3",
+      "function": "cJSON_IsFalse",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn is_false(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p3",
+      "function": "cJSON_IsInvalid",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn is_invalid(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p3",
+      "function": "cJSON_IsNull",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn is_null(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p4",
+      "function": "cJSON_IsObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn is_object(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p4",
+      "function": "cJSON_IsRaw",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn is_raw(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p4",
+      "function": "cJSON_IsTrue",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn is_true(item: Option<&Node>) -> bool"
+    },
+    {
+      "unit": "U08_accessors_p4",
+      "function": "cJSON_Version",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn version() -> &'static str"
+    },
+    {
+      "unit": "U09_create_p1",
+      "function": "cJSON_CreateArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_array() -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p1",
+      "function": "cJSON_CreateArrayReference",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_array_reference(child: &Node) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p1",
+      "function": "cJSON_CreateBool",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_bool(boolean: bool) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p1",
+      "function": "cJSON_CreateNumber",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 3,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_number(number: f64) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p1",
+      "function": "cast_away_const",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn cast_away_const(string: &&[u8]) -> &[u8]"
+    },
+    {
+      "unit": "U09_create_p2",
+      "function": "cJSON_CreateDoubleArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_double_array(numbers: &[f64], count: i32) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p2",
+      "function": "cJSON_CreateFalse",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_false() -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p2",
+      "function": "cJSON_CreateFloatArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_float_array(numbers: &[f32], count: i32) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p2",
+      "function": "cJSON_CreateIntArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_int_array(numbers: &[i32], count: i32) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p2",
+      "function": "suffix_object",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn suffix_object(prev: &mut Node, item: Node) -> ()"
+    },
+    {
+      "unit": "U09_create_p3",
+      "function": "cJSON_CreateNull",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_null() -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p3",
+      "function": "cJSON_CreateObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_object() -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p3",
+      "function": "cJSON_CreateObjectReference",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_object_reference(child: &Node) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p3",
+      "function": "cJSON_CreateRaw",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_raw(raw: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p3",
+      "function": "cJSON_CreateString",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_string(string: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p4",
+      "function": "cJSON_CreateStringArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_string_array(strings: &[&[u8]], count: i32) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p4",
+      "function": "cJSON_CreateStringReference",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_string_reference(string: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p4",
+      "function": "cJSON_CreateTrue",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_true() -> Option<Node>"
+    },
+    {
+      "unit": "U09_create_p4",
+      "function": "cJSON_SetValuestring",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn set_valuestring(object: &mut Node, valuestring: &[u8]) -> Option<Vec<u8>>"
+    },
+    {
+      "unit": "U09_create_p4",
+      "function": "create_reference",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn create_reference(item: &Node, hooks: &Hooks) -> Option<Node>"
+    },
+    {
+      "unit": "U10_add_item_p1",
+      "function": "add_item_to_array",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_item_to_array(array: &mut Node, item: Node) -> bool"
+    },
+    {
+      "unit": "U10_add_item_p1",
+      "function": "add_item_to_object",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_item_to_object(object: &mut Node, string: &[u8], item: Node, hooks: &Hooks, constant_key: bool) -> bool"
+    },
+    {
+      "unit": "U10_add_item_p2",
+      "function": "cJSON_AddArrayToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_array_to_object(object: &mut Node, name: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U10_add_item_p2",
+      "function": "cJSON_AddBoolToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_bool_to_object(object: &mut Node, name: &[u8], boolean: bool) -> Option<Node>"
+    },
+    {
+      "unit": "U10_add_item_p3",
+      "function": "cJSON_AddFalseToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_false_to_object(object: &mut Node, name: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U10_add_item_p3",
+      "function": "cJSON_AddItemReferenceToArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_item_reference_to_array(array: &mut Node, item: Node) -> bool"
+    },
+    {
+      "unit": "U10_add_item_p3",
+      "function": "cJSON_AddItemReferenceToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 3,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_item_reference_to_object(object: &mut Node, string: &[u8], item: Node) -> bool"
+    },
+    {
+      "unit": "U10_add_item_p3",
+      "function": "cJSON_AddItemToArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn add_item_to_array(array: &mut Node, item: Node) -> bool"
+    },
+    {
+      "unit": "U10_add_item_p3",
+      "function": "cJSON_AddItemToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_item_to_object(object: &mut Node, string: &[u8], item: Node) -> bool"
+    },
+    {
+      "unit": "U10_add_item_p4",
+      "function": "cJSON_AddItemToObjectCS",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_item_to_object_cs(object: &mut Node, string: &[u8], item: Node) -> bool"
+    },
+    {
+      "unit": "U10_add_item_p4",
+      "function": "cJSON_AddNullToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_null_to_object(object: &mut Node, name: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U10_add_item_p4",
+      "function": "cJSON_AddNumberToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_number_to_object(object: &mut Node, name: &[u8], number: f64) -> Option<Node>"
+    },
+    {
+      "unit": "U10_add_item_p5",
+      "function": "cJSON_AddObjectToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_object_to_object(object: &mut Node, name: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U10_add_item_p5",
+      "function": "cJSON_AddRawToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_raw_to_object(object: &mut Node, name: &[u8], raw: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U10_add_item_p5",
+      "function": "cJSON_AddStringToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_string_to_object(object: &mut Node, name: &[u8], string: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U10_add_item_p6",
+      "function": "cJSON_AddTrueToObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn add_true_to_object(object: &mut Node, name: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U11_detach_replace_p1",
+      "function": "cJSON_DeleteItemFromArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn delete_item_from_array(array: &mut Node, which: i32) -> ()"
+    },
+    {
+      "unit": "U11_detach_replace_p1",
+      "function": "cJSON_DetachItemFromArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn detach_item_from_array(array: &mut Node, which: i32) -> Option<Node>"
+    },
+    {
+      "unit": "U11_detach_replace_p1",
+      "function": "cJSON_DetachItemViaPointer",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 4,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn detach_item_via_pointer(parent: &mut Node, item: &Node) -> Option<Node>"
+    },
+    {
+      "unit": "U11_detach_replace_p2",
+      "function": "cJSON_DeleteItemFromObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn delete_item_from_object(object: &mut Node, string: &[u8]) -> ()"
+    },
+    {
+      "unit": "U11_detach_replace_p2",
+      "function": "cJSON_DetachItemFromObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn detach_item_from_object(object: &mut Node, string: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U11_detach_replace_p2",
+      "function": "cJSON_DetachItemFromObjectCaseSensitive",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn detach_item_from_object_case_sensitive(object: &mut Node, string: &[u8]) -> Option<Node>"
+    },
+    {
+      "unit": "U11_detach_replace_p3",
+      "function": "cJSON_DeleteItemFromObjectCaseSensitive",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn delete_item_from_object_case_sensitive(object: &mut Node, string: &[u8]) -> ()"
+    },
+    {
+      "unit": "U11_detach_replace_p3",
+      "function": "cJSON_InsertItemInArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn insert_item_in_array(array: &mut Node, which: i32, item: Node) -> bool"
+    },
+    {
+      "unit": "U11_detach_replace_p3",
+      "function": "cJSON_ReplaceItemInArray",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn replace_item_in_array(array: &mut Node, which: i32, new: Node) -> bool"
+    },
+    {
+      "unit": "U11_detach_replace_p3",
+      "function": "cJSON_ReplaceItemViaPointer",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 4,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn replace_item_via_pointer(object: &mut Node, old: &Node, new: Node) -> bool"
+    },
+    {
+      "unit": "U11_detach_replace_p4",
+      "function": "cJSON_ReplaceItemInObject",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn replace_item_in_object(object: &mut Node, string: &[u8], new: Node) -> bool"
+    },
+    {
+      "unit": "U11_detach_replace_p4",
+      "function": "cJSON_ReplaceItemInObjectCaseSensitive",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn replace_item_in_object_case_sensitive(object: &mut Node, string: &[u8], new: Node) -> bool"
+    },
+    {
+      "unit": "U11_detach_replace_p4",
+      "function": "replace_item_in_object",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn replace_item_in_object(object: &mut Node, string: &[u8], new_item: Node, case_sensitive: bool) -> bool"
+    },
+    {
+      "unit": "U12_duplicate",
+      "function": "cJSON_Duplicate",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn duplicate(item: &Node, recursion: bool) -> Option<Node>"
+    },
+    {
+      "unit": "U12_duplicate",
+      "function": "cJSON_Duplicate_rec",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn cjson_duplicate_rec(item: &Node, depth: usize, recursion: bool) -> Option<Node>"
+    },
+    {
+      "unit": "U13_minify",
+      "function": "cJSON_Minify",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn minify(json: &mut Vec<u8>) -> ()"
+    },
+    {
+      "unit": "U13_minify",
+      "function": "minify_string",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn minify_string(input: &mut &[u8], output: &mut Vec<u8>) -> ()"
+    },
+    {
+      "unit": "U13_minify",
+      "function": "skip_multiline_comment",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 2,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn skip_multiline_comment(input: &mut &[u8]) -> ()"
+    },
+    {
+      "unit": "U13_minify",
+      "function": "skip_oneline_comment",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 1,
+      "compiles_first_try": true,
+      "compiles": true,
+      "rust_signature": "fn skip_oneline_comment(input: &mut &[u8]) -> ()"
+    },
+    {
+      "unit": "U14_compare",
+      "function": "cJSON_Compare",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "attempts": 5,
+      "compiles_first_try": false,
+      "compiles": true,
+      "rust_signature": "fn compare(item1: Option<&Node>, item2: Option<&Node>, case_sensitive: bool) -> bool"
+    }
+  ]
+}

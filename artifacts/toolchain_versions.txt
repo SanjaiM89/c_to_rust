@@ -1,0 +1,40 @@
+# toolchain versions - 2026-11-13T09:16:03+05:30
+# host: Linux 6.12.115+deb13.1-amd64 x86_64  distro: Debian GNU/Linux 13 (trixie)
+
+[system]
+gcc          : gcc (Debian 14.2.0-19) 14.2.0
+clang        : Debian clang version 19.1.7 (3+b1)
+llvm-config  : 19.1.7
+cmake        : cmake version 3.31.6
+ninja        : 1.12.1
+python3      : Python 3.13.5
+git          : git version 2.47.3
+
+[rust]
+rustc        : rustc 1.99.1 (58cf8f9c3 2026-10-13)
+cargo        : cargo 1.99.1 (5f94df478 2026-08-27)
+rustup       : rustup 1.29.3 (edbc831ce 2026-11-02)
+toolchains   : stable-x86_64-unknown-linux-gnu (active, default) nightly-x86_64-unknown-linux-gnu 
+clippy       : clippy 0.1.99 (58cf8f9c35 2026-10-13)
+miri         : miri 0.1.0 (8eb778d040 2026-11-12)
+rustfmt      : rustfmt 1.10.0-stable (58cf8f9c35 2026-10-13)
+
+[cargo-installed tools]
+c2rust       : C2Rust 0.22.1
+cargo-fuzz   : cargo-fuzz 0.13.2
+kani         : [0/5] Running Kani first-time setup...
+
+[local model]
+llama-server : 
+models       :
+                /home/sanjaim/Desktop/Projects/c_to_rust/models/qwen2.5-coder-3b-instruct-q4_k_m.gguf  1.96 GiB
+                /home/sanjaim/Desktop/Projects/c_to_rust/models/Qwen3-4B-Instruct-2507-Q4_K_M.gguf  2.33 GiB
+
+[target]
+cJSON tag    : v1.7.19
+cJSON commit : c859b25da02955fef659d658b8f324b5cde87be3
+cJSON.c loc  : 3191
+cJSON.h loc  : 306
+
+[gpu]
+                NVIDIA GeForce RTX 3050 Laptop GPU, 4096 MiB, 550.163.01

@@ -1,0 +1,210 @@
+```rust
+pub fn set_number_helper(object: &mut Node, number: f64) -> f64 {
+    if number >= INT_MAX as f64 {
+        object.valueint = INT_MAX;
+    } else if number <= INT_MIN as f64 {
+        object.valueint = INT_MIN;
+    } else {
+        object.valueint = number as i32;
+    }
+    object.valuedouble = number;
+    object.valuedouble
+}
+
+pub fn compare_double(a: f64, b: f64) -> bool {
+    let max_val = (a.abs().max(b.abs()));
+    (a - b).abs() <= max_val * f64::EPSILON
+}
+
+pub fn get_decimal_point() -> u8 {
+    b'.'
+}
+
+pub fn parse_number(item: &mut Node, input_buffer: &mut ParseBuffer<'_>) -> bool {
+    let mut number: f64 = 0.0;
+    let mut has_decimal_point = false;
+    let mut number_string_length = 0;
+    let mut i = 0;
+    let decimal_point = get_decimal_point();
+
+    if input_buffer.content.is_none() || input_buffer.offset >= input_buffer.content.as_ref().unwrap().len() {
+        return false;
+    }
+
+    // Scan input to determine number string length
+    while input_buffer.offset + i < input_buffer.content.as_ref().unwrap().len() {
+        let byte = input_buffer.content.as_ref().unwrap()[input_buffer.offset + i];
+        match byte {
+            b'0' | b'1' | b'2' | b'3' | b'4' | b'5' | b'6' | b'7' | b'8' | b'9' |
+            b'+' | b'-' | b'e' | b'E' => {
+                number_string_length += 1;
+            }
+            b'.' => {
+                number_string_length += 1;
+                has_decimal_point = true;
+            }
+            _ => {
+                break;
+            }
+        }
+        i += 1;
+    }
+
+    if number_string_length == 0 {
+        return false;
+    }
+
+    // Allocate temporary buffer for number string
+    let mut number_c_string = vec![0u8; number_string_length + 1];
+    let input_slice = &input_buffer.content.as_ref().unwrap()[input_buffer.offset..];
+    number_c_string[..number_string_length].copy_from_slice(&input_slice[..number_string_length]);
+    number_c_string[number_string_length] = b'\0';
+
+    // Replace '.' with decimal point if needed
+    if has_decimal_point {
+        for j in 0..number_string_length {
+            if number_c_string[j] == b'.' {
+                number_c_string[j] = decimal_point;
+            }
+        }
+    }
+
+    // Parse the number using strtod equivalent
+    let mut after_end = &mut number_c_string.as_mut_ptr() as *mut *mut u8;
+    let result = number_c_string.as_ptr() as *const i8;
+    let parsed_number = unsafe { std::ffi::c_str::from_bytes_with_nul_lossy(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+    let after_end_ptr = std::ptr::null_mut::<u8>();
+    let parsed_number = unsafe { std::str::from_utf8_unchecked(&number_c_string) }.parse::<f64>().unwrap_or(0.0);
+   

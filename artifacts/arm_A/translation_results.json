@@ -1,0 +1,91 @@
+{
+  "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+  "out": "artifacts/arm_A",
+  "units": 3,
+  "compile_first_try_pass": 0,
+  "compile_first_try_rate": "0/3",
+  "final_crate_compiles": false,
+  "results": [
+    {
+      "unit": "U02_print_buffer",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "b4be6a9f95bf162790de8c82cc876dff83e702a8118f3f893ebcda88514ce73f",
+      "prompt_tokens": 2796,
+      "completion_tokens": 462,
+      "wall_seconds": 11.0,
+      "has_code": true,
+      "pub_normalised": true,
+      "compiles_first_try": false,
+      "error_count": 8,
+      "errors": [
+        "src/uu02_print_buffer.rs:4:17: error[E0599]: no method named `is_none` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`",
+        "src/uu02_print_buffer.rs:35:34: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field",
+        "src/uu02_print_buffer.rs:38:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `Option<_>`",
+        "src/uu02_print_buffer.rs:45:39: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field",
+        "src/uu02_print_buffer.rs:48:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `Option<_>`",
+        "src/uu02_print_buffer.rs:52:35: error[E0599]: no method named `take` found for struct `Vec<u8>` in the current scope: `Vec<u8>` is not an iterator",
+        "src/uu02_print_buffer.rs:66:17: error[E0599]: no method named `is_none` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`",
+        "error: could not compile `cjson_rs` (lib) due to 7 previous errors"
+      ],
+      "candidate": "artifacts/arm_A/candidates/U02_print_buffer.rs"
+    },
+    {
+      "unit": "U03_number_parse",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "ae7b8361984b831c3c8ff227796a7ba4cf13a748f869cf2817149ed4a6cd6835",
+      "prompt_tokens": 3703,
+      "completion_tokens": 4096,
+      "wall_seconds": 93.1,
+      "has_code": false,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "error_count": 8,
+      "errors": [
+        "src/uu02_print_buffer.rs:4:17: error[E0599]: no method named `is_none` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`",
+        "src/uu02_print_buffer.rs:35:34: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field",
+        "src/uu02_print_buffer.rs:38:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `Option<_>`",
+        "src/uu02_print_buffer.rs:45:39: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field",
+        "src/uu02_print_buffer.rs:48:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `Option<_>`",
+        "src/uu02_print_buffer.rs:52:35: error[E0599]: no method named `take` found for struct `Vec<u8>` in the current scope: `Vec<u8>` is not an iterator",
+        "src/uu02_print_buffer.rs:66:17: error[E0599]: no method named `is_none` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`",
+        "error: could not compile `cjson_rs` (lib) due to 7 previous errors; 1 warning emitted"
+      ],
+      "candidate": "artifacts/arm_A/candidates/U03_number_parse.rs"
+    },
+    {
+      "unit": "U12_duplicate",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "e21826093a9fbf072308549bd2d3f5030e3233317235de3e98280a569340a9df",
+      "prompt_tokens": 3142,
+      "completion_tokens": 846,
+      "wall_seconds": 19.8,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "error_count": 31,
+      "errors": [
+        "src/uu12_duplicate.rs:41:12: error[E0425]: cannot find value `depth` in this scope: not found in this scope",
+        "src/uu02_print_buffer.rs:4:17: error[E0599]: no method named `is_none` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`",
+        "src/uu02_print_buffer.rs:35:34: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field",
+        "src/uu02_print_buffer.rs:38:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `Option<_>`",
+        "src/uu02_print_buffer.rs:45:39: error[E0609]: no field `hooks` on type `&mut contract::PrintBuffer`: unknown field",
+        "src/uu02_print_buffer.rs:48:24: error[E0308]: mismatched types: expected `Vec<u8>`, found `Option<_>`",
+        "src/uu02_print_buffer.rs:52:35: error[E0599]: no method named `take` found for struct `Vec<u8>` in the current scope: `Vec<u8>` is not an iterator",
+        "src/uu02_print_buffer.rs:66:17: error[E0599]: no method named `is_none` found for struct `Vec<u8>` in the current scope: method not found in `Vec<u8>`",
+        "src/uu12_duplicate.rs:4:13: error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope: method not found in `&contract::Node`",
+        "src/uu12_duplicate.rs:7:34: error[E0433]: cannot find type `Hooks` in this scope: use of undeclared type `Hooks`",
+        "src/uu12_duplicate.rs:7:23: error[E0425]: cannot find function `new__item` in this scope: not found in this scope",
+        "src/uu12_duplicate.rs:8:26: error[E0609]: no field `type_` on type `&contract::Node`: unknown field",
+        "src/uu12_duplicate.rs:12:38: error[E0609]: no field `valuestring` on type `&contract::Node`: unknown field",
+        "src/uu12_duplicate.rs:13:58: error[E0433]: cannot find type `Hooks` in this scope: use of undeclared type `Hooks`",
+        "src/uu12_duplicate.rs:13:31: error[E0425]: cannot find function `cjson_strdup` in this scope: not found in this scope",
+        "src/uu12_duplicate.rs:21:17: error[E0609]: no field `type_` on type `&contract::Node`: unknown field",
+        "src/uu12_duplicate.rs:24:57: error[E0433]: cannot find type `Hooks` in this scope: use of undeclared type `Hooks`",
+        "src/uu12_duplicate.rs:24:35: error[E0425]: cannot find function `cjson_strdup` in this scope: not found in this scope",
+        "src/uu12_duplicate.rs:47:22: error[E0609]: no field `prev` on type `contract::Node`: unknown field",
+        "src/uu12_duplicate.rs:66:13: error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope: method not found in `&contract::Node`"
+      ],
+      "candidate": "artifacts/arm_A/candidates/U12_duplicate.rs"
+    }
+  ]
+}

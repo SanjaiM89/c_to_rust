@@ -1,0 +1,170 @@
+{
+  "structs": {
+    "error": {
+      "name": "error",
+      "file": "cJSON.c",
+      "line": 88,
+      "fields": [
+        {
+          "name": "json",
+          "type": "const unsigned char *"
+        },
+        {
+          "name": "position",
+          "type": "size_t"
+        }
+      ]
+    },
+    "internal_hooks": {
+      "name": "internal_hooks",
+      "file": "cJSON.c",
+      "line": 156,
+      "fields": [
+        {
+          "name": "allocate",
+          "type": "void * (*)(size_t size)"
+        },
+        {
+          "name": "deallocate",
+          "type": "void (*)(void *pointer)"
+        },
+        {
+          "name": "reallocate",
+          "type": "void * (*)(void *pointer, size_t size)"
+        }
+      ]
+    },
+    "parse_buffer": {
+      "name": "parse_buffer",
+      "file": "cJSON.c",
+      "line": 289,
+      "fields": [
+        {
+          "name": "content",
+          "type": "const unsigned char *"
+        },
+        {
+          "name": "length",
+          "type": "size_t"
+        },
+        {
+          "name": "offset",
+          "type": "size_t"
+        },
+        {
+          "name": "depth",
+          "type": "size_t"
+        },
+        {
+          "name": "hooks",
+          "type": "internal_hooks"
+        }
+      ]
+    },
+    "printbuffer": {
+      "name": "printbuffer",
+      "file": "cJSON.c",
+      "line": 473,
+      "fields": [
+        {
+          "name": "buffer",
+          "type": "unsigned char *"
+        },
+        {
+          "name": "length",
+          "type": "size_t"
+        },
+        {
+          "name": "offset",
+          "type": "size_t"
+        },
+        {
+          "name": "depth",
+          "type": "size_t"
+        },
+        {
+          "name": "noalloc",
+          "type": "cJSON_bool"
+        },
+        {
+          "name": "format",
+          "type": "cJSON_bool"
+        },
+        {
+          "name": "hooks",
+          "type": "internal_hooks"
+        }
+      ]
+    },
+    "cJSON": {
+      "name": "cJSON",
+      "file": "cJSON.h",
+      "line": 103,
+      "fields": [
+        {
+          "name": "next",
+          "type": "struct cJSON *"
+        },
+        {
+          "name": "prev",
+          "type": "struct cJSON *"
+        },
+        {
+          "name": "child",
+          "type": "struct cJSON *"
+        },
+        {
+          "name": "type",
+          "type": "int"
+        },
+        {
+          "name": "valuestring",
+          "type": "char *"
+        },
+        {
+          "name": "valueint",
+          "type": "int"
+        },
+        {
+          "name": "valuedouble",
+          "type": "double"
+        },
+        {
+          "name": "string",
+          "type": "char *"
+        }
+      ]
+    },
+    "cJSON_Hooks": {
+      "name": "cJSON_Hooks",
+      "file": "cJSON.h",
+      "line": 125,
+      "fields": [
+        {
+          "name": "malloc_fn",
+          "type": "void * (*)(size_t sz)"
+        },
+        {
+          "name": "free_fn",
+          "type": "void (*)(void *ptr)"
+        }
+      ]
+    }
+  },
+  "globals": [
+    {
+      "name": "global_error",
+      "type": "error",
+      "line": 92,
+      "is_static": true,
+      "file": "cJSON.c"
+    },
+    {
+      "name": "global_hooks",
+      "type": "internal_hooks",
+      "line": 186,
+      "is_static": true,
+      "file": "cJSON.c"
+    }
+  ]
+}

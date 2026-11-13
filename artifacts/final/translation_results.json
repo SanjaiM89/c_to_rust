@@ -1,0 +1,1820 @@
+{
+  "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+  "out": "artifacts/final",
+  "units": 31,
+  "compile_first_try_pass": 0,
+  "compile_first_try_rate": "0/26",
+  "units_attempted": 26,
+  "units_resumed": 5,
+  "compiles_after_repair_pass": 1,
+  "compiles_after_repair_rate": "1/26",
+  "total_model_calls": 123,
+  "final_crate_compiles": false,
+  "results": [
+    {
+      "unit": "U01_hooks_alloc",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "resumed",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "wall_seconds": 0,
+      "has_code": true,
+      "pub_normalised": null,
+      "compiles_first_try": null,
+      "compiles_after_repair": true,
+      "attempts": 0,
+      "first_try_errors": [],
+      "history": [],
+      "resumed": true
+    },
+    {
+      "unit": "U02_print_buffer",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "b1709644901766e4e05dd6242b5bf9e186a13027532c94be7b19e0e66835d4a7",
+      "prompt_tokens": 2884,
+      "completion_tokens": 397,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0599]: no method named `reallocate` found for struct `Hooks` in the current scope",
+        "error[E0599]: no method named `allocate` found for struct `Hooks` in the current scope",
+        "error[E0599]: no method named `deallocate` found for struct `Hooks` in the current scope",
+        "error[E0599]: no method named `deallocate` found for struct `Hooks` in the current scope",
+        "error: could not compile `scratch` (lib) due to 4 previous errors; 2 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "b1709644901766e4e05dd6242b5bf9e186a13027532c94be7b19e0e66835d4a7",
+          "prompt_tokens": 2884,
+          "completion_tokens": 397,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "82c0c9dac2b34d03d97522ad2c98820da03be28f6744e0efd3f854b7c19d9955",
+          "prompt_tokens": 1852,
+          "completion_tokens": 397,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "6c45ff0d6a292b5937a86155e5aa3baa00791417974229254265052c0ec67e14",
+          "prompt_tokens": 1793,
+          "completion_tokens": 387,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "35e59d5e7db4a684e0fea154b0fe4695bf1d6633f3a9f72e52660b6bbd2c74cb",
+          "prompt_tokens": 1241,
+          "completion_tokens": 403,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "8d80a99c5c497429ab0e8b4aaade61709c719de964347377159421ee5ec57b17",
+          "prompt_tokens": 1677,
+          "completion_tokens": 400,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 2,
+      "errors": [
+        "error[E0061]: this method takes 3 arguments but 2 arguments were supplied",
+        "error: could not compile `scratch` (lib) due to 1 previous error; 2 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U02_print_buffer.rs"
+    },
+    {
+      "unit": "U03_number_parse",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "6d0a3bdaf1e28acec3d42b55026d6bf60ce137efb0dfaad5cf23121bf3c5c122",
+      "prompt_tokens": 3337,
+      "completion_tokens": 856,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 1 previous error; 2 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "6d0a3bdaf1e28acec3d42b55026d6bf60ce137efb0dfaad5cf23121bf3c5c122",
+          "prompt_tokens": 3337,
+          "completion_tokens": 856,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "6107b2429f9327961bc34f5ab1476c58e4e1d87eb3f040c2373fd3ad73280daa",
+          "prompt_tokens": 1731,
+          "completion_tokens": 856,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "6107b2429f9327961bc34f5ab1476c58e4e1d87eb3f040c2373fd3ad73280daa",
+          "prompt_tokens": 1731,
+          "completion_tokens": 856,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "6107b2429f9327961bc34f5ab1476c58e4e1d87eb3f040c2373fd3ad73280daa",
+          "prompt_tokens": 1731,
+          "completion_tokens": 856,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "6107b2429f9327961bc34f5ab1476c58e4e1d87eb3f040c2373fd3ad73280daa",
+          "prompt_tokens": 1731,
+          "completion_tokens": 856,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 2,
+      "errors": [
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 1 previous error; 2 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U03_number_parse.rs"
+    },
+    {
+      "unit": "U04_string_parse",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "48a0419dd190da714a705ae8421ccea09502cdc54ade9f6ce4402b867db03c43",
+      "prompt_tokens": 4410,
+      "completion_tokens": 1485,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error: unknown byte escape: `b`",
+        "error: unknown byte escape: `f`",
+        "error[E0609]: no field `hooks` on type `&mut contract::ParseBuffer<'_>`",
+        "error[E0308]: mismatched types",
+        "error[E0308]: `match` arms have incompatible types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 8 previous errors; 2 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "48a0419dd190da714a705ae8421ccea09502cdc54ade9f6ce4402b867db03c43",
+          "prompt_tokens": 4410,
+          "completion_tokens": 1485,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "4bb00074d31d7bb976462783b64d2421f145ac25036ea6ab2a9480e0d6647106",
+          "prompt_tokens": 3376,
+          "completion_tokens": 1462,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "55221df3c654b9831cef6b08fa1b241e17a47181f49f02d3145af0a247437c12",
+          "prompt_tokens": 2939,
+          "completion_tokens": 1474,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "1778f8841daacdbf8436fc8f499baa2384633d10b54bb4c342c33331b45d7412",
+          "prompt_tokens": 2940,
+          "completion_tokens": 1412,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "aac1ac6af8c6ba915e9cc7bf1b2cb9d3a6dadb55ab6ed626fd404a43903c93ba",
+          "prompt_tokens": 3073,
+          "completion_tokens": 1497,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 2,
+      "errors": [
+        "error[E0599]: no method named `allocate` found for mutable reference `&mut contract::ParseBuffer<'_>` in the current scope",
+        "error: could not compile `scratch` (lib) due to 1 previous error; 9 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U04_string_parse.rs"
+    },
+    {
+      "unit": "U05_string_print",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "0658824147fbf8dd34de17508b97fc08422b9b262c17bfe4a0c79ecd4de983f7",
+      "prompt_tokens": 3163,
+      "completion_tokens": 806,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error: unknown byte escape: `b`",
+        "error: unknown byte escape: `f`",
+        "error: unknown byte escape: `b`",
+        "error: unknown byte escape: `f`",
+        "error[E0308]: mismatched types",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::PrintBuffer` in the current scope",
+        "error[E0599]: no method named `copy_from_slice` found for type `usize` in the current scope",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0624]: method `len` is private",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0308]: mismatched types",
+        "error[E0277]: can't compare `&&[u8]` with `u8`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0277]: can't compare `&&[u8]` with `u8`",
+        "error[E0608]: cannot index into a value of type `usize`"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "0658824147fbf8dd34de17508b97fc08422b9b262c17bfe4a0c79ecd4de983f7",
+          "prompt_tokens": 3163,
+          "completion_tokens": 806,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "35e7f230950dd0b99020e1ea5bb64831f74ab8e52fc8741f01eb11745c47a61b",
+          "prompt_tokens": 4754,
+          "completion_tokens": 813,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "1858e823f9e03a86076efabd4326fe3b712f6b136c25f8fea83f85bea6296533",
+          "prompt_tokens": 4345,
+          "completion_tokens": 759,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "a4079babf9d32a3bf7454d35d38633f877a8a37e4db48e9c2cbb26ef2353adf5",
+          "prompt_tokens": 2894,
+          "completion_tokens": 759,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "a4079babf9d32a3bf7454d35d38633f877a8a37e4db48e9c2cbb26ef2353adf5",
+          "prompt_tokens": 2894,
+          "completion_tokens": 759,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 21,
+      "errors": [
+        "error[E0599]: no method named `copy_from_slice` found for type `usize` in the current scope",
+        "error[E0277]: `&&[u8]` is not an iterator",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`"
+      ],
+      "candidate": "artifacts/final/candidates/U05_string_print.rs"
+    },
+    {
+      "unit": "U06_value_parse",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "e9aae465331622919bb2ffbe7e404998039655f2ef8736eb2304c63f5f8d3a8a",
+      "prompt_tokens": 6882,
+      "completion_tokens": 1310,
+      "wall_seconds": 0.0,
+      "has_code": false,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 1,
+      "first_try_errors": null,
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "e9aae465331622919bb2ffbe7e404998039655f2ef8736eb2304c63f5f8d3a8a",
+          "prompt_tokens": 6882,
+          "completion_tokens": 1310,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 21,
+      "errors": [
+        "error[E0599]: no method named `copy_from_slice` found for type `usize` in the current scope",
+        "error[E0277]: `&&[u8]` is not an iterator",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`",
+        "error[E0608]: cannot index into a value of type `usize`"
+      ],
+      "candidate": "artifacts/final/candidates/U06_value_parse.rs"
+    },
+    {
+      "unit": "U06b_parse_entry",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "22b9645f6e1c575cb7cb7778270ccd5e8f3b64c0d4a605599d0a1e03091e5120",
+      "prompt_tokens": 3433,
+      "completion_tokens": 361,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0106]: missing lifetime specifiers",
+        "error[E0106]: missing lifetime specifiers",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 4 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "22b9645f6e1c575cb7cb7778270ccd5e8f3b64c0d4a605599d0a1e03091e5120",
+          "prompt_tokens": 3433,
+          "completion_tokens": 361,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "520b59548615539f1a2342b209e33ae6ddd9936c07655fd5e713753bffd6b640",
+          "prompt_tokens": 1831,
+          "completion_tokens": 361,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "520b59548615539f1a2342b209e33ae6ddd9936c07655fd5e713753bffd6b640",
+          "prompt_tokens": 1831,
+          "completion_tokens": 361,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "520b59548615539f1a2342b209e33ae6ddd9936c07655fd5e713753bffd6b640",
+          "prompt_tokens": 1831,
+          "completion_tokens": 361,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "520b59548615539f1a2342b209e33ae6ddd9936c07655fd5e713753bffd6b640",
+          "prompt_tokens": 1831,
+          "completion_tokens": 361,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 3,
+      "errors": [
+        "error[E0106]: missing lifetime specifiers",
+        "error[E0106]: missing lifetime specifiers",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 4 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U06b_parse_entry.rs"
+    },
+    {
+      "unit": "U07_value_print_p1",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "resumed",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "wall_seconds": 0,
+      "has_code": true,
+      "pub_normalised": null,
+      "compiles_first_try": null,
+      "compiles_after_repair": true,
+      "attempts": 0,
+      "first_try_errors": [],
+      "history": [],
+      "resumed": true
+    },
+    {
+      "unit": "U07_value_print_p2",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "2b5077ba200c7508dd316b671a8e0ddf987dd9bb4da2c62317fb38e4942f9a39",
+      "prompt_tokens": 5287,
+      "completion_tokens": 1721,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0428]: the name `print` is defined multiple times",
+        "error[E0599]: no method named `deallocate` found for reference `&contract::Hooks` in the current scope",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::PrintBuffer` in the current scope",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::PrintBuffer` in the current scope",
+        "error[E0308]: mismatched types",
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::PrintBuffer` in the current scope",
+        "error: could not compile `scratch` (lib) due to 7 previous errors; 9 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "2b5077ba200c7508dd316b671a8e0ddf987dd9bb4da2c62317fb38e4942f9a39",
+          "prompt_tokens": 5287,
+          "completion_tokens": 1721,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "a805a4ec8183b5807827700a846c9430c249e078613d8abf0dc0b28bd2dafa58",
+          "prompt_tokens": 4194,
+          "completion_tokens": 1711,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "9d76ee045a2f16f18f1586738345ab63e2fc4f1880bb88595bc5f5ccb0d4f292",
+          "prompt_tokens": 4843,
+          "completion_tokens": 1790,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "bdc602180f4a151b1e078b30444a9ff1357e64283cb88d74044fcead8cf20b63",
+          "prompt_tokens": 3863,
+          "completion_tokens": 1790,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "bdc602180f4a151b1e078b30444a9ff1357e64283cb88d74044fcead8cf20b63",
+          "prompt_tokens": 3863,
+          "completion_tokens": 1790,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 4,
+      "errors": [
+        "error[E0428]: the name `print` is defined multiple times",
+        "error[E0308]: mismatched types",
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error: could not compile `scratch` (lib) due to 3 previous errors; 10 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U07_value_print_p2.rs"
+    },
+    {
+      "unit": "U07_value_print_p3",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "resumed",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "wall_seconds": 0,
+      "has_code": true,
+      "pub_normalised": null,
+      "compiles_first_try": null,
+      "compiles_after_repair": true,
+      "attempts": 0,
+      "first_try_errors": [],
+      "history": [],
+      "resumed": true
+    },
+    {
+      "unit": "U08_accessors_p1",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "f0df6aeab35d95b8167a0521dbfca6e532d8a21db654c39fdce3be75a67c01f2",
+      "prompt_tokens": 2975,
+      "completion_tokens": 521,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": true,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0428]: the name `get_array_item` is defined multiple times",
+        "error[E0425]: cannot find value `GLOBAL_ERROR` in this scope",
+        "error[E0599]: no method named `next` found for reference `&Vec<contract::Node>` in the current scope",
+        "error: could not compile `scratch` (lib) due to 3 previous errors; 2 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "f0df6aeab35d95b8167a0521dbfca6e532d8a21db654c39fdce3be75a67c01f2",
+          "prompt_tokens": 2975,
+          "completion_tokens": 521,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "b0a1b85aaeeabea48d2888dc0f65da756b23e978cb5b0dee20b80229a5741aca",
+          "prompt_tokens": 1930,
+          "completion_tokens": 520,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "1ff8add70a5684c58a1777fa00ff5bd9746cc803000098ce566f9cc1f67f41f6",
+          "prompt_tokens": 1778,
+          "completion_tokens": 520,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "1ff8add70a5684c58a1777fa00ff5bd9746cc803000098ce566f9cc1f67f41f6",
+          "prompt_tokens": 1778,
+          "completion_tokens": 520,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "1ff8add70a5684c58a1777fa00ff5bd9746cc803000098ce566f9cc1f67f41f6",
+          "prompt_tokens": 1778,
+          "completion_tokens": 520,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 3,
+      "errors": [
+        "error[E0428]: the name `get_array_item` is defined multiple times",
+        "error[E0425]: cannot find value `GLOBAL_ERROR` in this scope",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 2 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U08_accessors_p1.rs"
+    },
+    {
+      "unit": "U08_accessors_p2",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "1a1f636a610ab2fb7b72a688af1f7efba6fce4d453b6e18f52a86ec6c5580a5a",
+      "prompt_tokens": 2828,
+      "completion_tokens": 564,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0428]: the name `get_object_item` is defined multiple times",
+        "error[E0106]: missing lifetime specifier",
+        "error[E0106]: missing lifetime specifier",
+        "error[E0106]: missing lifetime specifier",
+        "error[E0061]: this function takes 2 arguments but 3 arguments were supplied",
+        "error[E0061]: this function takes 2 arguments but 3 arguments were supplied",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 9 previous errors; 2 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "1a1f636a610ab2fb7b72a688af1f7efba6fce4d453b6e18f52a86ec6c5580a5a",
+          "prompt_tokens": 2828,
+          "completion_tokens": 564,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "77e457e5f81798472a8ea7a3dcb6a03f0c08122bd049d348cd84284bcfa05cf7",
+          "prompt_tokens": 3138,
+          "completion_tokens": 598,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "10666e53b1764461967b2176d950340bdf21717fb503221763eb3dbeafe1ff95",
+          "prompt_tokens": 3223,
+          "completion_tokens": 599,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "6fd948a5514dbc40be100b8ccc7c839d2a877e4ed5cdcbad01afe6576edff824",
+          "prompt_tokens": 2929,
+          "completion_tokens": 625,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "a23c0f7e667952bddd384a863603ff959f09b4ff7c50ad5492de4dadcfcdc1b2",
+          "prompt_tokens": 2509,
+          "completion_tokens": 618,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 6,
+      "errors": [
+        "error[E0428]: the name `get_object_item` is defined multiple times",
+        "error[E0061]: this function takes 2 arguments but 3 arguments were supplied",
+        "error[E0061]: this function takes 2 arguments but 3 arguments were supplied",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 5 previous errors; 2 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U08_accessors_p2.rs"
+    },
+    {
+      "unit": "U08_accessors_p3",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "67d054d6cf87ef1a73fb18b1484992d2662ea9b482f3004ed5522608d2bc5f0c",
+      "prompt_tokens": 2702,
+      "completion_tokens": 223,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error: could not compile `scratch` (lib) due to 1 previous error"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "67d054d6cf87ef1a73fb18b1484992d2662ea9b482f3004ed5522608d2bc5f0c",
+          "prompt_tokens": 2702,
+          "completion_tokens": 223,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "0f394b981ede1468cc7ec0b0d298931f4b41e31b3e97f56994ad9fc224a089df",
+          "prompt_tokens": 1103,
+          "completion_tokens": 223,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "0f394b981ede1468cc7ec0b0d298931f4b41e31b3e97f56994ad9fc224a089df",
+          "prompt_tokens": 1103,
+          "completion_tokens": 223,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "0f394b981ede1468cc7ec0b0d298931f4b41e31b3e97f56994ad9fc224a089df",
+          "prompt_tokens": 1103,
+          "completion_tokens": 223,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "0f394b981ede1468cc7ec0b0d298931f4b41e31b3e97f56994ad9fc224a089df",
+          "prompt_tokens": 1103,
+          "completion_tokens": 223,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 2,
+      "errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error: could not compile `scratch` (lib) due to 1 previous error"
+      ],
+      "candidate": "artifacts/final/candidates/U08_accessors_p3.rs"
+    },
+    {
+      "unit": "U08_accessors_p4",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "resumed",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "wall_seconds": 0,
+      "has_code": true,
+      "pub_normalised": null,
+      "compiles_first_try": null,
+      "compiles_after_repair": true,
+      "attempts": 0,
+      "first_try_errors": [],
+      "history": [],
+      "resumed": true
+    },
+    {
+      "unit": "U09_create_p1",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "670cf33e74ef5d18a1a340f822194bd9b9d835b7133e58e0b10c3f631466b918",
+      "prompt_tokens": 2692,
+      "completion_tokens": 288,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 5 previous errors; 1 warning emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "670cf33e74ef5d18a1a340f822194bd9b9d835b7133e58e0b10c3f631466b918",
+          "prompt_tokens": 2692,
+          "completion_tokens": 288,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "75f48deda760cf09376388beeaa8b1be8e60d7e702b9e2b0da3038974f194eac",
+          "prompt_tokens": 1921,
+          "completion_tokens": 288,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "75f48deda760cf09376388beeaa8b1be8e60d7e702b9e2b0da3038974f194eac",
+          "prompt_tokens": 1921,
+          "completion_tokens": 288,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "75f48deda760cf09376388beeaa8b1be8e60d7e702b9e2b0da3038974f194eac",
+          "prompt_tokens": 1921,
+          "completion_tokens": 288,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "75f48deda760cf09376388beeaa8b1be8e60d7e702b9e2b0da3038974f194eac",
+          "prompt_tokens": 1921,
+          "completion_tokens": 288,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 6,
+      "errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 5 previous errors; 1 warning emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U09_create_p1.rs"
+    },
+    {
+      "unit": "U09_create_p2",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "cd3416754aa687385ed19d378c009edab8cb3458b98aacb12bff3be5e067c98c",
+      "prompt_tokens": 3011,
+      "completion_tokens": 555,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0423]: cannot find value `Hooks` in this scope",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0609]: no field `next` on type `&mut contract::Node`",
+        "error[E0609]: no field `prev` on type `contract::Node`",
+        "error[E0609]: no field `prev` on type `contract::Node`",
+        "error: could not compile `scratch` (lib) due to 7 previous errors; 4 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "cd3416754aa687385ed19d378c009edab8cb3458b98aacb12bff3be5e067c98c",
+          "prompt_tokens": 3011,
+          "completion_tokens": 555,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "8b17bd8ddd128ac08db751af34dc38ddb247bb53d0cb8d1ea94b1978cce6d7a6",
+          "prompt_tokens": 2514,
+          "completion_tokens": 621,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "503cd71eef41e595741cb8b8e5f8057c6553deacc2e2e6067f7a7d4edd354412",
+          "prompt_tokens": 2247,
+          "completion_tokens": 494,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "94d828a2f46485b7add8ee02b642a02e4dda4782d1dafd39b18c1e76b3f1aae2",
+          "prompt_tokens": 1863,
+          "completion_tokens": 494,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "94d828a2f46485b7add8ee02b642a02e4dda4782d1dafd39b18c1e76b3f1aae2",
+          "prompt_tokens": 1863,
+          "completion_tokens": 494,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 4,
+      "errors": [
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 3 previous errors; 3 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U09_create_p2.rs"
+    },
+    {
+      "unit": "U09_create_p3",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "44ce524a9ac3f977b35561e0d628d01efbc0f312c9905d46df59964dd04a470b",
+      "prompt_tokens": 2759,
+      "completion_tokens": 258,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 8 previous errors; 4 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "44ce524a9ac3f977b35561e0d628d01efbc0f312c9905d46df59964dd04a470b",
+          "prompt_tokens": 2759,
+          "completion_tokens": 258,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "7598f75b2439b893baa49b68a87320eb6f292bc1ecc4dcfa5eff608c7b9160f1",
+          "prompt_tokens": 2647,
+          "completion_tokens": 258,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "7598f75b2439b893baa49b68a87320eb6f292bc1ecc4dcfa5eff608c7b9160f1",
+          "prompt_tokens": 2647,
+          "completion_tokens": 258,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "7598f75b2439b893baa49b68a87320eb6f292bc1ecc4dcfa5eff608c7b9160f1",
+          "prompt_tokens": 2647,
+          "completion_tokens": 258,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "7598f75b2439b893baa49b68a87320eb6f292bc1ecc4dcfa5eff608c7b9160f1",
+          "prompt_tokens": 2647,
+          "completion_tokens": 258,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 9,
+      "errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 8 previous errors; 4 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U09_create_p3.rs"
+    },
+    {
+      "unit": "U09_create_p4",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "dcf8256a24d5c364ec690b2cefdbbdbd21ec2ea2eddb4389d370bf6e3847e579",
+      "prompt_tokens": 3849,
+      "completion_tokens": 681,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::Node` in the current scope",
+        "error[E0600]: cannot apply unary operator `!` to type `*const u8`",
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error[E0382]: use of moved value: `node`",
+        "error: could not compile `scratch` (lib) due to 5 previous errors; 10 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "dcf8256a24d5c364ec690b2cefdbbdbd21ec2ea2eddb4389d370bf6e3847e579",
+          "prompt_tokens": 3849,
+          "completion_tokens": 681,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "760206021049d2a256fa11fa0f4361b4d196dc9686e9e02083463762429c9ae9",
+          "prompt_tokens": 3110,
+          "completion_tokens": 634,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "3ae38c1fddc1627ed1443a809a4bd057a9403053f3ee34f7a3c4469c1f5bb170",
+          "prompt_tokens": 3294,
+          "completion_tokens": 634,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "3ae38c1fddc1627ed1443a809a4bd057a9403053f3ee34f7a3c4469c1f5bb170",
+          "prompt_tokens": 3294,
+          "completion_tokens": 634,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "3ae38c1fddc1627ed1443a809a4bd057a9403053f3ee34f7a3c4469c1f5bb170",
+          "prompt_tokens": 3294,
+          "completion_tokens": 634,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 6,
+      "errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::Node` in the current scope",
+        "error[E0600]: cannot apply unary operator `!` to type `*const u8`",
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error[E0382]: use of moved value: `node`",
+        "error: could not compile `scratch` (lib) due to 5 previous errors; 10 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U09_create_p4.rs"
+    },
+    {
+      "unit": "U10_add_item_p1",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "c15241c1e42ce65e04406016d2ed6adea5d4d4838af55ec20c4e87831440e30a",
+      "prompt_tokens": 3406,
+      "completion_tokens": 302,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::Node` in the current scope",
+        "error[E0599]: no method named `is_none` found for struct `contract::Node` in the current scope",
+        "error[E0308]: mismatched types",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::Node` in the current scope",
+        "error[E0599]: no method named `is_none` found for struct `contract::Node` in the current scope",
+        "error[E0599]: no method named `ok` found for enum `Option<T>` in the current scope",
+        "error[E0599]: no method named `is_empty` found for enum `Option<T>` in the current scope",
+        "error[E0599]: no method named `deallocate` found for reference `&contract::Hooks` in the current scope",
+        "error: could not compile `scratch` (lib) due to 9 previous errors; 4 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "c15241c1e42ce65e04406016d2ed6adea5d4d4838af55ec20c4e87831440e30a",
+          "prompt_tokens": 3406,
+          "completion_tokens": 302,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "ced9ac8ca19129c5e3f462be82a6a45ce95a31aedaa7b4b8ebe463fb2d51eeb9",
+          "prompt_tokens": 2894,
+          "completion_tokens": 281,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "897938d78a1d029386c31b39f92279c00df7564a72b808af45f52512e565df1c",
+          "prompt_tokens": 2199,
+          "completion_tokens": 280,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "8b9792df7f257d6740e93fa01f73b08724c01b1c42bfc8c78e53df66f56c6351",
+          "prompt_tokens": 2357,
+          "completion_tokens": 280,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "8b9792df7f257d6740e93fa01f73b08724c01b1c42bfc8c78e53df66f56c6351",
+          "prompt_tokens": 2357,
+          "completion_tokens": 280,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 6,
+      "errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0308]: mismatched types",
+        "error[E0599]: no method named `ok` found for enum `Option<T>` in the current scope",
+        "error[E0599]: no method named `is_empty` found for enum `Option<T>` in the current scope",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 5 previous errors; 4 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U10_add_item_p1.rs"
+    },
+    {
+      "unit": "U10_add_item_p2",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "c987278fdc118f4013020b63ac52fcfe53a67f884d05686fbe2a58464c370151",
+      "prompt_tokens": 2576,
+      "completion_tokens": 148,
+      "wall_seconds": 0.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0382]: use of moved value: `array`",
+        "error[E0382]: use of moved value: `bool_item`",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 7 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "c987278fdc118f4013020b63ac52fcfe53a67f884d05686fbe2a58464c370151",
+          "prompt_tokens": 2576,
+          "completion_tokens": 148,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "9e35ebe66df8d523b288a12ab88bd26e6f9917408d4363be395a4c0ba5844dec",
+          "prompt_tokens": 1370,
+          "completion_tokens": 148,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "9e35ebe66df8d523b288a12ab88bd26e6f9917408d4363be395a4c0ba5844dec",
+          "prompt_tokens": 1370,
+          "completion_tokens": 148,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "9e35ebe66df8d523b288a12ab88bd26e6f9917408d4363be395a4c0ba5844dec",
+          "prompt_tokens": 1370,
+          "completion_tokens": 148,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "9e35ebe66df8d523b288a12ab88bd26e6f9917408d4363be395a4c0ba5844dec",
+          "prompt_tokens": 1370,
+          "completion_tokens": 148,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 3,
+      "errors": [
+        "error[E0382]: use of moved value: `array`",
+        "error[E0382]: use of moved value: `bool_item`",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 7 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U10_add_item_p2.rs"
+    },
+    {
+      "unit": "U10_add_item_p3",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "resumed",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "wall_seconds": 0,
+      "has_code": true,
+      "pub_normalised": null,
+      "compiles_first_try": null,
+      "compiles_after_repair": true,
+      "attempts": 0,
+      "first_try_errors": [],
+      "history": [],
+      "resumed": true
+    },
+    {
+      "unit": "U10_add_item_p4",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "9ab174635f39a7dc97425aec6b9ed46b3c022cf17138301d65d82a01d75e43b4",
+      "prompt_tokens": 2606,
+      "completion_tokens": 194,
+      "wall_seconds": 5.2,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0382]: use of moved value: `null`",
+        "error[E0382]: use of moved value: `number_item`",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 7 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "9ab174635f39a7dc97425aec6b9ed46b3c022cf17138301d65d82a01d75e43b4",
+          "prompt_tokens": 2606,
+          "completion_tokens": 194,
+          "wall_seconds": 5.2
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "2cda2a614c69247728623e5dfbfdb567b97624b393f92a8fe68621b397c7f593",
+          "prompt_tokens": 1453,
+          "completion_tokens": 194,
+          "wall_seconds": 4.5
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "2cda2a614c69247728623e5dfbfdb567b97624b393f92a8fe68621b397c7f593",
+          "prompt_tokens": 1453,
+          "completion_tokens": 194,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "2cda2a614c69247728623e5dfbfdb567b97624b393f92a8fe68621b397c7f593",
+          "prompt_tokens": 1453,
+          "completion_tokens": 194,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "2cda2a614c69247728623e5dfbfdb567b97624b393f92a8fe68621b397c7f593",
+          "prompt_tokens": 1453,
+          "completion_tokens": 194,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 3,
+      "errors": [
+        "error[E0382]: use of moved value: `null`",
+        "error[E0382]: use of moved value: `number_item`",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 7 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U10_add_item_p4.rs"
+    },
+    {
+      "unit": "U10_add_item_p5",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "1dec2a052a41744e0688f8ce7a35c49e3d1781290e7aefdf232e6cb89764045a",
+      "prompt_tokens": 2641,
+      "completion_tokens": 232,
+      "wall_seconds": 6.1,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": true,
+      "attempts": 2,
+      "first_try_errors": [
+        "error[E0382]: use of moved value: `object_item`",
+        "error[E0382]: use of moved value: `raw_item`",
+        "error[E0382]: use of moved value: `string_item`",
+        "error: could not compile `scratch` (lib) due to 3 previous errors; 8 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "1dec2a052a41744e0688f8ce7a35c49e3d1781290e7aefdf232e6cb89764045a",
+          "prompt_tokens": 2641,
+          "completion_tokens": 232,
+          "wall_seconds": 6.1
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "9a5f609054d66c50d6b7d6595410833a4bb66ddd8969ed011237728b832989de",
+          "prompt_tokens": 1767,
+          "completion_tokens": 235,
+          "wall_seconds": 5.6
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "candidate": "artifacts/final/candidates/U10_add_item_p5.rs"
+    },
+    {
+      "unit": "U10_add_item_p6",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "fb982095a6421065e4e57cb3a689f4793c9a42f9913ee6140863c0f58be1eb67",
+      "prompt_tokens": 2307,
+      "completion_tokens": 76,
+      "wall_seconds": 2.8,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0382]: use of moved value: `true_item`",
+        "error: could not compile `scratch` (lib) due to 1 previous error; 6 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "fb982095a6421065e4e57cb3a689f4793c9a42f9913ee6140863c0f58be1eb67",
+          "prompt_tokens": 2307,
+          "completion_tokens": 76,
+          "wall_seconds": 2.8
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "8136fb615514dd9f6d5295fd54c0f5ed0e63526e6b825ca6b9ee5e1ea65dff30",
+          "prompt_tokens": 1006,
+          "completion_tokens": 76,
+          "wall_seconds": 2.0
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "8136fb615514dd9f6d5295fd54c0f5ed0e63526e6b825ca6b9ee5e1ea65dff30",
+          "prompt_tokens": 1006,
+          "completion_tokens": 76,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "8136fb615514dd9f6d5295fd54c0f5ed0e63526e6b825ca6b9ee5e1ea65dff30",
+          "prompt_tokens": 1006,
+          "completion_tokens": 76,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "8136fb615514dd9f6d5295fd54c0f5ed0e63526e6b825ca6b9ee5e1ea65dff30",
+          "prompt_tokens": 1006,
+          "completion_tokens": 76,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 2,
+      "errors": [
+        "error[E0382]: use of moved value: `true_item`",
+        "error: could not compile `scratch` (lib) due to 1 previous error; 6 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U10_add_item_p6.rs"
+    },
+    {
+      "unit": "U11_detach_replace_p1",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "bf11e33cf769583b6b8b22bc52e146a4ce941c7c1c14b7bb3382236bc8dfb1d8",
+      "prompt_tokens": 2595,
+      "completion_tokens": 353,
+      "wall_seconds": 8.5,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0308]: mismatched types",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::Node` in the current scope",
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error[E0599]: no method named `ok` found for enum `Option<T>` in the current scope",
+        "error[E0609]: no field `prev` on type `contract::Node`",
+        "error[E0609]: no field `next` on type `contract::Node`",
+        "error[E0502]: cannot borrow `*array` as mutable because it is also borrowed as immutable",
+        "error: could not compile `scratch` (lib) due to 7 previous errors; 3 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "bf11e33cf769583b6b8b22bc52e146a4ce941c7c1c14b7bb3382236bc8dfb1d8",
+          "prompt_tokens": 2595,
+          "completion_tokens": 353,
+          "wall_seconds": 8.5
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "1fad1596bfdc82217399be53da97576a59a1cfd067783348dbc17cb9ea5d52a4",
+          "prompt_tokens": 2184,
+          "completion_tokens": 355,
+          "wall_seconds": 8.2
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "294892db674837c163217bb5576ff206ffc7301f1370717e222f0cbe9ab6e7e1",
+          "prompt_tokens": 1881,
+          "completion_tokens": 389,
+          "wall_seconds": 8.6
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "4f8d2c6aeb333ffce0af37407146f8f0f5f17d84ce66af862d844b379a859afa",
+          "prompt_tokens": 1734,
+          "completion_tokens": 336,
+          "wall_seconds": 7.5
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "7a3b45f80a31eff555dcf6c231a18e2dcb495ea1a054bf0c01ef5b15a9313c16",
+          "prompt_tokens": 1568,
+          "completion_tokens": 325,
+          "wall_seconds": 7.1
+        }
+      ],
+      "error_count": 3,
+      "errors": [
+        "error[E0502]: cannot borrow `*array` as mutable because it is also borrowed as immutable",
+        "error[E0502]: cannot borrow `*array` as mutable because it is also borrowed as immutable",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 5 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U11_detach_replace_p1.rs"
+    },
+    {
+      "unit": "U11_detach_replace_p2",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "711db2168d2e1e0341c6c3bf63841dbfbf82f685f1e6927850380948b0ef210f",
+      "prompt_tokens": 2466,
+      "completion_tokens": 176,
+      "wall_seconds": 5.0,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0106]: missing lifetime specifier",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 5 previous errors; 3 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "711db2168d2e1e0341c6c3bf63841dbfbf82f685f1e6927850380948b0ef210f",
+          "prompt_tokens": 2466,
+          "completion_tokens": 176,
+          "wall_seconds": 5.0
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "b78c638d5346dec9cd8b1828afc9c72f1ce9d116f6493d18b60d94653c828bd5",
+          "prompt_tokens": 2124,
+          "completion_tokens": 179,
+          "wall_seconds": 4.7
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "a891e144f092e3af4c52591f2fb0fbebd6335455797ffb30bc1090f1f9407f1d",
+          "prompt_tokens": 1472,
+          "completion_tokens": 179,
+          "wall_seconds": 4.3
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "a891e144f092e3af4c52591f2fb0fbebd6335455797ffb30bc1090f1f9407f1d",
+          "prompt_tokens": 1472,
+          "completion_tokens": 179,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "a891e144f092e3af4c52591f2fb0fbebd6335455797ffb30bc1090f1f9407f1d",
+          "prompt_tokens": 1472,
+          "completion_tokens": 179,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 3,
+      "errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0106]: missing lifetime specifier",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 3 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U11_detach_replace_p2.rs"
+    },
+    {
+      "unit": "U11_detach_replace_p3",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "7634524e47e53f7c3b769c3276242c4e9fbe4d8b98f1c99d6d4b6786ab5d8056",
+      "prompt_tokens": 2946,
+      "completion_tokens": 437,
+      "wall_seconds": 10.6,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0599]: no method named `is_none` found for struct `contract::Node` in the current scope",
+        "error[E0609]: no field `prev` on type `&contract::Node`",
+        "error[E0277]: can't compare `&contract::Node` with `Option<&contract::Node>`",
+        "error[E0277]: can't compare `&contract::Node` with `Option<&contract::Node>`",
+        "error[E0599]: no method named `is_none` found for mutable reference `&mut contract::Node` in the current scope",
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error[E0599]: no method named `is_none` found for struct `contract::Node` in the current scope",
+        "error: could not compile `scratch` (lib) due to 7 previous errors; 7 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "7634524e47e53f7c3b769c3276242c4e9fbe4d8b98f1c99d6d4b6786ab5d8056",
+          "prompt_tokens": 2946,
+          "completion_tokens": 437,
+          "wall_seconds": 10.6
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "2cae450c0a5546ce895f44f11e5a744de6ba11d6309fb27943344808ff0e609e",
+          "prompt_tokens": 2920,
+          "completion_tokens": 421,
+          "wall_seconds": 10.3
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "ce2018d3e1809261d8c7bf0e34727a45af76221f0f5312a097b6db5f3b141604",
+          "prompt_tokens": 2262,
+          "completion_tokens": 431,
+          "wall_seconds": 9.9
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "fd1d72b66b0a181b8866fd84f728abc28c5a094c5bc3a269481243a411bf301c",
+          "prompt_tokens": 1878,
+          "completion_tokens": 431,
+          "wall_seconds": 9.6
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "fd1d72b66b0a181b8866fd84f728abc28c5a094c5bc3a269481243a411bf301c",
+          "prompt_tokens": 1878,
+          "completion_tokens": 431,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 2,
+      "errors": [
+        "error[E0277]: can't compare `&contract::Node` with `Option<&&contract::Node>`",
+        "error: could not compile `scratch` (lib) due to 1 previous error; 7 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U11_detach_replace_p3.rs"
+    },
+    {
+      "unit": "U11_detach_replace_p4",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "307eee05ccfd95f9cb44f868c2837fe527bafc91b131beea35caee743944a1ad",
+      "prompt_tokens": 2633,
+      "completion_tokens": 276,
+      "wall_seconds": 7.2,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0428]: the name `replace_item_in_object` is defined multiple times",
+        "error[E0106]: missing lifetime specifier",
+        "error[E0061]: this function takes 3 arguments but 4 arguments were supplied",
+        "error[E0061]: this function takes 3 arguments but 4 arguments were supplied",
+        "error[E0599]: no method named `is_empty` found for struct `contract::Node` in the current scope",
+        "error[E0599]: no method named `string_is_const` found for struct `contract::Node` in the current scope",
+        "error: could not compile `scratch` (lib) due to 6 previous errors; 6 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "307eee05ccfd95f9cb44f868c2837fe527bafc91b131beea35caee743944a1ad",
+          "prompt_tokens": 2633,
+          "completion_tokens": 276,
+          "wall_seconds": 7.2
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "36c858c8a835775f8c083f5e7e34bdc08469822d03ced26eee2a8fd4a8c1cf22",
+          "prompt_tokens": 2559,
+          "completion_tokens": 277,
+          "wall_seconds": 7.1
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "004746bc904ee2d9fe8eb2fbcfe66b91d8d5042efc97389e94835c52030cb929",
+          "prompt_tokens": 2338,
+          "completion_tokens": 351,
+          "wall_seconds": 8.6
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "af82d50028c3f4f7cf078692a62bfc114353eb8ceb655acdb8e3b083d9bd65ca",
+          "prompt_tokens": 2412,
+          "completion_tokens": 290,
+          "wall_seconds": 7.4
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "44c2a23de007c5c990d326b0cfe9c86562ab32a3e9b07c631aa7675edf509c42",
+          "prompt_tokens": 2351,
+          "completion_tokens": 290,
+          "wall_seconds": 8.0
+        }
+      ],
+      "error_count": 6,
+      "errors": [
+        "error[E0428]: the name `replace_item_in_object` is defined multiple times",
+        "error[E0106]: missing lifetime specifier",
+        "error[E0061]: this function takes 3 arguments but 4 arguments were supplied",
+        "error[E0061]: this function takes 3 arguments but 4 arguments were supplied",
+        "error[E0599]: no method named `string_is_const` found for struct `contract::Node` in the current scope",
+        "error: could not compile `scratch` (lib) due to 5 previous errors; 6 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U11_detach_replace_p4.rs"
+    },
+    {
+      "unit": "U12_duplicate",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "e1c6974cdcaa14a18604da41b1f45c50cdebb4734b7eaac89206bfb47094f622",
+      "prompt_tokens": 2937,
+      "completion_tokens": 705,
+      "wall_seconds": 17.9,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0425]: cannot find value `depth` in this scope",
+        "error[E0425]: cannot find value `depth` in this scope",
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error[E0308]: `?` operator has incompatible types",
+        "error[E0308]: `?` operator has incompatible types",
+        "error[E0609]: no field `prev` on type `contract::Node`",
+        "error[E0609]: no field `prev` on type `&mut &mut contract::Node`",
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error[E0308]: `?` operator has incompatible types",
+        "error[E0308]: `?` operator has incompatible types",
+        "error[E0609]: no field `prev` on type `contract::Node`",
+        "error[E0609]: no field `prev` on type `&mut &mut contract::Node`",
+        "error: could not compile `scratch` (lib) due to 12 previous errors; 4 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "e1c6974cdcaa14a18604da41b1f45c50cdebb4734b7eaac89206bfb47094f622",
+          "prompt_tokens": 2937,
+          "completion_tokens": 705,
+          "wall_seconds": 17.9
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "55a4ca2f89f42b8b3bb6bb2232e3dc141e444d918af7ed579784ef206346b3a4",
+          "prompt_tokens": 3296,
+          "completion_tokens": 1158,
+          "wall_seconds": 31.7
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "87251b7b40e08c6ccdad49c6b9ac88a976eb649d3b840dcbc4c02c01ca4a704e",
+          "prompt_tokens": 2401,
+          "completion_tokens": 554,
+          "wall_seconds": 15.7
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "668d692bd7e722cdfa7256303c0410a88ca001d22b5b5f232d90ce37941a3e61",
+          "prompt_tokens": 1797,
+          "completion_tokens": 554,
+          "wall_seconds": 15.1
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "668d692bd7e722cdfa7256303c0410a88ca001d22b5b5f232d90ce37941a3e61",
+          "prompt_tokens": 1797,
+          "completion_tokens": 554,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 3,
+      "errors": [
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error[E0599]: no method named `is_none` found for reference `&contract::Node` in the current scope",
+        "error: could not compile `scratch` (lib) due to 2 previous errors; 4 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U12_duplicate.rs"
+    },
+    {
+      "unit": "U13_minify",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "976116c103ac71f373351c3ed69f53628bbcaad23678bdaef7718c89df4d55d2",
+      "prompt_tokens": 2750,
+      "completion_tokens": 714,
+      "wall_seconds": 20.5,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0061]: this function takes 2 arguments but 3 arguments were supplied",
+        "error: could not compile `scratch` (lib) due to 3 previous errors; 9 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "976116c103ac71f373351c3ed69f53628bbcaad23678bdaef7718c89df4d55d2",
+          "prompt_tokens": 2750,
+          "completion_tokens": 714,
+          "wall_seconds": 20.5
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "5d73ef2359b0ea373ff61fb771a6455ad48e807b1f5b94d63d7c6de5f627526f",
+          "prompt_tokens": 2419,
+          "completion_tokens": 725,
+          "wall_seconds": 19.9
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "e13e765ea7f5f67587134eb1016b1775f0b3689cdf9dcd445df9b8cdeeb8cae3",
+          "prompt_tokens": 2042,
+          "completion_tokens": 716,
+          "wall_seconds": 19.7
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "6315c8b3523388059431e260a0d17845cd9362c59d28462d6f63a45782631585",
+          "prompt_tokens": 2030,
+          "completion_tokens": 716,
+          "wall_seconds": 19.5
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "6315c8b3523388059431e260a0d17845cd9362c59d28462d6f63a45782631585",
+          "prompt_tokens": 2030,
+          "completion_tokens": 716,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 4,
+      "errors": [
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 3 previous errors; 5 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U13_minify.rs"
+    },
+    {
+      "unit": "U14_compare",
+      "model": "Qwen3-4B-Instruct-2507-Q4_K_M",
+      "prompt_sha256": "37396b3abd22c41f99c0e65e29a38b1423dca4898273a616011b296a7bccfb42",
+      "prompt_tokens": 3236,
+      "completion_tokens": 655,
+      "wall_seconds": 19.6,
+      "has_code": true,
+      "pub_normalised": false,
+      "compiles_first_try": false,
+      "compiles_after_repair": false,
+      "attempts": 5,
+      "first_try_errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0609]: no field `type_` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `type_` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuedouble` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuedouble` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `children` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `children` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `children` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `children` on type `Option<&&contract::Node>`",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 17 previous errors; 2 warnings emitted"
+      ],
+      "history": [
+        {
+          "attempt": 1,
+          "prompt_sha256": "37396b3abd22c41f99c0e65e29a38b1423dca4898273a616011b296a7bccfb42",
+          "prompt_tokens": 3236,
+          "completion_tokens": 655,
+          "wall_seconds": 19.6
+        },
+        {
+          "attempt": 2,
+          "prompt_sha256": "3db8f948a188a19add6dde7cd82c1ab5d3630cd88827917680dcb131b077b429",
+          "prompt_tokens": 3864,
+          "completion_tokens": 655,
+          "wall_seconds": 20.5
+        },
+        {
+          "attempt": 3,
+          "prompt_sha256": "3db8f948a188a19add6dde7cd82c1ab5d3630cd88827917680dcb131b077b429",
+          "prompt_tokens": 3864,
+          "completion_tokens": 655,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 4,
+          "prompt_sha256": "3db8f948a188a19add6dde7cd82c1ab5d3630cd88827917680dcb131b077b429",
+          "prompt_tokens": 3864,
+          "completion_tokens": 655,
+          "wall_seconds": 0.0
+        },
+        {
+          "attempt": 5,
+          "prompt_sha256": "3db8f948a188a19add6dde7cd82c1ab5d3630cd88827917680dcb131b077b429",
+          "prompt_tokens": 3864,
+          "completion_tokens": 655,
+          "wall_seconds": 0.0
+        }
+      ],
+      "error_count": 18,
+      "errors": [
+        "error[E0106]: missing lifetime specifier",
+        "error[E0609]: no field `type_` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `type_` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuedouble` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuedouble` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `valuestring` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `children` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `children` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `children` on type `Option<&&contract::Node>`",
+        "error[E0609]: no field `children` on type `Option<&&contract::Node>`",
+        "error[E0308]: mismatched types",
+        "error[E0308]: mismatched types",
+        "error: could not compile `scratch` (lib) due to 17 previous errors; 2 warnings emitted"
+      ],
+      "candidate": "artifacts/final/candidates/U14_compare.rs"
+    }
+  ]
+}

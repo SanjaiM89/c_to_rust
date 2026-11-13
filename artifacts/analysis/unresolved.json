@@ -1,0 +1,160 @@
+[
+  {
+    "kind": "recursive-scc",
+    "detail": "these functions are mutually recursive and MUST be translated together",
+    "items": [
+      [
+        "parse_array",
+        "parse_object",
+        "parse_value"
+      ],
+      [
+        "print_array",
+        "print_object",
+        "print_value"
+      ]
+    ]
+  },
+  {
+    "kind": "partition-conflict",
+    "detail": "functions seeded into more than one area; the first area in AREAS wins",
+    "items": {
+      "cJSON_Delete": [
+        "U01_hooks_alloc",
+        "U09_create_p2",
+        "U10_add_item_p2",
+        "U11_detach_replace_p1"
+      ],
+      "cJSON_New_Item": [
+        "U01_hooks_alloc",
+        "U09_create_p1",
+        "U10_add_item_p1"
+      ],
+      "cJSON_free": [
+        "U01_hooks_alloc",
+        "U09_create_p4",
+        "U11_detach_replace_p4"
+      ],
+      "cJSON_strdup": [
+        "U01_hooks_alloc",
+        "U09_create_p3",
+        "U10_add_item_p1",
+        "U11_detach_replace_p4"
+      ],
+      "ensure": [
+        "U02_print_buffer",
+        "U07_value_print_p1"
+      ],
+      "update_offset": [
+        "U02_print_buffer",
+        "U07_value_print_p1"
+      ],
+      "compare_double": [
+        "U03_number_parse",
+        "U07_value_print_p1"
+      ],
+      "get_decimal_point": [
+        "U03_number_parse",
+        "U07_value_print_p1"
+      ],
+      "print_string": [
+        "U05_string_print",
+        "U07_value_print_p2"
+      ],
+      "print_string_ptr": [
+        "U05_string_print",
+        "U07_value_print_p1"
+      ],
+      "get_array_item": [
+        "U08_accessors_p1",
+        "U11_detach_replace_p1"
+      ],
+      "case_insensitive_strcmp": [
+        "U08_accessors_p2",
+        "U11_detach_replace_p1"
+      ],
+      "get_object_item": [
+        "U08_accessors_p2",
+        "U11_detach_replace_p2"
+      ],
+      "cJSON_GetObjectItem": [
+        "U08_accessors_p2",
+        "U11_detach_replace_p2"
+      ],
+      "cJSON_GetObjectItemCaseSensitive": [
+        "U08_accessors_p2",
+        "U11_detach_replace_p2"
+      ],
+      "cJSON_CreateArray": [
+        "U09_create_p1",
+        "U10_add_item_p2"
+      ],
+      "cast_away_const": [
+        "U09_create_p1",
+        "U10_add_item_p1"
+      ],
+      "cJSON_CreateBool": [
+        "U09_create_p1",
+        "U10_add_item_p2"
+      ],
+      "cJSON_CreateNumber": [
+        "U09_create_p1",
+        "U10_add_item_p4"
+      ],
+      "suffix_object": [
+        "U09_create_p2",
+        "U10_add_item_p1",
+        "U11_detach_replace_p3"
+      ],
+      "cJSON_CreateFalse": [
+        "U09_create_p2",
+        "U10_add_item_p2"
+      ],
+      "cJSON_CreateNull": [
+        "U09_create_p3",
+        "U10_add_item_p4"
+      ],
+      "cJSON_CreateObject": [
+        "U09_create_p3",
+        "U10_add_item_p4"
+      ],
+      "cJSON_CreateRaw": [
+        "U09_create_p3",
+        "U10_add_item_p5"
+      ],
+      "cJSON_CreateString": [
+        "U09_create_p3",
+        "U10_add_item_p5"
+      ],
+      "cJSON_CreateTrue": [
+        "U09_create_p4",
+        "U10_add_item_p5"
+      ],
+      "create_reference": [
+        "U09_create_p4",
+        "U10_add_item_p3"
+      ],
+      "add_item_to_array": [
+        "U10_add_item_p1",
+        "U11_detach_replace_p3"
+      ]
+    }
+  },
+  {
+    "kind": "analysis-limitation",
+    "detail": "pointer roles are heuristic (syntax + known-function table); the aliasing/ownership semantics of `cJSON` trees are NOT proven by static analysis - they are established empirically in Phase 4",
+    "items": []
+  },
+  {
+    "kind": "analysis-limitation",
+    "detail": "the call graph contains only direct calls; indirect calls through function pointers (hooks, localeconv) are not resolved",
+    "items": [
+      "add_item_to_object",
+      "cJSON_InitHooks",
+      "cJSON_New_Item",
+      "cJSON_strdup",
+      "create_reference",
+      "print"
+    ]
+  }
+]

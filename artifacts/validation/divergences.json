@@ -1,0 +1,604 @@
+{
+  "crate": "artifacts/final",
+  "level2_seed": {
+    "inputs": 100,
+    "agreed": 97,
+    "diverged": 3,
+    "errors": 0,
+    "divergences": [
+      {
+        "input": "seed/edge_nul_in_middle.json",
+        "size": 15,
+        "diff": {
+          "line": 11,
+          "c": "MINIFY {\"a\":1}",
+          "rust": "MINIFY {\"a\":1}\u0000{\"b\":2}"
+        },
+        "c_excerpt": "INPUT_LEN 15\nSTATUS ok\nERROR_OFFSET 7\nTREE\nN t=64 i=0 d=0 k= v=\n N t=8 i=1 d=1 k=61 v=\nPRINT {\n\t\"a\":\t1\n}\nPRINT_UNFORMATTED {\"a\":1}\nMINIFY {\"a\":1}\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 15\nSTATUS ok\nERROR_OFFSET 7\nTREE\nN t=64 i=0 d=0 k= v=\n N t=8 i=1 d=1 k=61 v=\nPRINT {\n\t\"a\":\t1\n}\nPRINT_UNFORMATTED {\"a\":1}\nMINIFY {\"a\":1}\u0000{\"b\":2}\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "input": "seed/edge_nul_only.json",
+        "size": 1,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "input": "seed/edge_str_nul_escape.json",
+        "size": 10,
+        "diff": {
+          "line": 5,
+          "c": "N t=16 i=0 d=0 k= v=61",
+          "rust": "N t=16 i=0 d=0 k= v=610062"
+        },
+        "c_excerpt": "INPUT_LEN 10\nSTATUS ok\nERROR_OFFSET 10\nTREE\nN t=16 i=0 d=0 k= v=61\nPRINT \"a\"\nPRINT_UNFORMATTED \"a\"\nMINIFY \"a\\u0000b\"\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 10\nSTATUS ok\nERROR_OFFSET 10\nTREE\nN t=16 i=0 d=0 k= v=610062\nPRINT \"a\\u0000b\"\nPRINT_UNFORMATTED \"a\\u0000b\"\nMINIFY \"a\\u0000b\"\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      }
+    ]
+  },
+  "level2_fuzz": {
+    "seconds": 0.6,
+    "executions": 445,
+    "agreed": 395,
+    "diverged": 50,
+    "errors": 0,
+    "divergences": [
+      {
+        "n": 33,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 43,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 44,
+        "size": 14,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 2",
+          "rust": "ERROR_OFFSET 9"
+        },
+        "c_excerpt": "INPUT_LEN 14\nSTATUS fail\nERROR_OFFSET 2\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 14\nSTATUS fail\nERROR_OFFSET 9\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 48,
+        "size": 1,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 1",
+          "rust": "ERROR_OFFSET 0"
+        },
+        "c_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 54,
+        "size": 1,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 55,
+        "size": 1,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 66,
+        "size": 4,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 4\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 4\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 68,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 86,
+        "size": 1,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 90,
+        "size": 2,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 2",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 2\nSTATUS fail\nERROR_OFFSET 2\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 2\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 97,
+        "size": 4,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 4",
+          "rust": "ERROR_OFFSET 3"
+        },
+        "c_excerpt": "INPUT_LEN 4\nSTATUS fail\nERROR_OFFSET 4\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 4\nSTATUS fail\nERROR_OFFSET 3\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 116,
+        "size": 362,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 362",
+          "rust": "ERROR_OFFSET 361"
+        },
+        "c_excerpt": "INPUT_LEN 362\nSTATUS fail\nERROR_OFFSET 362\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 362\nSTATUS fail\nERROR_OFFSET 361\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 139,
+        "size": 2788,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 1868",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 2788\nSTATUS fail\nERROR_OFFSET 1868\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 2788\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 154,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 157,
+        "size": 4,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 4\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 4\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 179,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 181,
+        "size": 14,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 7",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 14\nSTATUS fail\nERROR_OFFSET 7\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 14\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 182,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 186,
+        "size": 11,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 2",
+          "rust": "ERROR_OFFSET 5"
+        },
+        "c_excerpt": "INPUT_LEN 11\nSTATUS fail\nERROR_OFFSET 2\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 11\nSTATUS fail\nERROR_OFFSET 5\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 188,
+        "size": 1,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 1",
+          "rust": "ERROR_OFFSET 0"
+        },
+        "c_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 197,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 202,
+        "size": 25,
+        "diff": {
+          "line": 5,
+          "c": "N t=16 i=0 d=0 k= v=610a0a",
+          "rust": "N t=16 i=0 d=0 k= v=610a0a0062303062"
+        },
+        "c_excerpt": "INPUT_LEN 25\nSTATUS ok\nERROR_OFFSET 25\nTREE\nN t=16 i=0 d=0 k= v=610a0a\nPRINT \"a\\n\\n\"\nPRINT_UNFORMATTED \"a\\n\\n\"\nMINIFY \"a\\u000a\\u000a\\u000 b00b\"\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 25\nSTATUS ok\nERROR_OFFSET 25\nTREE\nN t=16 i=0 d=0 k= v=610a0a0062303062\nPRINT \"a\\n\\n\\u0000b00b\"\nPRINT_UNFORMATTED \"a\\n\\n\\u0000b00b\"\nMINIFY \"a\\u000a\\u000a\\u000 b00b\"\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "n": 216,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 246,
+        "size": 416,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 416",
+          "rust": "ERROR_OFFSET 415"
+        },
+        "c_excerpt": "INPUT_LEN 416\nSTATUS fail\nERROR_OFFSET 416\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 416\nSTATUS fail\nERROR_OFFSET 415\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 248,
+        "size": 10,
+        "diff": {
+          "line": 8,
+          "c": "MINIFY \"a\\/b\"b\"2",
+          "rust": "MINIFY \"a\\/b\"/b\"2"
+        },
+        "c_excerpt": "INPUT_LEN 10\nSTATUS ok\nERROR_OFFSET 6\nTREE\nN t=16 i=0 d=0 k= v=612f62\nPRINT \"a/b\"\nPRINT_UNFORMATTED \"a/b\"\nMINIFY \"a\\/b\"b\"2\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 10\nSTATUS ok\nERROR_OFFSET 6\nTREE\nN t=16 i=0 d=0 k= v=612f62\nPRINT \"a/b\"\nPRINT_UNFORMATTED \"a/b\"\nMINIFY \"a\\/b\"/b\"2\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "n": 255,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 262,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 268,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 286,
+        "size": 53,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 53",
+          "rust": "ERROR_OFFSET 52"
+        },
+        "c_excerpt": "INPUT_LEN 53\nSTATUS fail\nERROR_OFFSET 53\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 53\nSTATUS fail\nERROR_OFFSET 52\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 307,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 328,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 344,
+        "size": 1,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 1",
+          "rust": "ERROR_OFFSET 0"
+        },
+        "c_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 346,
+        "size": 1,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 1",
+          "rust": "ERROR_OFFSET 0"
+        },
+        "c_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 349,
+        "size": 22,
+        "diff": {
+          "line": 11,
+          "c": "MINIFY {\"a\":1}",
+          "rust": "MINIFY {\"a\":1}\u0000{\"b\":2\"}\\u0041"
+        },
+        "c_excerpt": "INPUT_LEN 22\nSTATUS ok\nERROR_OFFSET 7\nTREE\nN t=64 i=0 d=0 k= v=\n N t=8 i=1 d=1 k=61 v=\nPRINT {\n\t\"a\":\t1\n}\nPRINT_UNFORMATTED {\"a\":1}\nMINIFY {\"a\":1}\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 22\nSTATUS ok\nERROR_OFFSET 7\nTREE\nN t=64 i=0 d=0 k= v=\n N t=8 i=1 d=1 k=61 v=\nPRINT {\n\t\"a\":\t1\n}\nPRINT_UNFORMATTED {\"a\":1}\nMINIFY {\"a\":1}\u0000{\"b\":2\"}\\u0041\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "n": 367,
+        "size": 8,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 8",
+          "rust": "ERROR_OFFSET 7"
+        },
+        "c_excerpt": "INPUT_LEN 8\nSTATUS fail\nERROR_OFFSET 8\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 8\nSTATUS fail\nERROR_OFFSET 7\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 370,
+        "size": 27,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 27",
+          "rust": "ERROR_OFFSET 26"
+        },
+        "c_excerpt": "INPUT_LEN 27\nSTATUS fail\nERROR_OFFSET 27\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 27\nSTATUS fail\nERROR_OFFSET 26\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 375,
+        "size": 12,
+        "diff": {
+          "line": 5,
+          "c": "N t=16 i=0 d=0 k= v=61",
+          "rust": "N t=16 i=0 d=0 k= v=6100303062"
+        },
+        "c_excerpt": "INPUT_LEN 12\nSTATUS ok\nERROR_OFFSET 12\nTREE\nN t=16 i=0 d=0 k= v=61\nPRINT \"a\"\nPRINT_UNFORMATTED \"a\"\nMINIFY \"a\\u\\u0000b\"\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 12\nSTATUS ok\nERROR_OFFSET 12\nTREE\nN t=16 i=0 d=0 k= v=6100303062\nPRINT \"a\\u000000b\"\nPRINT_UNFORMATTED \"a\\u000000b\"\nMINIFY \"a\\u\\u0000b\"\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "n": 377,
+        "size": 41,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 28",
+          "rust": "ERROR_OFFSET 31"
+        },
+        "c_excerpt": "INPUT_LEN 41\nSTATUS fail\nERROR_OFFSET 28\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 41\nSTATUS fail\nERROR_OFFSET 31\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 380,
+        "size": 5,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 5",
+          "rust": "ERROR_OFFSET 4"
+        },
+        "c_excerpt": "INPUT_LEN 5\nSTATUS fail\nERROR_OFFSET 5\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 5\nSTATUS fail\nERROR_OFFSET 4\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 384,
+        "size": 1,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 1",
+          "rust": "ERROR_OFFSET 0"
+        },
+        "c_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 1\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 385,
+        "size": 15,
+        "diff": {
+          "line": 11,
+          "c": "MINIFY {\"a\":0}",
+          "rust": "MINIFY {\"a\":0}\u0000{\"b\":2}"
+        },
+        "c_excerpt": "INPUT_LEN 15\nSTATUS ok\nERROR_OFFSET 7\nTREE\nN t=64 i=0 d=0 k= v=\n N t=8 i=0 d=0 k=61 v=\nPRINT {\n\t\"a\":\t0\n}\nPRINT_UNFORMATTED {\"a\":0}\nMINIFY {\"a\":0}\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 15\nSTATUS ok\nERROR_OFFSET 7\nTREE\nN t=64 i=0 d=0 k= v=\n N t=8 i=0 d=0 k=61 v=\nPRINT {\n\t\"a\":\t0\n}\nPRINT_UNFORMATTED {\"a\":0}\nMINIFY {\"a\":0}\u0000{\"b\":2}\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "n": 393,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 395,
+        "size": 42,
+        "diff": {
+          "line": 8,
+          "c": "MINIFY 999999999999)99999999999\\u00419",
+          "rust": "MINIFY 999999999999)99999999999\\u00419\u00009999999999"
+        },
+        "c_excerpt": "INPUT_LEN 42\nSTATUS ok\nERROR_OFFSET 12\nTREE\nN t=8 i=2147483647 d=999999999999 k= v=\nPRINT 999999999999\nPRINT_UNFORMATTED 999999999999\nMINIFY 999999999999)99999999999\\u00419\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 42\nSTATUS ok\nERROR_OFFSET 12\nTREE\nN t=8 i=2147483647 d=999999999999 k= v=\nPRINT 999999999999\nPRINT_UNFORMATTED 999999999999\nMINIFY 999999999999)99999999999\\u00419\u00009999999999\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "n": 396,
+        "size": 5,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 2",
+          "rust": "ERROR_OFFSET 1"
+        },
+        "c_excerpt": "INPUT_LEN 5\nSTATUS fail\nERROR_OFFSET 2\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 5\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 404,
+        "size": 8,
+        "diff": {
+          "line": 2,
+          "c": "STATUS fail",
+          "rust": "STATUS ok"
+        },
+        "c_excerpt": "INPUT_LEN 8\nSTATUS fail\nERROR_OFFSET 1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 8\nSTATUS ok\nERROR_OFFSET 8\nTREE\nN t=16 i=0 d=0 k= v=612f356200\nPRINT \"a/5b\\u0000\"\nPRINT_UNFORMATTED \"a/5b\\u0000\"\nMINIFY \"a\\/5b\u0000\"\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "n": 420,
+        "size": 153,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 153",
+          "rust": "ERROR_OFFSET 152"
+        },
+        "c_excerpt": "INPUT_LEN 153\nSTATUS fail\nERROR_OFFSET 153\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 153\nSTATUS fail\nERROR_OFFSET 152\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 429,
+        "size": 13,
+        "diff": {
+          "line": 5,
+          "c": "N t=16 i=0 d=0 k= v=61",
+          "rust": "N t=16 i=0 d=0 k= v=610062"
+        },
+        "c_excerpt": "INPUT_LEN 13\nSTATUS ok\nERROR_OFFSET 10\nTREE\nN t=16 i=0 d=0 k= v=61\nPRINT \"a\"\nPRINT_UNFORMATTED \"a\"\nMINIFY \"a\\u0000b\"0b\"\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 13\nSTATUS ok\nERROR_OFFSET 10\nTREE\nN t=16 i=0 d=0 k= v=610062\nPRINT \"a\\u0000b\"\nPRINT_UNFORMATTED \"a\\u0000b\"\nMINIFY \"a\\u0000b\"0b\"\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "n": 433,
+        "size": 78,
+        "diff": {
+          "line": 8,
+          "c": " N t=16 i=0 d=0 k= v=",
+          "rust": " N t=16 i=0 d=0 k= v=0079"
+        },
+        "c_excerpt": "INPUT_LEN 78\nSTATUS ok\nERROR_OFFSET 77\nTREE\nN t=32 i=0 d=0 k= v=\n N t=16 i=0 d=0 k= v=536e646179\n N t=16 i=0 d=0 k= v=4d6f6e646179\n N t=16 i=0 d=0 k= v=\n N t=16 i=0 d=0 k= v=5765646e6573646179\n N t=16 i=0 d=0 k= v=5468757273646179\n N t=16 i=0 d=0 k= v=467269666179\n N t=16 i=0 d=0 k= v=5361747572646179\nPRINT [\"Snday\", \"Monday\", \"\", \"Wednesday\", \"Thursday\", \"Frifay\", \"Saturday\"]\nPRINT_UNFORMATTED [\"Snday\",\"Monday\",\"\",\"Wednesday\",\"Thursday\",\"Frifay\",\"Saturday\"]\nMINIFY [\"Snday\",\"Monday\",\"\\uesday\",\"Wednesday\",\"Thursday\",\"Frifay\",\"Saturday\"]\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n",
+        "rust_excerpt": "INPUT_LEN 78\nSTATUS ok\nERROR_OFFSET 77\nTREE\nN t=32 i=0 d=0 k= v=\n N t=16 i=0 d=0 k= v=536e646179\n N t=16 i=0 d=0 k= v=4d6f6e646179\n N t=16 i=0 d=0 k= v=0079\n N t=16 i=0 d=0 k= v=5765646e6573646179\n N t=16 i=0 d=0 k= v=5468757273646179\n N t=16 i=0 d=0 k= v=467269666179\n N t=16 i=0 d=0 k= v=5361747572646179\nPRINT [\"Snday\", \"Monday\", \"\\u0000y\", \"Wednesday\", \"Thursday\", \"Frifay\", \"Saturday\"]\nPRINT_UNFORMATTED [\"Snday\",\"Monday\",\"\\u0000y\",\"Wednesday\",\"Thursday\",\"Frifay\",\"Saturday\"]\nMINIFY [\"Snday\",\"Monday\",\"\\uesday\",\"Wednesday\",\"Thursday\",\"Frifay\",\"Saturday\"]\nROUNDTRIP ok\nROUNDTRIP_EQUAL yes\n"
+      },
+      {
+        "n": 439,
+        "size": 0,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 0",
+          "rust": "ERROR_OFFSET -1"
+        },
+        "c_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET 0\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 0\nSTATUS fail\nERROR_OFFSET -1\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      },
+      {
+        "n": 445,
+        "size": 249,
+        "diff": {
+          "line": 3,
+          "c": "ERROR_OFFSET 2",
+          "rust": "ERROR_OFFSET 124"
+        },
+        "c_excerpt": "INPUT_LEN 249\nSTATUS fail\nERROR_OFFSET 2\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n",
+        "rust_excerpt": "INPUT_LEN 249\nSTATUS fail\nERROR_OFFSET 124\nTREE\nPRINT\nPRINT_UNFORMATTED\nMINIFY\nROUNDTRIP none\n"
+      }
+    ],
+    "corpus_dir": "/home/sanjaim/Desktop/Projects/c_to_rust/artifacts/corpus/fuzz"
+  }
+}
