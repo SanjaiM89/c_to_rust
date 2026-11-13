@@ -7,6 +7,7 @@ Usage:
     ./convert.sh <git_url_or_path> [--out <output_zip_dir>]
 """
 import argparse
+import json
 import os
 import re
 import shutil
