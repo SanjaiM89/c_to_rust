@@ -7,7 +7,7 @@ cd "$DIR"
 PORT="${PORT:-3000}"
 
 echo "================================================================="
-echo "🚀 Starting c_to_rust Web FrontEnd"
+echo "Starting c_to_rust Web FrontEnd"
 echo "   Dashboard:     http://localhost:$PORT/"
 echo "   Web VS Code:   http://localhost:$PORT/ide.html"
 echo "   Telemetry:     http://localhost:$PORT/telemetry.html"

@@ -204,7 +204,7 @@ Use standard `#[test]` functions that verify normal operation and edge cases. Ou
         print("[-] cargo test failed:")
         print(tout[-1000:])
 
-    print(f"\n[✓] Translation complete! Crate ready at: {out_dir}")
+    print(f"\n[+] Translation complete! Crate ready at: {out_dir}")
 
 if __name__ == "__main__":
     main()

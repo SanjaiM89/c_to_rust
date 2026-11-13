@@ -58,14 +58,14 @@ async function loadFileTree() {
       item.className = `ide-file-item ${file.path === currentFile ? 'active' : ''}`;
       item.onclick = () => openFile(file.path);
 
-      let icon = '📄';
-      if (file.language === 'rust') icon = '🦀';
-      else if (file.language === 'c') icon = '©️';
-      else if (file.language === 'toml') icon = '⚙️';
-      else if (file.language === 'markdown') icon = '📝';
+      let badge = 'FILE';
+      if (file.language === 'rust') badge = 'RS';
+      else if (file.language === 'c') badge = 'C';
+      else if (file.language === 'toml') badge = 'CFG';
+      else if (file.language === 'markdown') badge = 'MD';
 
       item.innerHTML = `
-        <span>${icon}</span>
+        <span style="font-size: 0.7rem; font-weight: 600; padding: 2px 4px; border-radius: 3px; background: rgba(255,255,255,0.06); color: #94A3B8;">${badge}</span>
         <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${file.path}</span>
         <span style="font-size: 0.7rem; color: #6E7681;">${(file.size / 1024).toFixed(1)}k</span>
       `;
@@ -208,7 +208,7 @@ function initIdeSSE() {
       showStreamingIndicator(`Translating ${data.source || 'repository'}...`);
       focusTranslatingFile();
       if (editor) {
-        editor.setValue('// Synthesizing safe Rust in real time from local LLM...\n');
+        editor.setValue('// Synthesizing safe Rust in real time...\n');
       }
       appendIdeTerminal(`Starting translation for ${data.source}...`, 'cmd');
     } else if (data.state === 'idle') {
@@ -216,7 +216,7 @@ function initIdeSSE() {
       hideStreamingIndicator();
       loadFileTree();
       if (data.cancelled) {
-        appendIdeTerminal('🛑 Process cancelled.', 'warn');
+        appendIdeTerminal('Process cancelled.', 'warn');
         document.getElementById('status-safety').textContent = 'Translation Stopped';
       }
     }
@@ -297,10 +297,10 @@ function initIdeSSE() {
     const data = JSON.parse(e.data);
     isStreamingActive = false;
 
-    showStreamingIndicator('✓ Translation Complete', true);
+    showStreamingIndicator('Translation Complete', true);
     document.getElementById('tab-filename').textContent = 'src/lib.rs';
     document.getElementById('status-safety').textContent = '100% Safe Rust - All Tests Passed';
-    appendIdeTerminal('🎉 Crate compilation and test suite passed 100%!', 'success');
+    appendIdeTerminal('Crate compilation and test suite passed 100%.', 'success');
 
     loadFileTree();
   });

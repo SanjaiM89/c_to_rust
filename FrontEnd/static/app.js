@@ -137,7 +137,7 @@ function initSSE() {
       isStreamingRust = false;
       isStreamingC = false;
       if (data.cancelled) {
-        appendTerminal('🛑 Translation stopped by user.', 'warn');
+        appendTerminal('Translation stopped by user.', 'warn');
       }
     }
   });
@@ -224,7 +224,7 @@ function initSSE() {
     isStreamingC = false;
 
     updateStage(5, 'Completed');
-    appendTerminal('🎉 Translation completed with 100% test conformance!', 'success');
+    appendTerminal('Translation completed with 100% test conformance.', 'success');
 
     // Highlight final code blocks with Prism
     const rustView = document.getElementById('rust-code-view');

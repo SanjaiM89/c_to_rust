@@ -52,7 +52,7 @@ def cancel_current_conversion():
     with conversion_lock:
         current_session["is_running"] = False
     broadcast_event("status", {"state": "idle", "cancelled": True})
-    broadcast_event("log", {"text": "🛑 Translation stopped / cancelled."})
+    broadcast_event("log", {"text": "Translation stopped / cancelled."})
 
 # Active SSE subscriber queues
 sse_clients = []
@@ -287,11 +287,11 @@ def run_conversion_worker(source_url: str):
                 broadcast_event("stage", {"id": 5, "name": "Packaging", "desc": "Compressing crate into .zip package"})
 
             # Detect C Code streaming block
-            if "📄 [C INPUT CODE" in line_str:
+            if "[C INPUT CODE" in line_str:
                 in_c_code = True
                 c_buffer = []
                 continue
-            elif in_c_code and ("===" in line_str or "🦀 [GENERATED RUST" in line_str):
+            elif in_c_code and ("===" in line_str or "[GENERATED RUST" in line_str):
                 in_c_code = False
                 c_code_text = "\n".join(c_buffer)
                 current_session["latest_c_code"] = c_code_text
@@ -301,7 +301,7 @@ def run_conversion_worker(source_url: str):
                 c_buffer.append(line_str)
 
             # Detect Rust Code streaming block
-            if "🦀 [GENERATED RUST CODE" in line_str or "🔧 [REPAIRED RUST" in line_str:
+            if "[GENERATED RUST CODE" in line_str or "[REPAIRED RUST" in line_str or "[GENERATED RUST ROOT MODULE" in line_str:
                 in_rust_code = True
                 rust_buffer = []
                 continue
@@ -575,7 +575,7 @@ def main():
     server_address = ("0.0.0.0", port)
     httpd = ThreadingHTTPServer(server_address, TranspilerHTTPHandler)
     print(f"=================================================================")
-    print(f"🚀 c_to_rust FrontEnd Server Running at: http://localhost:{port}")
+    print(f"c_to_rust FrontEnd Server Running at: http://localhost:{port}")
     print(f"   • Dashboard:   http://localhost:{port}/")
     print(f"   • Web VS Code: http://localhost:{port}/ide.html")
     print(f"   • Telemetry:   http://localhost:{port}/telemetry.html")

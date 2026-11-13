@@ -79,7 +79,7 @@ Translate any C library from GitHub directly into safe Rust and receive a ready-
 **Output:**
 ```text
 =================================================================
-🚀 AUTOMATED C-TO-RUST CONVERTER
+AUTOMATED C-TO-RUST CONVERTER
    Source: https://github.com/benhoyt/inih.git
    Target crate: inih_rs
 =================================================================
@@ -95,7 +95,7 @@ Translate any C library from GitHub directly into safe Rust and receive a ready-
     running 6 tests ... ok. 6 passed; 0 failed
 [*] Packaging Rust crate into inih_rs.zip ...
 =================================================================
-✅ TRANSLATION COMPLETE & ZIPPED
+TRANSLATION COMPLETE & ZIPPED
    Package: inih_rs.zip (2.9 KB)
    Crate:   inih_rs
    Safety:  100% Safe Rust (0 unsafe blocks, 0 raw pointers)

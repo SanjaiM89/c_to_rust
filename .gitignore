@@ -27,4 +27,5 @@ artifacts/llm_cache/
 # Temporary directories
 tmp/
 .tmp*
+*.zip
 
