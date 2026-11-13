@@ -20,6 +20,10 @@
         <div class="brand-title" style="font-size: 1.05rem;">c_to_rust IDE</div>
       </a>
       <span id="active-crate-tag" class="brand-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3);">Active Crate: inih-rs</span>
+      <div id="ide-live-status" class="ide-streaming-pill" style="display: none;">
+        <span class="status-dot"></span>
+        <span id="ide-live-status-text">Translating lively...</span>
+      </div>
     </div>
 
     <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -76,6 +80,24 @@
 
       <!-- Monaco Editor Mount Container -->
       <div id="monaco-container" class="ide-monaco-mount"></div>
+
+      <!-- Integrated Bottom Terminal Drawer -->
+      <div id="ide-bottom-panel" class="ide-bottom-panel">
+        <div class="ide-panel-tabs">
+          <div class="ide-panel-tab-group">
+            <button id="tab-btn-terminal" class="ide-panel-tab-btn active" onclick="switchIdePanel('terminal')">TERMINAL</button>
+            <button id="tab-btn-output" class="ide-panel-tab-btn" onclick="switchIdePanel('output')">OUTPUT</button>
+            <button id="tab-btn-problems" class="ide-panel-tab-btn" onclick="switchIdePanel('problems')">PROBLEMS</button>
+          </div>
+          <div class="ide-panel-controls">
+            <button class="btn-icon" style="padding: 1px 6px; font-size: 0.7rem;" onclick="clearIdeTerminal()">Clear</button>
+            <button class="btn-icon" style="padding: 1px 6px; font-size: 0.7rem;" onclick="toggleIdePanel()">_</button>
+          </div>
+        </div>
+        <div id="ide-terminal-body" class="ide-panel-body">
+          <div class="terminal-line"><span class="terminal-cmd">$</span> <span>c_to_rust environment ready. Live execution streaming active.</span></div>
+        </div>
+      </div>
 
       <!-- VS Code Status Bar -->
       <div class="ide-status-bar">

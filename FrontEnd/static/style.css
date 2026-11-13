@@ -805,6 +805,86 @@ main {
   font-size: 0.75rem;
 }
 
+/* VS Code Integrated Bottom Terminal Drawer */
+.ide-bottom-panel {
+  height: 220px;
+  background: #181818;
+  border-top: 1px solid #2B2B2B;
+  display: flex;
+  flex-direction: column;
+  transition: height 0.2s ease;
+}
+
+.ide-bottom-panel.collapsed {
+  height: 28px;
+}
+
+.ide-panel-tabs {
+  height: 28px;
+  background: #1E1E1E;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.75rem;
+  border-bottom: 1px solid #2B2B2B;
+}
+
+.ide-panel-tab-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.ide-panel-tab-btn {
+  background: transparent;
+  border: none;
+  color: #858585;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.2rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+
+.ide-panel-tab-btn:hover, .ide-panel-tab-btn.active {
+  color: #FFFFFF;
+}
+
+.ide-panel-tab-btn.active {
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.ide-panel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ide-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: #141414;
+  color: #D4D4D4;
+}
+
+.ide-streaming-pill {
+  animation: pulse 1.5s infinite;
+  background: rgba(6, 182, 212, 0.2);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 @media (max-width: 1024px) {
   .workspace-grid {
     grid-template-columns: 1fr;
