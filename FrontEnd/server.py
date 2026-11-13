@@ -22,6 +22,9 @@ PROJECT_ROOT = os.path.dirname(BASE_DIR)
 
 # Global state for current conversion session
 conversion_lock = threading.Lock()
+active_proc = None
+active_cancelled = False
+
 current_session = {
     "is_running": False,
     "source_url": "",
@@ -33,6 +36,23 @@ current_session = {
     "stages": [],
     "logs": []
 }
+
+def cancel_current_conversion():
+    global active_proc, active_cancelled
+    active_cancelled = True
+    if active_proc and active_proc.poll() is None:
+        try:
+            active_proc.terminate()
+            active_proc.wait(timeout=1.0)
+        except Exception:
+            try:
+                active_proc.kill()
+            except Exception:
+                pass
+    with conversion_lock:
+        current_session["is_running"] = False
+    broadcast_event("status", {"state": "idle", "cancelled": True})
+    broadcast_event("log", {"text": "🛑 Translation stopped / cancelled."})
 
 # Active SSE subscriber queues
 sse_clients = []
@@ -154,10 +174,15 @@ def get_system_telemetry():
     }
 
 def run_conversion_worker(source_url: str):
-    global current_session
+    global current_session, active_proc, active_cancelled
+    active_cancelled = False
     with conversion_lock:
         current_session["is_running"] = True
         current_session["source_url"] = source_url
+        current_session["latest_c_code"] = ""
+        current_session["latest_rust_code"] = ""
+        current_session["zip_path"] = ""
+        current_session["crate_name"] = ""
 
     broadcast_event("status", {"state": "started", "source": source_url})
     broadcast_event("stage", {"id": 1, "name": "Repository Ingestion", "desc": f"Cloning {source_url}..."})
@@ -180,6 +205,7 @@ def run_conversion_worker(source_url: str):
             cwd=PROJECT_ROOT,
             env=env
         )
+        active_proc = proc
 
         in_c_code = False
         in_rust_code = False
@@ -187,7 +213,27 @@ def run_conversion_worker(source_url: str):
         rust_buffer = []
 
         for line in iter(proc.stdout.readline, ""):
+            if active_cancelled:
+                break
+
             line_str = line.rstrip()
+
+            # Handle live token streams
+            if line_str.startswith("STREAM_RUST_TOKEN:"):
+                try:
+                    tok = json.loads(line_str[18:])
+                    broadcast_event("rust_token", {"token": tok})
+                except Exception:
+                    pass
+                continue
+
+            if line_str.startswith("STREAM_C_TOKEN:"):
+                try:
+                    tok = json.loads(line_str[15:])
+                    broadcast_event("c_token", {"token": tok})
+                except Exception:
+                    pass
+                continue
 
             # Broadcast raw log
             broadcast_event("log", {"text": line_str})
@@ -227,8 +273,6 @@ def run_conversion_worker(source_url: str):
 
             if in_c_code:
                 c_buffer.append(line_str)
-                if len(c_buffer) % 5 == 0:
-                    broadcast_event("c_code_stream", {"chunk": line_str})
 
             # Detect Rust Code streaming block
             if "🦀 [GENERATED RUST CODE" in line_str or "🔧 [REPAIRED RUST" in line_str:
@@ -243,19 +287,20 @@ def run_conversion_worker(source_url: str):
 
             if in_rust_code:
                 rust_buffer.append(line_str)
-                if len(rust_buffer) % 5 == 0:
-                    broadcast_event("rust_code_stream", {"chunk": line_str})
 
             # Check for output zip package
             if "Package:" in line_str and ".zip" in line_str:
                 zip_path = line_str.split("Package:")[1].split("(")[0].strip()
                 current_session["zip_path"] = zip_path
-                # derive crate name
                 crate_name = os.path.basename(zip_path).replace(".zip", "")
                 current_session["crate_name"] = crate_name
                 current_session["crate_dir"] = os.path.join(PROJECT_ROOT, "target", "converted", crate_name)
 
         proc.wait()
+
+        if active_cancelled:
+            broadcast_event("status", {"state": "idle", "cancelled": True})
+            return
 
         if proc.returncode == 0:
             broadcast_event("stage", {"id": 5, "name": "Completed", "desc": "Crate generated & verified successfully!"})
@@ -269,7 +314,8 @@ def run_conversion_worker(source_url: str):
             broadcast_event("error", {"message": f"Process exited with returncode {proc.returncode}"})
 
     except Exception as e:
-        broadcast_event("error", {"message": str(e)})
+        if not active_cancelled:
+            broadcast_event("error", {"message": str(e)})
     finally:
         with conversion_lock:
             current_session["is_running"] = False
@@ -434,9 +480,10 @@ class TranspilerHTTPHandler(SimpleHTTPRequestHandler):
                     self.send_json_response({"error": "No URL provided"}, status=400)
                     return
 
+                # If another conversion is already running, cancel it automatically
                 if current_session["is_running"]:
-                    self.send_json_response({"error": "A translation is already running"}, status=409)
-                    return
+                    cancel_current_conversion()
+                    time.sleep(0.3)
 
                 # Spawn worker thread
                 t = threading.Thread(target=run_conversion_worker, args=(url,), daemon=True)
@@ -445,6 +492,11 @@ class TranspilerHTTPHandler(SimpleHTTPRequestHandler):
                 self.send_json_response({"status": "started", "url": url})
             except Exception as e:
                 self.send_json_response({"error": str(e)}, status=500)
+            return
+
+        if path == "/api/cancel":
+            cancel_current_conversion()
+            self.send_json_response({"status": "cancelled"})
             return
 
         self.send_error(404, "Endpoint not found")
@@ -476,3 +528,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -3,6 +3,8 @@
 let activeTab = 'rust';
 let currentC = '';
 let currentRust = '';
+let isStreamingRust = false;
+let isStreamingC = false;
 let eventSource = null;
 
 function setPreset(url) {
@@ -74,6 +76,25 @@ function updateStage(id, desc) {
   }
 }
 
+function resetUIForNewTranslation(url) {
+  isStreamingRust = false;
+  isStreamingC = false;
+  currentC = '';
+  currentRust = '';
+
+  document.getElementById('c-code-view').textContent = '// Fetching C source files...';
+  document.getElementById('rust-code-view').textContent = '// Synthesizing Rust code...';
+  document.getElementById('results-banner').style.display = 'none';
+
+  updateStage(1, `Cloning ${url}...`);
+
+  const btn = document.getElementById('btn-convert');
+  const btnStop = document.getElementById('btn-stop');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = 'Translating...';
+  btnStop.style.display = 'flex';
+}
+
 function initSSE() {
   if (eventSource) {
     eventSource.close();
@@ -83,9 +104,36 @@ function initSSE() {
 
   eventSource.addEventListener('init', (e) => {
     const data = JSON.parse(e.data);
+    if (data.is_running) {
+      const btn = document.getElementById('btn-convert');
+      const btnStop = document.getElementById('btn-stop');
+      btn.disabled = true;
+      btn.querySelector('span').textContent = 'Translating...';
+      btnStop.style.display = 'flex';
+    }
     if (data.has_zip) {
       document.getElementById('results-banner').style.display = 'flex';
       updateStage(5, 'Crate compiled & packaged');
+    }
+  });
+
+  eventSource.addEventListener('status', (e) => {
+    const data = JSON.parse(e.data);
+    const btn = document.getElementById('btn-convert');
+    const btnStop = document.getElementById('btn-stop');
+    if (data.state === 'started') {
+      btn.disabled = true;
+      btn.querySelector('span').textContent = 'Translating...';
+      btnStop.style.display = 'flex';
+    } else if (data.state === 'idle') {
+      btn.disabled = false;
+      btn.querySelector('span').textContent = 'Start Translation';
+      btnStop.style.display = 'none';
+      isStreamingRust = false;
+      isStreamingC = false;
+      if (data.cancelled) {
+        appendTerminal('🛑 Translation stopped by user.', 'warn');
+      }
     }
   });
 
@@ -115,6 +163,22 @@ function initSSE() {
     }
   });
 
+  // Token-by-token streaming for C code
+  eventSource.addEventListener('c_token', (e) => {
+    const data = JSON.parse(e.data);
+    const view = document.getElementById('c-code-view');
+    if (!isStreamingC) {
+      view.textContent = '';
+      currentC = '';
+      isStreamingC = true;
+    }
+    currentC += data.token;
+    view.textContent = currentC;
+    const container = document.getElementById('c-code-container');
+    container.scrollTop = container.scrollHeight;
+  });
+
+  // Full C code event
   eventSource.addEventListener('c_code', (e) => {
     const data = JSON.parse(e.data);
     currentC = data.code;
@@ -123,6 +187,23 @@ function initSSE() {
     Prism.highlightElement(view);
   });
 
+  // Token-by-token streaming for Rust code
+  eventSource.addEventListener('rust_token', (e) => {
+    const data = JSON.parse(e.data);
+    const view = document.getElementById('rust-code-view');
+    if (!isStreamingRust) {
+      view.textContent = '';
+      currentRust = '';
+      isStreamingRust = true;
+      switchCodeTab('rust');
+    }
+    currentRust += data.token;
+    view.textContent = currentRust;
+    const container = document.getElementById('rust-code-container');
+    container.scrollTop = container.scrollHeight;
+  });
+
+  // Full Rust code event
   eventSource.addEventListener('rust_code', (e) => {
     const data = JSON.parse(e.data);
     currentRust = data.code;
@@ -134,8 +215,17 @@ function initSSE() {
 
   eventSource.addEventListener('complete', (e) => {
     const data = JSON.parse(e.data);
+    isStreamingRust = false;
+    isStreamingC = false;
+
     updateStage(5, 'Completed');
     appendTerminal('🎉 Translation completed with 100% test conformance!', 'success');
+
+    // Highlight final code blocks with Prism
+    const rustView = document.getElementById('rust-code-view');
+    if (rustView.textContent) Prism.highlightElement(rustView);
+    const cView = document.getElementById('c-code-view');
+    if (cView.textContent) Prism.highlightElement(cView);
 
     const banner = document.getElementById('results-banner');
     banner.style.display = 'flex';
@@ -143,8 +233,10 @@ function initSSE() {
     document.getElementById('results-desc').textContent = 'Compiled and verified with 0 raw pointers and 0 unsafe blocks. Ready in Web VS Code.';
 
     const btnConvert = document.getElementById('btn-convert');
+    const btnStop = document.getElementById('btn-stop');
     btnConvert.disabled = false;
     btnConvert.querySelector('span').textContent = 'Start Translation';
+    btnStop.style.display = 'none';
   });
 
   eventSource.addEventListener('error', (e) => {
@@ -153,8 +245,10 @@ function initSSE() {
       appendTerminal(`Error: ${data.message}`, 'error');
     } catch (_) {}
     const btnConvert = document.getElementById('btn-convert');
+    const btnStop = document.getElementById('btn-stop');
     btnConvert.disabled = false;
     btnConvert.querySelector('span').textContent = 'Start Translation';
+    btnStop.style.display = 'none';
   });
 }
 
@@ -166,11 +260,7 @@ document.getElementById('btn-convert').addEventListener('click', async () => {
     return;
   }
 
-  const btn = document.getElementById('btn-convert');
-  btn.disabled = true;
-  btn.querySelector('span').textContent = 'Translating...';
-
-  document.getElementById('results-banner').style.display = 'none';
+  resetUIForNewTranslation(url);
   appendTerminal(`\n--- Starting translation for: ${url} ---`, 'cmd');
 
   try {
@@ -182,15 +272,36 @@ document.getElementById('btn-convert').addEventListener('click', async () => {
     const result = await res.json();
     if (!res.ok) {
       appendTerminal(`Server error: ${result.error}`, 'error');
+      const btn = document.getElementById('btn-convert');
+      const btnStop = document.getElementById('btn-stop');
       btn.disabled = false;
       btn.querySelector('span').textContent = 'Start Translation';
+      btnStop.style.display = 'none';
     }
   } catch (err) {
     appendTerminal(`Network error: ${err.message}`, 'error');
+    const btn = document.getElementById('btn-convert');
+    const btnStop = document.getElementById('btn-stop');
     btn.disabled = false;
     btn.querySelector('span').textContent = 'Start Translation';
+    btnStop.style.display = 'none';
   }
 });
+
+// Stop / Cancel conversion action
+async function stopTranslation() {
+  appendTerminal('Stopping active translation...', 'warn');
+  try {
+    await fetch('/api/cancel', { method: 'POST' });
+  } catch (err) {
+    console.error('Cancel request failed:', err);
+  }
+  const btn = document.getElementById('btn-convert');
+  const btnStop = document.getElementById('btn-stop');
+  btn.disabled = false;
+  btn.querySelector('span').textContent = 'Start Translation';
+  btnStop.style.display = 'none';
+}
 
 function copyActiveCode() {
   const code = activeTab === 'rust' ? currentRust : currentC;

@@ -262,6 +262,28 @@ main {
   cursor: not-allowed;
 }
 
+.btn-danger {
+  padding: 0.85rem 1.5rem;
+  background: linear-gradient(135deg, #EF4444, #B91C1C);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+}
+
+.btn-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+}
+
 .presets {
   display: flex;
   align-items: center;
@@ -791,3 +813,4 @@ main {
     grid-template-columns: 1fr;
   }
 }
+

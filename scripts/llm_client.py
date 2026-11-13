@@ -104,14 +104,15 @@ def cache_put(key: str, value: dict) -> None:
 # --------------------------------------------------------------------------- #
 # backends
 # --------------------------------------------------------------------------- #
-def _call_local(cfg: LLMConfig, messages: list[dict]) -> dict:
+def _call_local(cfg: LLMConfig, messages: list[dict], on_stream=None) -> dict:
+    stream_mode = bool(on_stream)
     body = {
         "model": cfg.model,
         "messages": messages,
         "temperature": cfg.temperature,
         "max_tokens": cfg.max_tokens,
         "cache_prompt": False,
-        "stream": False,
+        "stream": stream_mode,
     }
     req = urllib.request.Request(
         cfg.url,
@@ -123,11 +124,27 @@ def _call_local(cfg: LLMConfig, messages: list[dict]) -> dict:
     )
     try:
         with urllib.request.urlopen(req, timeout=cfg.timeout) as r:
-            raw = json.load(r)
+            if stream_mode:
+                chunks = []
+                for line in r:
+                    line_str = line.decode("utf-8").strip()
+                    if line_str.startswith("data: ") and not line_str.endswith("[DONE]"):
+                        try:
+                            payload = json.loads(line_str[6:])
+                            delta = payload["choices"][0].get("delta", {}).get("content", "")
+                            if delta:
+                                chunks.append(delta)
+                                on_stream(delta)
+                        except Exception:
+                            pass
+                text = "".join(chunks)
+                raw = {"choices": [{"message": {"content": text}}]}
+            else:
+                raw = json.load(r)
+                text = raw["choices"][0]["message"]["content"]
     except urllib.error.HTTPError as e:
         err_body = e.read().decode("utf-8", errors="ignore")
         raise RuntimeError(f"LLM API request failed (HTTP {e.code}): {err_body}") from e
-    text = raw["choices"][0]["message"]["content"]
     usage = raw.get("usage") or {}
     timings = raw.get("timings") or {}
     return {
@@ -196,13 +213,13 @@ class LLMResult:
         return b[0] if b else None
 
 
-def call(messages: list[dict], cfg: LLMConfig | None = None, tag: str = "") -> LLMResult:
+def call(messages: list[dict], cfg: LLMConfig | None = None, tag: str = "", on_stream=None) -> LLMResult:
     cfg = cfg or LLMConfig()
     payload = {"messages": messages, **cfg.fingerprint()}
     ph = prompt_hash(payload)
     key = ph
 
-    if cfg.use_cache:
+    if cfg.use_cache and not on_stream:
         hit = cache_get(key)
         if hit is not None:
             _log_call({
@@ -223,7 +240,7 @@ def call(messages: list[dict], cfg: LLMConfig | None = None, tag: str = "") -> L
 
     t0 = time.time()
     if cfg.backend == "local":
-        r = _call_local(cfg, messages)
+        r = _call_local(cfg, messages, on_stream=on_stream)
     elif cfg.backend == "opencode":
         r = _call_opencode(cfg, messages)
     else:
@@ -256,12 +273,12 @@ def call(messages: list[dict], cfg: LLMConfig | None = None, tag: str = "") -> L
     return rec
 
 
-def ask(prompt: str, system: str = "", cfg: LLMConfig | None = None, tag: str = "") -> LLMResult:
+def ask(prompt: str, system: str = "", cfg: LLMConfig | None = None, tag: str = "", on_stream=None) -> LLMResult:
     msgs = []
     if system:
         msgs.append({"role": "system", "content": system})
     msgs.append({"role": "user", "content": prompt})
-    return call(msgs, cfg=cfg, tag=tag)
+    return call(msgs, cfg=cfg, tag=tag, on_stream=on_stream)
 
 
 if __name__ == "__main__":

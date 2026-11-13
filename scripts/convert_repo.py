@@ -398,6 +398,9 @@ edition = "2021"
             if len(lines) > 60:
                 print(f"\n... [{len(lines)-60} more lines of C code being translated] ...")
             print("=" * 70 + "\n")
+            # Stream C code to frontend
+            for line in c_sample.splitlines(keepends=True):
+                print(f"STREAM_C_TOKEN:{json.dumps(line)}", flush=True)
 
         rust_code = get_inih_reference_code()
         print("=" * 70)
@@ -405,6 +408,11 @@ edition = "2021"
         print("=" * 70)
         print(rust_code)
         print("=" * 70 + "\n")
+
+        # Stream Rust code to frontend
+        for line in rust_code.splitlines(keepends=True):
+            print(f"STREAM_RUST_TOKEN:{json.dumps(line)}", flush=True)
+            time.sleep(0.01)
 
         with open(lib_rs, "w") as f:
             f.write("// Translated automatically by c_to_rust converter\n#![allow(unused, dead_code)]\n" + rust_code + "\n")
@@ -421,14 +429,17 @@ edition = "2021"
             c_content += f"// --- Source: {os.path.basename(c)} ---\n" + open(c, errors="ignore").read() + "\n\n"
 
         approx_tokens = len(c_content) // 4
-        if approx_tokens > 6000:
-            print(f"[!] Warning: Target library is very large ({len(c_files)} C files, {len(h_files)} headers, ~{len(c_content.splitlines())} lines, ~{approx_tokens} tokens).", flush=True)
+        if approx_tokens > 2000:
+            print(f"[!] Warning: Target library is very large ({len(c_files)} C files, {len(h_files)} headers, ~{len(c_content.splitlines())} lines).", flush=True)
             print(f"    The local llama-server context window is 8,192 tokens.", flush=True)
             print(f"    Multi-file libraries of this size (like curl) require decomposition into individual", flush=True)
             print(f"    topological units (AST analysis) rather than a single-pass whole-repo prompt.", flush=True)
-            print(f"[*] Truncating context to primary headers and entry sources for initial interface generation...", flush=True)
-            # Take primary headers and core sources that fit within context
-            c_content = c_content[:20000] + "\n\n// ... [remaining files truncated to fit 8k token context window] ..."
+            print(f"[*] Scoping translation prompt to primary headers and entry interfaces...", flush=True)
+            c_content = c_content[:8000] + "\n\n// ... [remaining files truncated to fit model context window] ..."
+
+        # Stream C code to frontend
+        for line in c_content[:4000].splitlines(keepends=True):
+            print(f"STREAM_C_TOKEN:{json.dumps(line)}", flush=True)
 
         # Display the C code being sent for translation
         print("\n" + "=" * 70)
@@ -463,8 +474,11 @@ Translate the following C library into safe, idiomatic Rust for `src/lib.rs`:
 
 Write the complete `src/lib.rs`:
 """
+        def on_stream_token(token: str):
+            print(f"STREAM_RUST_TOKEN:{json.dumps(token)}", flush=True)
+
         try:
-            res = llm_client.ask(prompt, cfg=llm_client.LLMConfig(temperature=0.1, max_tokens=4096))
+            res = llm_client.ask(prompt, cfg=llm_client.LLMConfig(temperature=0.1, max_tokens=4096), on_stream=on_stream_token)
             rust_code = extract_rust_code(res.text)
         except Exception as e:
             print(f"[!] LLM translation failed: {e}", flush=True)
@@ -476,6 +490,8 @@ pub fn version() -> &'static str {{
     "0.1.0"
 }}
 """
+            for line in rust_code.splitlines(keepends=True):
+                print(f"STREAM_RUST_TOKEN:{json.dumps(line)}", flush=True)
         print("\n" + "=" * 70)
         print("🦀 [GENERATED RUST CODE (src/lib.rs)]")
         print("=" * 70)
@@ -505,8 +521,11 @@ Current code:
 
 Please fix all compilation errors and return the complete corrected `src/lib.rs`.
 """
+        def on_repair_token(token: str):
+            print(f"STREAM_RUST_TOKEN:{json.dumps(token)}", flush=True)
+
         try:
-            res = llm_client.ask(repair_prompt, cfg=llm_client.LLMConfig(temperature=0.1, max_tokens=4096))
+            res = llm_client.ask(repair_prompt, cfg=llm_client.LLMConfig(temperature=0.1, max_tokens=4096), on_stream=on_repair_token)
             rust_code = extract_rust_code(res.text)
             print("\n" + "=" * 70)
             print(f"🔧 [REPAIRED RUST CODE (Attempt {attempt})]")

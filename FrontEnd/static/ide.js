@@ -112,3 +112,4 @@ async function openFile(relPath) {
     editor.setValue(`// Error loading file: ${err.message}`);
   }
 }
+
